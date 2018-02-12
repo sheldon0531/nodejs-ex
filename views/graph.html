@@ -1,0 +1,11 @@
+<!-- views/template.ejs -->
+<html>
+<head>
+<meta http-equiv="refresh" content="15">
+</head>
+
+<% for(var i=0; i<4; i++) {%>
+   <p><%= Math.pow(2,i) %>W Index Input:<%= ioArrays[0][i] %> Output:<%= ioArrays[1][i] %> Out-in:<%= ioArrays[1][i]-ioArrays[0][i] %> out/in:<span style="color:red"><%= (ioArrays[1][i]/ioArrays[0][i]).toFixed(5) %></span> in <span style="color:green"><%= (ioArrays[2][i]/60).toFixed(1) %></span> mins</p>
+<% } %>
+
+</html>

@@ -187,10 +187,10 @@ function caculateData(){
     console.log("***********************************");    
     console.log(Date.now()+" Total txs:"+txs);
     console.log("***********************************");
-    console.log(" 1W Index In:"+ioArray[0][0]+" Out:"+ioArray[1][0]+" out-in:"+(ioArray[1][0]-ioArray[0][0])+" out/in:"+(ioArray[1][0]/ioArray[0][0]).toFixed(5)+" in "+(ioArray[2][0]).toFixed(1)+" mins");
-    console.log(" 2W Index In:"+ioArray[0][1]+" Out:"+ioArray[1][1]+" out-in:"+(ioArray[1][1]-ioArray[0][1])+" out/in:"+(ioArray[1][1]/ioArray[0][1]).toFixed(5)+" in "+(ioArray[2][1]).toFixed(1)+" mins");
-    console.log(" 4W Index In:"+ioArray[0][2]+" Out:"+ioArray[1][2]+" out-in:"+(ioArray[1][2]-ioArray[0][2])+" out/in:"+(ioArray[1][2]/ioArray[0][2]).toFixed(5)+" in "+(ioArray[2][2]).toFixed(1)+" mins");
-    console.log(" 8W Index In:"+ioArray[0][3]+" Out:"+ioArray[1][3]+" out-in:"+(ioArray[1][3]-ioArray[0][3])+" out/in:"+(ioArray[1][3]/ioArray[0][3]).toFixed(5)+" in "+(ioArray[2][3]).toFixed(1)+" mins");
+    console.log(" 1W Index In:"+ioArray[0][0]+" Out:"+ioArray[1][0]+" out-in:"+(ioArray[1][0]-ioArray[0][0])+" out/in:"+(ioArray[1][0]/ioArray[0][0]).toFixed(5)+" in "+(ioArray[2][0]/60).toFixed(1)+" mins");
+    console.log(" 2W Index In:"+ioArray[0][1]+" Out:"+ioArray[1][1]+" out-in:"+(ioArray[1][1]-ioArray[0][1])+" out/in:"+(ioArray[1][1]/ioArray[0][1]).toFixed(5)+" in "+(ioArray[2][1]/60).toFixed(1)+" mins");
+    console.log(" 4W Index In:"+ioArray[0][2]+" Out:"+ioArray[1][2]+" out-in:"+(ioArray[1][2]-ioArray[0][2])+" out/in:"+(ioArray[1][2]/ioArray[0][2]).toFixed(5)+" in "+(ioArray[2][2]/60).toFixed(1)+" mins");
+    console.log(" 8W Index In:"+ioArray[0][3]+" Out:"+ioArray[1][3]+" out-in:"+(ioArray[1][3]-ioArray[0][3])+" out/in:"+(ioArray[1][3]/ioArray[0][3]).toFixed(5)+" in "+(ioArray[2][3]/60).toFixed(1)+" mins");
     //console.log("16W Index In:"+ioArray[0][4]+" Out:"+ioArray[1][4]+" out-in:"+(ioArray[1][4]-ioArray[0][4])+" out/in:"+(ioArray[1][4]/ioArray[0][4]).toFixed(5)+" in "+(ioArray[2][4]).toFixed(1)+" mins");
 };
 
