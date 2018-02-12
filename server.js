@@ -94,6 +94,11 @@ app.get('/pagecount', function (req, res) {
   }
 });
 
+app.get('/graph', function(req, res) {
+  var iodata = JSON.stringify(ioArray);
+  res.render('graph.htm', { ioArrays : ioArray });
+});
+
 // error handling
 app.use(function(err, req, res, next){
   console.error(err.stack);
