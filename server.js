@@ -184,6 +184,7 @@ function caculateData(){
     ioArray[0][3] = insum;
     ioArray[1][3] = outsum;
     ioArray[2][3] = lastTimestamp - firstTimestamp;
+    /*
     console.log("***********************************");    
     console.log(Date.now()+" Total txs:"+txs);
     console.log("***********************************");
@@ -192,6 +193,7 @@ function caculateData(){
     console.log(" 4W Index In:"+ioArray[0][2]+" Out:"+ioArray[1][2]+" out-in:"+(ioArray[1][2]-ioArray[0][2])+" out/in:"+(ioArray[1][2]/ioArray[0][2]).toFixed(5)+" in "+(ioArray[2][2]/60).toFixed(1)+" mins");
     console.log(" 8W Index In:"+ioArray[0][3]+" Out:"+ioArray[1][3]+" out-in:"+(ioArray[1][3]-ioArray[0][3])+" out/in:"+(ioArray[1][3]/ioArray[0][3]).toFixed(5)+" in "+(ioArray[2][3]/60).toFixed(1)+" mins");
     //console.log("16W Index In:"+ioArray[0][4]+" Out:"+ioArray[1][4]+" out-in:"+(ioArray[1][4]-ioArray[0][4])+" out/in:"+(ioArray[1][4]/ioArray[0][4]).toFixed(5)+" in "+(ioArray[2][4]).toFixed(1)+" mins");
+    */
 };
 
   client.on('connectFailed', function(error) {
