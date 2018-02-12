@@ -1,223 +1,2074 @@
-<!doctype html>
+
+
+
+
+
+
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Ledger IO Analyze</title>
+  <head>
+    <meta charset="utf-8">
+  <link rel="dns-prefetch" href="https://assets-cdn.github.com">
+  <link rel="dns-prefetch" href="https://avatars0.githubusercontent.com">
+  <link rel="dns-prefetch" href="https://avatars1.githubusercontent.com">
+  <link rel="dns-prefetch" href="https://avatars2.githubusercontent.com">
+  <link rel="dns-prefetch" href="https://avatars3.githubusercontent.com">
+  <link rel="dns-prefetch" href="https://github-cloud.s3.amazonaws.com">
+  <link rel="dns-prefetch" href="https://user-images.githubusercontent.com/">
 
 
-<style>
 
-/*!
- * Bootstrap v3.0.0
- *
- * Copyright 2013 Twitter, Inc
- * Licensed under the Apache License v2.0
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Designed and built with all the love in the world @twitter by @mdo and @fat.
- */
-body {
-  color: #404040;
-  font-family: "Helvetica Neue",Helvetica,"Liberation Sans",Arial,sans-serif;
-  font-size: 14px;
-  line-height: 1.4;
-}
+  <link crossorigin="anonymous" href="https://assets-cdn.github.com/assets/frameworks-521cbf980c80.css" integrity="sha512-Uhy/mAyAx1HfsenmjQ85ASpOk5bjt2Ay03pNeixXIvkHlEm5S+N4u0HWfDGhvsGYx4bGyviXWGGPZeIffqYcNA==" media="all" rel="stylesheet" />
+  <link crossorigin="anonymous" href="https://assets-cdn.github.com/assets/github-51d0ccb0b3a5.css" integrity="sha512-UdDMsLOlmT+N3XJQL/Vq5JjXriptukZ468KVJqK9BiZV7pwLYPzQRLvGWHtB/GHfiG4x7XHg8YbKJstRyb2Nag==" media="all" rel="stylesheet" />
+  
+  
+  
+  
 
-html {
-  font-family: sans-serif;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-}
-ul {
-    margin-top: 0;
-}
-.container {
-  margin-right: auto;
-  margin-left: auto;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-.container:before,
-.container:after {
-  content: " ";
-  /* 1 */
+  <meta name="viewport" content="width=device-width">
+  
+  <title>nodejs-ex/index.html at master · openshift/nodejs-ex</title>
+  <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="GitHub">
+  <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
+  <meta property="fb:app_id" content="1401488693436528">
 
-  display: table;
-  /* 2 */
+    
+    <meta content="https://avatars2.githubusercontent.com/u/792337?s=400&amp;v=4" property="og:image" /><meta content="GitHub" property="og:site_name" /><meta content="object" property="og:type" /><meta content="openshift/nodejs-ex" property="og:title" /><meta content="https://github.com/openshift/nodejs-ex" property="og:url" /><meta content="nodejs-ex - node.js example" property="og:description" />
 
-}
-.container:after {
-  clear: both;
-}
-.row {
-  margin-left: -15px;
-  margin-right: -15px;
-}
-.row:before,
-.row:after {
-  content: " ";
-  /* 1 */
+  <link rel="assets" href="https://assets-cdn.github.com/">
+  <link rel="web-socket" href="wss://live.github.com/_sockets/VjI6MjQ3NTA1ODY1OmQyYmNhOWFhYzIwNGEyNzc1MGIxNWFkYjBmNzRjNGViOWJkYWViMmY4ZjY1YTYwMmEzYWUyMDE4NTc5NDVlMWE=--683b5397b624005201ac128aaf4f3148c5d352cc">
+  <meta name="pjax-timeout" content="1000">
+  <link rel="sudo-modal" href="/sessions/sudo_modal">
+  <meta name="request-id" content="0C3D:0318:251740C:3BA3133:5A812E1A" data-pjax-transient>
+  
 
-  display: table;
-  /* 2 */
+  <meta name="selected-link" value="repo_source" data-pjax-transient>
 
-}
-.row:after {
-  clear: both;
-}
-.col-sm-6, .col-md-6, .col-xs-12 {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-.col-xs-12 {
-  width: 100%;
-}
+    <meta name="google-site-verification" content="KT5gs8h0wvaagLKAVWq8bbeNwnZZK1r1XQysX3xurLU">
+  <meta name="google-site-verification" content="ZzhVyEFwb7w3e0-uOTltm8Jsck2F5StVihD0exw2fsA">
+  <meta name="google-site-verification" content="GXs5KoUUkNCoaAZn7wPN-t01Pywp9M3sEjnt_3_ZWPc">
+    <meta name="google-analytics" content="UA-3769691-2">
 
-@media (min-width: 768px) {
-  .container {
-    width: 750px;
-  }
-  .col-sm-6 {
-    float: left;
-  }
-  .col-sm-6 {
-    width: 50%;
-  }
-}
-
-@media (min-width: 992px) {
-  .container {
-    width: 970px;
-  }
-  .col-md-6 {
-    float: left;
-  }
-  .col-md-6 {
-    width: 50%;
-  }
-}
-@media (min-width: 1200px) {
-  .container {
-    width: 1170px;
-  }
-}
-
-a {
-  color: #069;
-  text-decoration: none;
-}
-a:hover {
-  color: #EA0011;
-  text-decoration: underline;
-}
-hgroup {
-  margin-top: 50px;
-}
-footer {
-    margin: 50px 0 25px;
-}
-h1, h2, h3 {
-  color: #000;
-  line-height: 1.38em;
-  margin: 1.5em 0 .3em;
-}
-h1 {
-  font-size: 25px;
-  font-weight: 300;
-  border-bottom: 1px solid #fff;
-  margin-bottom: .5em;
-}
-h1:after {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 1px;
-  background-color: #ddd;
-}
-h2 {
-  font-size: 19px;
-  font-weight: 400;
-}
-h3 {
-  font-size: 15px;
-  font-weight: 400;
-  margin: 0 0 .3em;
-}
-p {
-  margin: 0 0 2em;
-  text-align: justify;
-}
-p + h2 {
-  margin-top: 2em;
-}
-html {
-  background: #f5f5f5;
-  height: 100%;
-}
-code{
-  background-color: white;
-  border: 1px solid #ccc;
-  padding: 1px 5px;
-  color: #888;
-}
-.code{
-  background-color: white;
-  border: 1px solid #ccc;
-  padding: 1px 5px;
-  color: #888;
-}
-pre {
-  display: block;
-  padding: 13.333px 20px;
-  margin: 0 0 20px;
-  font-size: 13px;
-  line-height: 1.4;
-  background-color: #fff;
-  border-left: 2px solid rgba(120,120,120,0.35);
-  white-space: pre;
-  white-space: pre-wrap;
-  word-break: normal;
-  word-wrap: break-word;
-  overflow: auto;
-  font-family: Menlo,Monaco,"Liberation Mono",Consolas,monospace !important;
-}
-
-</style>
-
-</head>
-<body>
-
-<section class='container'>
-          <hgroup>
-            <h1>Welcome to ledger IO Analyze Page</h1>
-          </hgroup>
+<meta content="collector.githubapp.com" name="octolytics-host" /><meta content="github" name="octolytics-app-id" /><meta content="https://collector.githubapp.com/github-external/browser_event" name="octolytics-event-url" /><meta content="0C3D:0318:251740C:3BA3133:5A812E1A" name="octolytics-dimension-request_id" /><meta content="iad" name="octolytics-dimension-region_edge" /><meta content="iad" name="octolytics-dimension-region_render" /><meta content="14831658" name="octolytics-actor-id" /><meta content="sheldon0531" name="octolytics-actor-login" /><meta content="577dbc555d19a46e1febaeb819e10e22414a5ca64e2e6f2da9bfad4ae33bdde9" name="octolytics-actor-hash" />
+<meta content="https://github.com/hydro_browser_events" name="hydro-events-url" />
+<meta content="/&lt;user-name&gt;/&lt;repo-name&gt;/blob/show" data-pjax-transient="true" name="analytics-location" />
 
 
-        <div class="row">
-                <h2>Request information</h2>
-                <p>Page view count :
-                <% if (pageCountMessage) { %>
-                	<div id="information">
-					<h2>Realtime IO ledger Data</h2>
-					<h3><%=arrIdx%></h3>
-        			</div>
-                   <span class="code" id="count-value"><%=pageCountMessage%></span>
-                   </p>
-                    <div class="code"><h3>DB Connection Info:</h3>
-                      <table style='margin-left: 20px'>
-                          <tr><td>Type:</td><td><%= dbInfo.type %></td></tr>
-                          <tr><td>URL:</td><td><%= dbInfo.url %></td></tr>
-                      </table>
-                    </div>
-                <% } else { %>
-                   <span class="code" id="count-value">No database configured</span>
-                   </p>
-                <%} %>
+
+
+  <meta class="js-ga-set" name="dimension1" content="Logged In">
+
+
+  
+
+      <meta name="hostname" content="github.com">
+  <meta name="user-login" content="sheldon0531">
+
+      <meta name="expected-hostname" content="github.com">
+    <meta name="js-proxy-site-detection-payload" content="ODdjMDJjMWIwYTkwODkzNTFkZmU1Y2Y4NmY1YThhN2Y4MWM3NTk1NTY4ZDJkYjE1MmE3NjE0YmU0YWUxZWI1Znx7InJlbW90ZV9hZGRyZXNzIjoiMTE0LjEzNi43LjMzIiwicmVxdWVzdF9pZCI6IjBDM0Q6MDMxODoyNTE3NDBDOjNCQTMxMzM6NUE4MTJFMUEiLCJ0aW1lc3RhbXAiOjE1MTg0MTU0MTAsImhvc3QiOiJnaXRodWIuY29tIn0=">
+
+    <meta name="enabled-features" content="UNIVERSE_BANNER,MULTIPLE_ATTRIBUTION,FREE_TRIALS,MARKETPLACE_HERO_CARD_UPLOADER,CONTRIBUTOR_FLAGGED_CONTENT">
+
+  <meta name="html-safe-nonce" content="944ce45d36b6accb0e38e51e9f17df1b8c998f3f">
+
+  <meta http-equiv="x-pjax-version" content="7059e2221d28a2a11e751c5d9b3eb476">
+  
+
+      <link href="https://github.com/openshift/nodejs-ex/commits/master.atom" rel="alternate" title="Recent Commits to nodejs-ex:master" type="application/atom+xml">
+
+  <meta name="description" content="nodejs-ex - node.js example">
+  <meta name="go-import" content="github.com/openshift/nodejs-ex git https://github.com/openshift/nodejs-ex.git">
+
+  <meta content="792337" name="octolytics-dimension-user_id" /><meta content="openshift" name="octolytics-dimension-user_login" /><meta content="34531079" name="octolytics-dimension-repository_id" /><meta content="openshift/nodejs-ex" name="octolytics-dimension-repository_nwo" /><meta content="true" name="octolytics-dimension-repository_public" /><meta content="true" name="octolytics-dimension-repository_is_fork" /><meta content="19961473" name="octolytics-dimension-repository_parent_id" /><meta content="ryanj/node-echo" name="octolytics-dimension-repository_parent_nwo" /><meta content="19838020" name="octolytics-dimension-repository_network_root_id" /><meta content="bettiolo/node-echo" name="octolytics-dimension-repository_network_root_nwo" /><meta content="false" name="octolytics-dimension-repository_explore_github_marketplace_ci_cta_shown" />
+
+
+    <link rel="canonical" href="https://github.com/openshift/nodejs-ex/blob/master/views/index.html" data-pjax-transient>
+
+
+  <meta name="browser-stats-url" content="https://api.github.com/_private/browser/stats">
+
+  <meta name="browser-errors-url" content="https://api.github.com/_private/browser/errors">
+
+  <link rel="mask-icon" href="https://assets-cdn.github.com/pinned-octocat.svg" color="#000000">
+  <link rel="icon" type="image/x-icon" class="js-site-favicon" href="https://assets-cdn.github.com/favicon.ico">
+
+<meta name="theme-color" content="#1e2327">
+
+
+  <meta name="u2f-support" content="true">
+
+  </head>
+
+  <body class="logged-in env-production emoji-size-boost page-blob">
+    
+
+  <div class="position-relative js-header-wrapper ">
+    <a href="#start-of-content" tabindex="1" class="bg-black text-white p-3 show-on-focus js-skip-to-content">Skip to content</a>
+    <div id="js-pjax-loader-bar" class="pjax-loader-bar"><div class="progress"></div></div>
+
+    
+    
+    
+
+
+
+        
+<header class="Header  f5" role="banner">
+  <div class="d-flex px-3 flex-justify-between container-lg">
+    <div class="d-flex flex-justify-between">
+      <a class="header-logo-invertocat" href="https://github.com/" data-hotkey="g d" aria-label="Homepage" data-ga-click="Header, go to dashboard, icon:logo">
+  <svg aria-hidden="true" class="octicon octicon-mark-github" height="32" version="1.1" viewBox="0 0 16 16" width="32"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+</a>
+
+
+    </div>
+
+    <div class="HeaderMenu d-flex flex-justify-between flex-auto">
+      <div class="d-flex">
+            <div class="">
+              <div class="header-search scoped-search site-scoped-search js-site-search" role="search">
+  <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/openshift/nodejs-ex/search" class="js-site-search-form" data-scoped-search-url="/openshift/nodejs-ex/search" data-unscoped-search-url="/search" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+    <label class="form-control header-search-wrapper js-chromeless-input-container">
+        <a href="/openshift/nodejs-ex/blob/master/views/index.html" class="header-search-scope no-underline">This repository</a>
+      <input type="text"
+        class="form-control header-search-input js-site-search-focus js-site-search-field is-clearable"
+        data-hotkey="s"
+        name="q"
+        value=""
+        placeholder="Search"
+        aria-label="Search this repository"
+        data-unscoped-placeholder="Search GitHub"
+        data-scoped-placeholder="Search"
+        autocapitalize="off">
+        <input type="hidden" class="js-site-search-type-field" name="type" >
+    </label>
+</form></div>
+
+            </div>
+
+          <ul class="d-flex pl-2 flex-items-center text-bold list-style-none" role="navigation">
+            <li>
+              <a href="/pulls" aria-label="Pull requests you created" class="js-selected-navigation-item HeaderNavlink px-2" data-ga-click="Header, click, Nav menu - item:pulls context:user" data-hotkey="g p" data-selected-links="/pulls /pulls/assigned /pulls/mentioned /pulls">
+                Pull requests
+</a>            </li>
+            <li>
+              <a href="/issues" aria-label="Issues you created" class="js-selected-navigation-item HeaderNavlink px-2" data-ga-click="Header, click, Nav menu - item:issues context:user" data-hotkey="g i" data-selected-links="/issues /issues/assigned /issues/mentioned /issues">
+                Issues
+</a>            </li>
+                <li>
+                  <a href="/marketplace" class="js-selected-navigation-item HeaderNavlink px-2" data-ga-click="Header, click, Nav menu - item:marketplace context:user" data-selected-links=" /marketplace">
+                    Marketplace
+</a>                </li>
+            <li>
+              <a href="/explore" class="js-selected-navigation-item HeaderNavlink px-2" data-ga-click="Header, click, Nav menu - item:explore" data-selected-links="/explore /trending /trending/developers /integrations /integrations/feature/code /integrations/feature/collaborate /integrations/feature/ship showcases showcases_search showcases_landing /explore">
+                Explore
+</a>            </li>
+          </ul>
+      </div>
+
+      <div class="d-flex">
+        
+<ul class="user-nav d-flex flex-items-center list-style-none" id="user-links">
+  <li class="dropdown js-menu-container">
+    <span class="d-inline-block  px-2">
+      
+    <a href="/notifications" aria-label="You have no unread notifications" class="notification-indicator tooltipped tooltipped-s  js-socket-channel js-notification-indicator" data-channel="notification-changed:14831658" data-ga-click="Header, go to notifications, icon:read" data-hotkey="g n">
+        <span class="mail-status "></span>
+        <svg aria-hidden="true" class="octicon octicon-bell" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M14 12v1H0v-1l.73-.58c.77-.77.81-2.55 1.19-4.42C2.69 3.23 6 2 6 2c0-.55.45-1 1-1s1 .45 1 1c0 0 3.39 1.23 4.16 5 .38 1.88.42 3.66 1.19 4.42l.66.58H14zm-7 4c1.11 0 2-.89 2-2H5c0 1.11.89 2 2 2z"/></svg>
+</a>
+    </span>
+  </li>
+
+  <li class="dropdown js-menu-container">
+    <details class="dropdown-details details-reset js-dropdown-details d-flex px-2 flex-items-center">
+      <summary class="HeaderNavlink"
+         aria-label="Create new…"
+         data-ga-click="Header, create new, icon:add">
+        <svg aria-hidden="true" class="octicon octicon-plus float-left mr-1 mt-1" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5z"/></svg>
+        <span class="dropdown-caret mt-1"></span>
+      </summary>
+
+      <ul class="dropdown-menu dropdown-menu-sw">
+        
+<a class="dropdown-item" href="/new" data-ga-click="Header, create new repository">
+  New repository
+</a>
+
+  <a class="dropdown-item" href="/new/import" data-ga-click="Header, import a repository">
+    Import repository
+  </a>
+
+<a class="dropdown-item" href="https://gist.github.com/" data-ga-click="Header, create new gist">
+  New gist
+</a>
+
+  <a class="dropdown-item" href="/organizations/new" data-ga-click="Header, create new organization">
+    New organization
+  </a>
+
+
+
+  <div class="dropdown-divider"></div>
+  <div class="dropdown-header">
+    <span title="openshift/nodejs-ex">This repository</span>
+  </div>
+    <a class="dropdown-item" href="/openshift/nodejs-ex/issues/new" data-ga-click="Header, create new issue">
+      New issue
+    </a>
+
+      </ul>
+    </details>
+  </li>
+
+  <li class="dropdown js-menu-container">
+
+    <details class="dropdown-details details-reset js-dropdown-details d-flex pl-2 flex-items-center">
+      <summary class="HeaderNavlink name mt-1"
+        aria-label="View profile and more"
+        data-ga-click="Header, show menu, icon:avatar">
+        <img alt="@sheldon0531" class="avatar float-left mr-1" src="https://avatars2.githubusercontent.com/u/14831658?s=40&amp;v=4" height="20" width="20">
+        <span class="dropdown-caret"></span>
+      </summary>
+
+      <ul class="dropdown-menu dropdown-menu-sw">
+        <li class="dropdown-header header-nav-current-user css-truncate">
+          Signed in as <strong class="css-truncate-target">sheldon0531</strong>
+        </li>
+
+        <li class="dropdown-divider"></li>
+
+        <li><a class="dropdown-item" href="/sheldon0531" data-ga-click="Header, go to profile, text:your profile">
+          Your profile
+        </a></li>
+        <li><a class="dropdown-item" href="/sheldon0531?tab=stars" data-ga-click="Header, go to starred repos, text:your stars">
+          Your stars
+        </a></li>
+          <li><a class="dropdown-item" href="https://gist.github.com/" data-ga-click="Header, your gists, text:your gists">Your Gists</a></li>
+
+        <li class="dropdown-divider"></li>
+
+        <li><a class="dropdown-item" href="https://help.github.com" data-ga-click="Header, go to help, text:help">
+          Help
+        </a></li>
+
+        <li><a class="dropdown-item" href="/settings/profile" data-ga-click="Header, go to settings, icon:settings">
+          Settings
+        </a></li>
+
+        <li><!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/logout" class="logout-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="DHsZQ2gwL6+p7wVNBBzgy04bYF+6/DHSTwukMFXu8gNTzOyUX0Gr5gQTQ9kf/h27qD+pq6tQ6cDQYslVkKf2EQ==" /></div>
+          <button type="submit" class="dropdown-item dropdown-signout" data-ga-click="Header, sign out, icon:logout">
+            Sign out
+          </button>
+        </form></li>
+      </ul>
+    </details>
+  </li>
+</ul>
+
+
+        <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/logout" class="sr-only right-0" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="Y6NQ2buhj0whPlKzQ7BaVklaBAWCWQhQYMa2x0564I88FKUOjNALBYzCFCdYUqcmr37N8ZP10EL/r9uiizPknQ==" /></div>
+          <button type="submit" class="dropdown-item dropdown-signout" data-ga-click="Header, sign out, icon:logout">
+            Sign out
+          </button>
+</form>      </div>
+    </div>
+  </div>
+</header>
+
+      
+
+  </div>
+
+  <div id="start-of-content" class="show-on-focus"></div>
+
+    <div id="js-flash-container">
+</div>
+
+
+
+  <div role="main" class="application-main ">
+        <div itemscope itemtype="http://schema.org/SoftwareSourceCode" class="">
+    <div id="js-repo-pjax-container" data-pjax-container >
+      
+
+
+
+
+  
+
+
+
+  <div class="pagehead repohead instapaper_ignore readability-menu experiment-repo-nav  ">
+    <div class="repohead-details-container clearfix container">
+
+      <ul class="pagehead-actions">
+  <li>
+        <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/notifications/subscribe" class="js-social-container" data-autosubmit="true" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="gjJbPOxoBzYh9096b+uCKdvcUOUlvKIpA9ZdDPUOJSg7KUsYuc+HR7UcBiM+iE3W6RzsL6G5SLLMo7M3/VoMqA==" /></div>      <input class="form-control" id="repository_id" name="repository_id" type="hidden" value="34531079" />
+
+        <div class="select-menu js-menu-container js-select-menu">
+          <a href="/openshift/nodejs-ex/subscription"
+            class="btn btn-sm btn-with-count select-menu-button js-menu-target"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-label="Toggle repository notifications menu"
+            data-ga-click="Repository, click Watch settings, action:blob#show">
+            <span class="js-select-button">
+                <svg aria-hidden="true" class="octicon octicon-eye" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6C13 14 16 8 16 8s-3-6-7.94-6zM8 12c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4zm2-4c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"/></svg>
+                Watch
+            </span>
+          </a>
+          <a class="social-count js-social-count"
+            href="/openshift/nodejs-ex/watchers"
+            aria-label="99 users are watching this repository">
+            99
+          </a>
+
+        <div class="select-menu-modal-holder">
+          <div class="select-menu-modal subscription-menu-modal js-menu-content">
+            <div class="select-menu-header js-navigation-enable" tabindex="-1">
+              <svg aria-label="Close" class="octicon octicon-x js-menu-close" height="16" role="img" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"/></svg>
+              <span class="select-menu-title">Notifications</span>
+            </div>
+
+              <div class="select-menu-list js-navigation-container" role="menu">
+
+                <div class="select-menu-item js-navigation-item selected" role="menuitem" tabindex="0">
+                  <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"/></svg>
+                  <div class="select-menu-item-text">
+                    <input checked="checked" id="do_included" name="do" type="radio" value="included" />
+                    <span class="select-menu-item-heading">Not watching</span>
+                    <span class="description">Be notified when participating or @mentioned.</span>
+                    <span class="js-select-button-text hidden-select-button-text">
+                      <svg aria-hidden="true" class="octicon octicon-eye" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6C13 14 16 8 16 8s-3-6-7.94-6zM8 12c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4zm2-4c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"/></svg>
+                      Watch
+                    </span>
+                  </div>
+                </div>
+
+                <div class="select-menu-item js-navigation-item " role="menuitem" tabindex="0">
+                  <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"/></svg>
+                  <div class="select-menu-item-text">
+                    <input id="do_subscribed" name="do" type="radio" value="subscribed" />
+                    <span class="select-menu-item-heading">Watching</span>
+                    <span class="description">Be notified of all conversations.</span>
+                    <span class="js-select-button-text hidden-select-button-text">
+                      <svg aria-hidden="true" class="octicon octicon-eye" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6C13 14 16 8 16 8s-3-6-7.94-6zM8 12c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4zm2-4c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"/></svg>
+                        Unwatch
+                    </span>
+                  </div>
+                </div>
+
+                <div class="select-menu-item js-navigation-item " role="menuitem" tabindex="0">
+                  <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"/></svg>
+                  <div class="select-menu-item-text">
+                    <input id="do_ignore" name="do" type="radio" value="ignore" />
+                    <span class="select-menu-item-heading">Ignoring</span>
+                    <span class="description">Never be notified.</span>
+                    <span class="js-select-button-text hidden-select-button-text">
+                      <svg aria-hidden="true" class="octicon octicon-mute" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M8 2.81v10.38c0 .67-.81 1-1.28.53L3 10H1c-.55 0-1-.45-1-1V7c0-.55.45-1 1-1h2l3.72-3.72C7.19 1.81 8 2.14 8 2.81zm7.53 3.22l-1.06-1.06-1.97 1.97-1.97-1.97-1.06 1.06L11.44 8 9.47 9.97l1.06 1.06 1.97-1.97 1.97 1.97 1.06-1.06L13.56 8l1.97-1.97z"/></svg>
+                        Stop ignoring
+                    </span>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+</form>
+  </li>
+
+  <li>
+    
+  <div class="js-toggler-container js-social-container starring-container ">
+    <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/openshift/nodejs-ex/unstar" class="starred js-social-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="OS3y28QX7ASoPlzAPqxcDzPYOOqhr9cSA1SBL/toKlQLJ5IDGuZ0GMpRCNeP8Sz0st4Er8Vbu8PRzH9XkHy0yQ==" /></div>
+      <input type="hidden" name="context" value="repository"></input>
+      <button
+        type="submit"
+        class="btn btn-sm btn-with-count js-toggler-target"
+        aria-label="Unstar this repository" title="Unstar openshift/nodejs-ex"
+        data-ga-click="Repository, click unstar button, action:blob#show; text:Unstar">
+        <svg aria-hidden="true" class="octicon octicon-star" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74z"/></svg>
+        Unstar
+      </button>
+        <a class="social-count js-social-count" href="/openshift/nodejs-ex/stargazers"
+           aria-label="157 users starred this repository">
+          157
+        </a>
+</form>
+    <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/openshift/nodejs-ex/star" class="unstarred js-social-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="oM+uOCgj6iMwVH5n0IEzBzTt9ejAFADrC2iw2r3UDV5SQZannPiTvqdAueUn1zTGEl0bLpGNK+JSOKXbsVikCw==" /></div>
+      <input type="hidden" name="context" value="repository"></input>
+      <button
+        type="submit"
+        class="btn btn-sm btn-with-count js-toggler-target"
+        aria-label="Star this repository" title="Star openshift/nodejs-ex"
+        data-ga-click="Repository, click star button, action:blob#show; text:Star">
+        <svg aria-hidden="true" class="octicon octicon-star" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74z"/></svg>
+        Star
+      </button>
+        <a class="social-count js-social-count" href="/openshift/nodejs-ex/stargazers"
+           aria-label="157 users starred this repository">
+          157
+        </a>
+</form>  </div>
+
+  </li>
+
+  <li>
+          <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/openshift/nodejs-ex/fork" class="btn-with-count" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="bECJVvJ69XHcB3+TbKP14gu2K5NXE25LKfqVVTg0b/z75cEZeLcchQs/Rw6abrJ0CVih83xrdZDdHXGUwhzN+w==" /></div>
+            <button
+                type="submit"
+                class="btn btn-sm btn-with-count"
+                data-ga-click="Repository, show fork modal, action:blob#show; text:Fork"
+                title="Fork your own copy of openshift/nodejs-ex to your account"
+                aria-label="Fork your own copy of openshift/nodejs-ex to your account">
+              <svg aria-hidden="true" class="octicon octicon-repo-forked" height="16" version="1.1" viewBox="0 0 10 16" width="10"><path fill-rule="evenodd" d="M8 1a1.993 1.993 0 0 0-1 3.72V6L5 8 3 6V4.72A1.993 1.993 0 0 0 2 1a1.993 1.993 0 0 0-1 3.72V6.5l3 3v1.78A1.993 1.993 0 0 0 5 15a1.993 1.993 0 0 0 1-3.72V9.5l3-3V4.72A1.993 1.993 0 0 0 8 1zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3 10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3-10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"/></svg>
+              Fork
+            </button>
+</form>
+    <a href="/openshift/nodejs-ex/network" class="social-count"
+       aria-label="5417 users forked this repository">
+      5,417
+    </a>
+  </li>
+</ul>
+
+      <h1 class="public ">
+  <svg aria-hidden="true" class="octicon octicon-repo-forked" height="16" version="1.1" viewBox="0 0 10 16" width="10"><path fill-rule="evenodd" d="M8 1a1.993 1.993 0 0 0-1 3.72V6L5 8 3 6V4.72A1.993 1.993 0 0 0 2 1a1.993 1.993 0 0 0-1 3.72V6.5l3 3v1.78A1.993 1.993 0 0 0 5 15a1.993 1.993 0 0 0 1-3.72V9.5l3-3V4.72A1.993 1.993 0 0 0 8 1zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3 10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3-10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"/></svg>
+  <span class="author" itemprop="author"><a href="/openshift" class="url fn" rel="author">openshift</a></span><!--
+--><span class="path-divider">/</span><!--
+--><strong itemprop="name"><a href="/openshift/nodejs-ex" data-pjax="#js-repo-pjax-container">nodejs-ex</a></strong>
+
+    <span class="fork-flag">
+      <span class="text">forked from <a href="/ryanj/node-echo">ryanj/node-echo</a></span>
+    </span>
+</h1>
+
+    </div>
+    
+<nav class="reponav js-repo-nav js-sidenav-container-pjax container"
+     itemscope
+     itemtype="http://schema.org/BreadcrumbList"
+     role="navigation"
+     data-pjax="#js-repo-pjax-container">
+
+  <span itemscope itemtype="http://schema.org/ListItem" itemprop="itemListElement">
+    <a href="/openshift/nodejs-ex" class="js-selected-navigation-item selected reponav-item" data-hotkey="g c" data-selected-links="repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches repo_packages /openshift/nodejs-ex" itemprop="url">
+      <svg aria-hidden="true" class="octicon octicon-code" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M9.5 3L8 4.5 11.5 8 8 11.5 9.5 13 14 8 9.5 3zm-5 0L0 8l4.5 5L6 11.5 2.5 8 6 4.5 4.5 3z"/></svg>
+      <span itemprop="name">Code</span>
+      <meta itemprop="position" content="1">
+</a>  </span>
+
+    <span itemscope itemtype="http://schema.org/ListItem" itemprop="itemListElement">
+      <a href="/openshift/nodejs-ex/issues" class="js-selected-navigation-item reponav-item" data-hotkey="g i" data-selected-links="repo_issues repo_labels repo_milestones /openshift/nodejs-ex/issues" itemprop="url">
+        <svg aria-hidden="true" class="octicon octicon-issue-opened" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"/></svg>
+        <span itemprop="name">Issues</span>
+        <span class="Counter">1</span>
+        <meta itemprop="position" content="2">
+</a>    </span>
+
+  <span itemscope itemtype="http://schema.org/ListItem" itemprop="itemListElement">
+    <a href="/openshift/nodejs-ex/pulls" class="js-selected-navigation-item reponav-item" data-hotkey="g p" data-selected-links="repo_pulls /openshift/nodejs-ex/pulls" itemprop="url">
+      <svg aria-hidden="true" class="octicon octicon-git-pull-request" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M11 11.28V5c-.03-.78-.34-1.47-.94-2.06C9.46 2.35 8.78 2.03 8 2H7V0L4 3l3 3V4h1c.27.02.48.11.69.31.21.2.3.42.31.69v6.28A1.993 1.993 0 0 0 10 15a1.993 1.993 0 0 0 1-3.72zm-1 2.92c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zM4 3c0-1.11-.89-2-2-2a1.993 1.993 0 0 0-1 3.72v6.56A1.993 1.993 0 0 0 2 15a1.993 1.993 0 0 0 1-3.72V4.72c.59-.34 1-.98 1-1.72zm-.8 10c0 .66-.55 1.2-1.2 1.2-.65 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"/></svg>
+      <span itemprop="name">Pull requests</span>
+      <span class="Counter">1</span>
+      <meta itemprop="position" content="3">
+</a>  </span>
+
+    <a href="/openshift/nodejs-ex/projects" class="js-selected-navigation-item reponav-item" data-hotkey="g b" data-selected-links="repo_projects new_repo_project repo_project /openshift/nodejs-ex/projects">
+      <svg aria-hidden="true" class="octicon octicon-project" height="16" version="1.1" viewBox="0 0 15 16" width="15"><path fill-rule="evenodd" d="M10 12h3V2h-3v10zm-4-2h3V2H6v8zm-4 4h3V2H2v12zm-1 1h13V1H1v14zM14 0H1a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h13a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1z"/></svg>
+      Projects
+      <span class="Counter" >0</span>
+</a>
+
+
+  <a href="/openshift/nodejs-ex/pulse" class="js-selected-navigation-item reponav-item" data-selected-links="repo_graphs repo_contributors dependency_graph pulse /openshift/nodejs-ex/pulse">
+    <svg aria-hidden="true" class="octicon octicon-graph" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M16 14v1H0V0h1v14h15zM5 13H3V8h2v5zm4 0H7V3h2v10zm4 0h-2V6h2v7z"/></svg>
+    Insights
+</a>
+
+</nav>
+
+
+  </div>
+
+<div class="container new-discussion-timeline experiment-repo-nav  ">
+  <div class="repository-content ">
+
+    
+  <a href="/openshift/nodejs-ex/blob/ef1b71a300b58a35f37acfa69f871fc18075669d/views/index.html" class="d-none js-permalink-shortcut" data-hotkey="y">Permalink</a>
+
+  <!-- blob contrib key: blob_contributors:v21:250984181dbe08af45da7714730d1201 -->
+
+  <div class="file-navigation js-zeroclipboard-container">
+    
+<div class="select-menu branch-select-menu js-menu-container js-select-menu float-left">
+  <button class=" btn btn-sm select-menu-button js-menu-target css-truncate" data-hotkey="w"
+    
+    type="button" aria-label="Switch branches or tags" aria-expanded="false" aria-haspopup="true">
+      <i>Branch:</i>
+      <span class="js-select-button css-truncate-target">master</span>
+  </button>
+
+  <div class="select-menu-modal-holder js-menu-content js-navigation-container" data-pjax>
+
+    <div class="select-menu-modal">
+      <div class="select-menu-header">
+        <svg aria-label="Close" class="octicon octicon-x js-menu-close" height="16" role="img" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"/></svg>
+        <span class="select-menu-title">Switch branches/tags</span>
+      </div>
+
+      <div class="select-menu-filters">
+        <div class="select-menu-text-filter">
+          <input type="text" aria-label="Filter branches/tags" id="context-commitish-filter-field" class="form-control js-filterable-field js-navigation-enable" placeholder="Filter branches/tags">
+        </div>
+        <div class="select-menu-tabs">
+          <ul>
+            <li class="select-menu-tab">
+              <a href="#" data-tab-filter="branches" data-filter-placeholder="Filter branches/tags" class="js-select-menu-tab" role="tab">Branches</a>
+            </li>
+            <li class="select-menu-tab">
+              <a href="#" data-tab-filter="tags" data-filter-placeholder="Find a tag…" class="js-select-menu-tab" role="tab">Tags</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="select-menu-list select-menu-tab-bucket js-select-menu-tab-bucket" data-tab-filter="branches" role="menu">
+
+        <div data-filterable-for="context-commitish-filter-field" data-filterable-type="substring">
+
+
+            <a class="select-menu-item js-navigation-item js-navigation-open selected"
+               href="/openshift/nodejs-ex/blob/master/views/index.html"
+               data-name="master"
+               data-skip-pjax="true"
+               rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"/></svg>
+              <span class="select-menu-item-text css-truncate-target js-select-menu-filter-text">
+                master
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open "
+               href="/openshift/nodejs-ex/blob/revert-111-nodejs6/views/index.html"
+               data-name="revert-111-nodejs6"
+               data-skip-pjax="true"
+               rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"/></svg>
+              <span class="select-menu-item-text css-truncate-target js-select-menu-filter-text">
+                revert-111-nodejs6
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open "
+               href="/openshift/nodejs-ex/blob/revert-112-revert-111-nodejs6/views/index.html"
+               data-name="revert-112-revert-111-nodejs6"
+               data-skip-pjax="true"
+               rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"/></svg>
+              <span class="select-menu-item-text css-truncate-target js-select-menu-filter-text">
+                revert-112-revert-111-nodejs6
+              </span>
+            </a>
         </div>
 
-</section>
-</body>
+          <div class="select-menu-no-results">Nothing to show</div>
+      </div>
+
+      <div class="select-menu-list select-menu-tab-bucket js-select-menu-tab-bucket" data-tab-filter="tags">
+        <div data-filterable-for="context-commitish-filter-field" data-filterable-type="substring">
+
+
+            <a class="select-menu-item js-navigation-item js-navigation-open "
+              href="/openshift/nodejs-ex/tree/v1.0.1/views/index.html"
+              data-name="v1.0.1"
+              data-skip-pjax="true"
+              rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"/></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v1.0.1">
+                v1.0.1
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open "
+              href="/openshift/nodejs-ex/tree/v1.0/views/index.html"
+              data-name="v1.0"
+              data-skip-pjax="true"
+              rel="nofollow">
+              <svg aria-hidden="true" class="octicon octicon-check select-menu-item-icon" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"/></svg>
+              <span class="select-menu-item-text css-truncate-target" title="v1.0">
+                v1.0
+              </span>
+            </a>
+        </div>
+
+        <div class="select-menu-no-results">Nothing to show</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+    <div class="BtnGroup float-right">
+      <a href="/openshift/nodejs-ex/find/master"
+            class="js-pjax-capture-input btn btn-sm BtnGroup-item"
+            data-pjax
+            data-hotkey="t">
+        Find file
+      </a>
+      <button aria-label="Copy file path to clipboard" class="js-zeroclipboard btn btn-sm BtnGroup-item tooltipped tooltipped-s" data-copied-hint="Copied!" type="button">Copy path</button>
+    </div>
+    <div class="breadcrumb js-zeroclipboard-target">
+      <span class="repo-root js-repo-root"><span class="js-path-segment"><a href="/openshift/nodejs-ex" data-pjax="true"><span>nodejs-ex</span></a></span></span><span class="separator">/</span><span class="js-path-segment"><a href="/openshift/nodejs-ex/tree/master/views" data-pjax="true"><span>views</span></a></span><span class="separator">/</span><strong class="final-path">index.html</strong>
+    </div>
+  </div>
+
+
+  
+  <div class="commit-tease">
+      <span class="float-right">
+        <a class="commit-tease-sha" href="/openshift/nodejs-ex/commit/9a6db38edb16cf7716d679be9be5702dcbba3daa" data-pjax>
+          9a6db38
+        </a>
+        <relative-time datetime="2016-05-20T21:19:39Z">May 20, 2016</relative-time>
+      </span>
+      <div>
+        <img alt="@gabemontero" class="avatar" height="20" src="https://avatars2.githubusercontent.com/u/3594868?s=40&amp;v=4" width="20" />
+        <a href="/gabemontero" class="user-mention" rel="contributor">gabemontero</a>
+          <a href="/openshift/nodejs-ex/commit/9a6db38edb16cf7716d679be9be5702dcbba3daa" class="message" data-pjax="true" title="update webhook instructions">update webhook instructions</a>
+      </div>
+
+    <div class="commit-tease-contributors">
+      <button type="button" class="btn-link muted-link contributors-toggle" data-facebox="#blob_contributors_box">
+        <strong>3</strong>
+         contributors
+      </button>
+          <a class="avatar-link tooltipped tooltipped-s" aria-label="bparees" href="/openshift/nodejs-ex/commits/master/views/index.html?author=bparees"><img alt="@bparees" class="avatar" height="20" src="https://avatars3.githubusercontent.com/u/4974046?s=40&amp;v=4" width="20" /> </a>
+    <a class="avatar-link tooltipped tooltipped-s" aria-label="sspeiche" href="/openshift/nodejs-ex/commits/master/views/index.html?author=sspeiche"><img alt="@sspeiche" class="avatar" height="20" src="https://avatars1.githubusercontent.com/u/727196?s=40&amp;v=4" width="20" /> </a>
+    <a class="avatar-link tooltipped tooltipped-s" aria-label="gabemontero" href="/openshift/nodejs-ex/commits/master/views/index.html?author=gabemontero"><img alt="@gabemontero" class="avatar" height="20" src="https://avatars2.githubusercontent.com/u/3594868?s=40&amp;v=4" width="20" /> </a>
+
+
+    </div>
+
+    <div id="blob_contributors_box" style="display:none">
+      <h2 class="facebox-header" data-facebox-id="facebox-header">Users who have contributed to this file</h2>
+      <ul class="facebox-user-list" data-facebox-id="facebox-description">
+          <li class="facebox-user-list-item">
+            <img alt="@bparees" height="24" src="https://avatars2.githubusercontent.com/u/4974046?s=48&amp;v=4" width="24" />
+            <a href="/bparees">bparees</a>
+          </li>
+          <li class="facebox-user-list-item">
+            <img alt="@sspeiche" height="24" src="https://avatars0.githubusercontent.com/u/727196?s=48&amp;v=4" width="24" />
+            <a href="/sspeiche">sspeiche</a>
+          </li>
+          <li class="facebox-user-list-item">
+            <img alt="@gabemontero" height="24" src="https://avatars3.githubusercontent.com/u/3594868?s=48&amp;v=4" width="24" />
+            <a href="/gabemontero">gabemontero</a>
+          </li>
+      </ul>
+    </div>
+  </div>
+
+
+  <div class="file">
+    <div class="file-header">
+  <div class="file-actions">
+
+    <div class="BtnGroup">
+      <a href="/openshift/nodejs-ex/raw/master/views/index.html" class="btn btn-sm BtnGroup-item" id="raw-url">Raw</a>
+        <a href="/openshift/nodejs-ex/blame/master/views/index.html" class="btn btn-sm js-update-url-with-hash BtnGroup-item" data-hotkey="b">Blame</a>
+      <a href="/openshift/nodejs-ex/commits/master/views/index.html" class="btn btn-sm BtnGroup-item" rel="nofollow">History</a>
+    </div>
+
+        <a class="btn-octicon tooltipped tooltipped-nw"
+           href="https://desktop.github.com"
+           aria-label="Open this file in GitHub Desktop"
+           data-ga-click="Repository, open with desktop, type:mac">
+            <svg aria-hidden="true" class="octicon octicon-device-desktop" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M15 2H1c-.55 0-1 .45-1 1v9c0 .55.45 1 1 1h5.34c-.25.61-.86 1.39-2.34 2h8c-1.48-.61-2.09-1.39-2.34-2H15c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm0 9H1V3h14v8z"/></svg>
+        </a>
+
+          <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/openshift/nodejs-ex/edit/master/views/index.html" class="inline-form js-update-url-with-hash" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="NdhQQQErTHANGc+wVqfmM497X5nqov8oMIcFjOuWGyKetCLQ8R8ouO+mzG50lrsC5iCTq1srme/TMpkXJDoLRw==" /></div>
+            <button class="btn-octicon tooltipped tooltipped-nw" type="submit"
+              aria-label="Edit the file in your fork of this project" data-hotkey="e" data-disable-with>
+              <svg aria-hidden="true" class="octicon octicon-pencil" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M0 12v3h3l8-8-3-3-8 8zm3 2H1v-2h1v1h1v1zm10.3-9.3L12 6 9 3l1.3-1.3a.996.996 0 0 1 1.41 0l1.59 1.59c.39.39.39 1.02 0 1.41z"/></svg>
+            </button>
+</form>
+        <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/openshift/nodejs-ex/delete/master/views/index.html" class="inline-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="wX7goCDKTOpaGL20VvfABK/J5dX35B2VnqWX+rlZSfnIVO4BVuO/CyEUngIXKr3Ol49jlpv1p0YTjc7ICsiqeg==" /></div>
+          <button class="btn-octicon btn-octicon-danger tooltipped tooltipped-nw" type="submit"
+            aria-label="Delete the file in your fork of this project" data-disable-with>
+            <svg aria-hidden="true" class="octicon octicon-trashcan" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M11 2H9c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1H2c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1v9c0 .55.45 1 1 1h7c.55 0 1-.45 1-1V5c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm-1 12H3V5h1v8h1V5h1v8h1V5h1v8h1V5h1v9zm1-10H2V3h9v1z"/></svg>
+          </button>
+</form>  </div>
+
+  <div class="file-info">
+      310 lines (276 sloc)
+      <span class="file-info-divider"></span>
+    39.9 KB
+  </div>
+</div>
+
+    
+
+  <div itemprop="text" class="blob-wrapper data type-html">
+      <table class="highlight tab-size js-file-line-container" data-tab-size="8">
+      <tr>
+        <td id="L1" class="blob-num js-line-number" data-line-number="1"></td>
+        <td id="LC1" class="blob-code blob-code-inner js-file-line">&lt;!doctype html&gt;</td>
+      </tr>
+      <tr>
+        <td id="L2" class="blob-num js-line-number" data-line-number="2"></td>
+        <td id="LC2" class="blob-code blob-code-inner js-file-line">&lt;<span class="pl-ent">html</span> <span class="pl-e">lang</span>=<span class="pl-s"><span class="pl-pds">&quot;</span>en<span class="pl-pds">&quot;</span></span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L3" class="blob-num js-line-number" data-line-number="3"></td>
+        <td id="LC3" class="blob-code blob-code-inner js-file-line">&lt;<span class="pl-ent">head</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L4" class="blob-num js-line-number" data-line-number="4"></td>
+        <td id="LC4" class="blob-code blob-code-inner js-file-line">  &lt;<span class="pl-ent">meta</span> <span class="pl-e">charset</span>=<span class="pl-s"><span class="pl-pds">&quot;</span>utf-8<span class="pl-pds">&quot;</span></span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L5" class="blob-num js-line-number" data-line-number="5"></td>
+        <td id="LC5" class="blob-code blob-code-inner js-file-line">  &lt;<span class="pl-ent">meta</span> <span class="pl-e">http-equiv</span>=<span class="pl-s"><span class="pl-pds">&quot;</span>X-UA-Compatible<span class="pl-pds">&quot;</span></span> <span class="pl-e">content</span>=<span class="pl-s"><span class="pl-pds">&quot;</span>IE=edge,chrome=1<span class="pl-pds">&quot;</span></span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L6" class="blob-num js-line-number" data-line-number="6"></td>
+        <td id="LC6" class="blob-code blob-code-inner js-file-line">  &lt;<span class="pl-ent">title</span>&gt;Welcome to OpenShift&lt;/<span class="pl-ent">title</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L7" class="blob-num js-line-number" data-line-number="7"></td>
+        <td id="LC7" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L8" class="blob-num js-line-number" data-line-number="8"></td>
+        <td id="LC8" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L9" class="blob-num js-line-number" data-line-number="9"></td>
+        <td id="LC9" class="blob-code blob-code-inner js-file-line">&lt;<span class="pl-ent">style</span>&gt;<span class="pl-s1"></span></td>
+      </tr>
+      <tr>
+        <td id="L10" class="blob-num js-line-number" data-line-number="10"></td>
+        <td id="LC10" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"></span></td>
+      </tr>
+      <tr>
+        <td id="L11" class="blob-num js-line-number" data-line-number="11"></td>
+        <td id="LC11" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-c"><span class="pl-c">/*</span>!</span></span></td>
+      </tr>
+      <tr>
+        <td id="L12" class="blob-num js-line-number" data-line-number="12"></td>
+        <td id="LC12" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-c"> * Bootstrap v3.0.0</span></span></td>
+      </tr>
+      <tr>
+        <td id="L13" class="blob-num js-line-number" data-line-number="13"></td>
+        <td id="LC13" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-c"> *</span></span></td>
+      </tr>
+      <tr>
+        <td id="L14" class="blob-num js-line-number" data-line-number="14"></td>
+        <td id="LC14" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-c"> * Copyright 2013 Twitter, Inc</span></span></td>
+      </tr>
+      <tr>
+        <td id="L15" class="blob-num js-line-number" data-line-number="15"></td>
+        <td id="LC15" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-c"> * Licensed under the Apache License v2.0</span></span></td>
+      </tr>
+      <tr>
+        <td id="L16" class="blob-num js-line-number" data-line-number="16"></td>
+        <td id="LC16" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-c"> * http://www.apache.org/licenses/LICENSE-2.0</span></span></td>
+      </tr>
+      <tr>
+        <td id="L17" class="blob-num js-line-number" data-line-number="17"></td>
+        <td id="LC17" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-c"> *</span></span></td>
+      </tr>
+      <tr>
+        <td id="L18" class="blob-num js-line-number" data-line-number="18"></td>
+        <td id="LC18" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-c"> * Designed and built with all the love in the world @twitter by @mdo and @fat.</span></span></td>
+      </tr>
+      <tr>
+        <td id="L19" class="blob-num js-line-number" data-line-number="19"></td>
+        <td id="LC19" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-c"> <span class="pl-c">*/</span></span></span></td>
+      </tr>
+      <tr>
+        <td id="L20" class="blob-num js-line-number" data-line-number="20"></td>
+        <td id="LC20" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"></span></td>
+      </tr>
+      <tr>
+        <td id="L21" class="blob-num js-line-number" data-line-number="21"></td>
+        <td id="LC21" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-e">.logo</span> {</span></td>
+      </tr>
+      <tr>
+        <td id="L22" class="blob-num js-line-number" data-line-number="22"></td>
+        <td id="LC22" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">    <span class="pl-c1"><span class="pl-c1">background-size</span></span>: <span class="pl-c1">cover</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L23" class="blob-num js-line-number" data-line-number="23"></td>
+        <td id="LC23" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">    <span class="pl-c1"><span class="pl-c1">height</span></span>: <span class="pl-c1">58<span class="pl-k">px</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L24" class="blob-num js-line-number" data-line-number="24"></td>
+        <td id="LC24" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">    <span class="pl-c1"><span class="pl-c1">width</span></span>: <span class="pl-c1">180<span class="pl-k">px</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L25" class="blob-num js-line-number" data-line-number="25"></td>
+        <td id="LC25" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">    <span class="pl-c1"><span class="pl-c1">margin-top</span></span>: <span class="pl-c1">6<span class="pl-k">px</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L26" class="blob-num js-line-number" data-line-number="26"></td>
+        <td id="LC26" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNC4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDQzMzYzKSAgLS0+DQo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMTgwcHgiDQoJIGhlaWdodD0iNThweCIgdmlld0JveD0iLTEyNy4zOTEgNDMyLjAxOSAxODAgNTgiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgLTEyNy4zOTEgNDMyLjAxOSAxODAgNTgiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGcgaWQ9IkxheWVyXzEiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSI+DQoJCTxwYXRoIGQ9Ik0tMTIxLjM4NSw0MzguNzQ5Yy0wLjQxNiwwLjM2MS0xLjAwNiwwLjU0MS0xLjc3MSwwLjU0MWgtMi43NzR2LTdoMi44NzRjMC42MTIsMCwxLjA5OSwwLjE1NSwxLjQ2MiwwLjQ2NA0KCQkJYzAuMzYyLDAuMzEsMC41NDQsMC43NiwwLjU0NCwxLjM1M2MwLDAuMzU5LTAuMDg0LDAuNjUxLTAuMjUzLDAuODc0Yy0wLjE2OCwwLjIyMy0wLjM3OCwwLjM5OC0wLjYyOSwwLjUyNA0KCQkJYzAuMTM5LDAuMDQsMC4yNzgsMC4xMDIsMC40MTcsMC4xODVzMC4yNjUsMC4xOTIsMC4zNzcsMC4zMjZjMC4xMTIsMC4xMzMsMC4yMDQsMC4yOTMsMC4yNzMsMC40OHMwLjEwNCwwLjQwMSwwLjEwNCwwLjY0MQ0KCQkJQy0xMjAuNzYxLDQzNy44NTItMTIwLjk2OSw0MzguMzg5LTEyMS4zODUsNDM4Ljc0OXogTS0xMjIuMzEyLDQzMy41MTRjLTAuMTQ2LTAuMTc2LTAuMzk2LTAuMjY0LTAuNzUtMC4yNjRoLTEuODh2MS44aDEuODgNCgkJCWMwLjE3MywwLDAuMzIyLTAuMDI0LDAuNDQ1LTAuMDc0YzAuMTIzLTAuMDUsMC4yMjMtMC4xMTYsMC4zLTAuMTk5YzAuMDc3LTAuMDgzLDAuMTMzLTAuMTc3LDAuMTctMC4yODNzMC4wNTUtMC4yMTUsMC4wNTUtMC4zMjgNCgkJCUMtMTIyLjA5MSw0MzMuOTA2LTEyMi4xNjUsNDMzLjY4OS0xMjIuMzEyLDQzMy41MTR6IE0tMTIyLjEyMSw0MzYuMzJjLTAuMjE0LTAuMjA3LTAuNTItMC4zMS0wLjkyLTAuMzFoLTEuOXYyLjMyaDEuODcNCgkJCWMwLjQ2NiwwLDAuNzk1LTAuMTA2LDAuOTg1LTAuMzJzMC4yODUtMC40OTQsMC4yODUtMC44NEMtMTIxLjgwMSw0MzYuODEtMTIxLjkwOCw0MzYuNTI3LTEyMi4xMjEsNDM2LjMyeiIvPg0KCQk8cGF0aCBkPSJNLTExNi4yODEsNDM5LjI5di0wLjUwNmMtMC4xMzQsMC4xOTUtMC4zMTgsMC4zNDctMC41NTUsMC40NTVzLTAuNDkyLDAuMTYyLTAuNzY1LDAuMTYyYy0wLjYxMywwLTEuMDc4LTAuMTk2LTEuMzk1LTAuNTkNCgkJCWMtMC4zMTYtMC4zOTMtMC40NzUtMC45OC0wLjQ3NS0xLjc2di0zLjAxaDEuMDR2Mi45NjNjMCwwLjUzMiwwLjA5NSwwLjkwNSwwLjI4NCwxLjExN2MwLjE4OSwwLjIxMywwLjQ1MywwLjMxOSwwLjc5MiwwLjMxOQ0KCQkJYzAuMzQ1LDAsMC42MS0wLjExNiwwLjc5Ni0wLjM0OWMwLjE4Ni0wLjIzMywwLjI3OS0wLjU2MiwwLjI3OS0wLjk4OHYtMy4wNjNoMS4wNHY1LjI1SC0xMTYuMjgxeiIvPg0KCQk8cGF0aCBkPSJNLTExMi42OTcsNDMzLjE2NWMtMC4xMywwLjEzLTAuMjg1LDAuMTk1LTAuNDY1LDAuMTk1Yy0wLjE4NywwLTAuMzQ1LTAuMDY1LTAuNDc1LTAuMTk1cy0wLjE5NS0wLjI4NS0wLjE5NS0wLjQ2NQ0KCQkJYzAtMC4xODcsMC4wNjUtMC4zNDUsMC4xOTUtMC40NzVzMC4yODgtMC4xOTUsMC40NzUtMC4xOTVjMC4xOCwwLDAuMzM1LDAuMDY1LDAuNDY1LDAuMTk1czAuMTk1LDAuMjg5LDAuMTk1LDAuNDc1DQoJCQlDLTExMi41MDEsNDMyLjg4LTExMi41NjcsNDMzLjAzNS0xMTIuNjk3LDQzMy4xNjV6IE0tMTEzLjY4Miw0MzkuMjl2LTUuMjVoMS4wNHY1LjI1SC0xMTMuNjgyeiIvPg0KCQk8cGF0aCBkPSJNLTExMS4wMzEsNDM5LjI5di02Ljc1bDEuMDQtMC41NHY3LjI5SC0xMTEuMDMxeiIvPg0KCQk8cGF0aCBkPSJNLTEwNS45MjEsNDM5LjE2Yy0wLjEyNywwLjA3My0wLjI3NSwwLjEzMS0wLjQ0NSwwLjE3NWMtMC4xNywwLjA0My0wLjM1OCwwLjA2NS0wLjU2NSwwLjA2NQ0KCQkJYy0wLjM2NywwLTAuNjU1LTAuMTEzLTAuODY1LTAuMzRzLTAuMzE1LTAuNTc3LTAuMzE1LTEuMDV2LTMuMDNoLTAuNzV2LTAuOTRoMC43NXYtMS41bDEuMDEtMC41NHYyLjA0aDEuM3YwLjk0aC0xLjN2Mi44NQ0KCQkJYzAsMC4yNDcsMC4wNDIsMC40MTQsMC4xMjUsMC41YzAuMDgzLDAuMDg3LDAuMjIyLDAuMTMsMC40MTUsMC4xM2MwLjEzMywwLDAuMjctMC4wMjEsMC40MS0wLjA2NXMwLjI1Ni0wLjA5MSwwLjM1LTAuMTQ1DQoJCQlMLTEwNS45MjEsNDM5LjE2eiIvPg0KCQk8cGF0aCBkPSJNLTk3LjQ1Miw0MzcuODA1Yy0wLjEyLDAuMzQzLTAuMjg3LDAuNjMzLTAuNSwwLjg3Yy0wLjIxMywwLjIzNy0wLjQ2MywwLjQxNy0wLjc1LDAuNTQNCgkJCWMtMC4yODcsMC4xMjQtMC42LDAuMTg1LTAuOTQsMC4xODVjLTAuMzMzLDAtMC42NC0wLjA2NS0wLjkyLTAuMTk1Yy0wLjI4LTAuMTMtMC41MjMtMC4zMTUtMC43My0wLjU1NQ0KCQkJYy0wLjIwNy0wLjI0LTAuMzY4LTAuNTI2LTAuNDg1LTAuODZzLTAuMTc1LTAuNzA3LTAuMTc1LTEuMTJjMC0wLjQyNiwwLjA2LTAuODEsMC4xOC0xLjE1czAuMjg1LTAuNjI4LDAuNDk1LTAuODY1DQoJCQljMC4yMS0wLjIzNywwLjQ1Ny0wLjQxNywwLjc0LTAuNTRjMC4yODQtMC4xMjQsMC41OTItMC4xODUsMC45MjUtMC4xODVjMC4zMzMsMCwwLjY0MywwLjA2NSwwLjkzLDAuMTk1czAuNTM1LDAuMzEyLDAuNzQ1LDAuNTQ1DQoJCQlzMC4zNzQsMC41MTksMC40OSwwLjg1NWMwLjExNiwwLjMzNywwLjE3NSwwLjcwOCwwLjE3NSwxLjExNUMtOTcuMjcxLDQzNy4wNzMtOTcuMzMyLDQzNy40NjItOTcuNDUyLDQzNy44MDV6IE0tOTguNjY3LDQzNS4zODUNCgkJCWMtMC4yMzctMC4zMTctMC41NjUtMC40NzUtMC45ODUtMC40NzVjLTAuMzk0LDAtMC43MDIsMC4xNTgtMC45MjUsMC40NzVjLTAuMjIzLDAuMzE2LTAuMzM1LDAuNzM1LTAuMzM1LDEuMjU1DQoJCQljMCwwLjU4LDAuMTIsMS4wMjEsMC4zNiwxLjMyNWMwLjI0LDAuMzA0LDAuNTU3LDAuNDU1LDAuOTUsMC40NTVjMC4xOTMsMCwwLjM3LTAuMDQ2LDAuNTMtMC4xNA0KCQkJYzAuMTYtMC4wOTQsMC4yOTYtMC4yMTksMC40MS0wLjM3NWMwLjExMy0wLjE1NywwLjItMC4zNDIsMC4yNi0wLjU1NXMwLjA5LTAuNDQsMC4wOS0wLjY4DQoJCQlDLTk4LjMxMiw0MzYuMTMtOTguNDMsNDM1LjcwMi05OC42NjcsNDM1LjM4NXoiLz4NCgkJPHBhdGggZD0iTS05Mi44MTIsNDM5LjI5di0yLjk2M2MwLTAuNTMyLTAuMDk1LTAuOTA0LTAuMjg0LTEuMTE3Yy0wLjE4OS0wLjIxMy0wLjQ1My0wLjMxOS0wLjc5MS0wLjMxOQ0KCQkJYy0wLjM0NSwwLTAuNjExLDAuMTE2LTAuNzk2LDAuMzQ5Yy0wLjE4NiwwLjIzMy0wLjI3OSwwLjU2Mi0wLjI3OSwwLjk4OHYzLjA2M2gtMS4wNHYtNS4yNWgxLjA0djAuNTA2DQoJCQljMC4xMzMtMC4xOTUsMC4zMTgtMC4zNDcsMC41NTUtMC40NTVzMC40OTItMC4xNjIsMC43NjUtMC4xNjJjMC42MTMsMCwxLjA3OCwwLjE5NywxLjM5NSwwLjU5YzAuMzE2LDAuMzk0LDAuNDc1LDAuOTgsMC40NzUsMS43Ng0KCQkJdjMuMDFILTkyLjgxMnoiLz4NCgk8L2c+DQo8L2c+DQo8ZyBpZD0iTGF5ZXJfNiI+DQoJPGc+DQoJCTxwYXRoIGQ9Ik0tMTIyLjI2Niw0MzguOTg0Yy0wLjM5LDAuMzQ0LTAuOTU1LDAuNTE2LTEuNjk1LDAuNTE2aC0yLjUxdi03aDIuNTZjMC4yOCwwLDAuNTM1LDAuMDM1LDAuNzY1LDAuMTA1DQoJCQlzMC40MywwLjE3NiwwLjYsMC4zMTljMC4xNywwLjE0MywwLjMwMSwwLjMyNCwwLjM5NSwwLjU0NGMwLjA5MywwLjIyLDAuMTQsMC40NzksMC4xNCwwLjc3OWMwLDAuMzg2LTAuMDkzLDAuNjkzLTAuMjgsMC45MjMNCgkJCWMtMC4xODcsMC4yMy0wLjQzLDAuMzk4LTAuNzMsMC41MDRjMC4xNiwwLjA0LDAuMzIsMC4xMDIsMC40OCwwLjE4NWMwLjE2LDAuMDgzLDAuMzAzLDAuMTk0LDAuNDMsMC4zMzENCgkJCWMwLjEyNywwLjEzNywwLjIzLDAuMzA3LDAuMzEsMC41MTFzMC4xMiwwLjQ0NiwwLjEyLDAuNzI2Qy0xMjEuNjgxLDQzOC4xMjEtMTIxLjg3NSw0MzguNjQxLTEyMi4yNjYsNDM4Ljk4NHogTS0xMjMuMDcxLDQzMy41MDQNCgkJCWMtMC4xODctMC4xOTYtMC40NzctMC4yOTQtMC44Ny0wLjI5NGgtMS43NXYyLjE3aDEuNjljMC40MzMsMCwwLjc0My0wLjEwOCwwLjkzLTAuMzIzYzAuMTg3LTAuMjE2LDAuMjgtMC40NzYsMC4yOC0wLjc4MQ0KCQkJQy0xMjIuNzkxLDQzMy45NTctMTIyLjg4NCw0MzMuNy0xMjMuMDcxLDQzMy41MDR6IE0tMTIyLjg2MSw0MzYuNDVjLTAuMjY3LTAuMjQtMC42My0wLjM2LTEuMDktMC4zNmgtMS43NHYyLjdoMS43OA0KCQkJYzAuNTI2LDAsMC45LTAuMTIsMS4xMi0wLjM2YzAuMjItMC4yNCwwLjMzLTAuNTYsMC4zMy0wLjk2Qy0xMjIuNDYsNDM3LjAzLTEyMi41OTQsNDM2LjY5LTEyMi44NjEsNDM2LjQ1eiIvPg0KCQk8cGF0aCBkPSJNLTExNy4xMjEsNDM5LjV2LTAuNjRjLTAuMTUzLDAuMjItMC4zNSwwLjQtMC41OSwwLjU0cy0wLjUyNywwLjIxLTAuODYsMC4yMWMtMC4yOCwwLTAuNTM0LTAuMDQyLTAuNzYtMC4xMjUNCgkJCWMtMC4yMjctMC4wODMtMC40Mi0wLjIxMy0wLjU4LTAuMzljLTAuMTYtMC4xNzctMC4yODMtMC40LTAuMzctMC42N2MtMC4wODctMC4yNy0wLjEzLTAuNTk1LTAuMTMtMC45NzV2LTMuMmgwLjc2djMuMDc3DQoJCQljMCwwLjU2OCwwLjEwMSwwLjk4NCwwLjMwNCwxLjI0OHMwLjUxMywwLjM5NiwwLjkzMSwwLjM5NmMwLjM2NSwwLDAuNjcyLTAuMTMsMC45MjEtMC4zOTFzMC4zNzQtMC42NzgsMC4zNzQtMS4yNTJ2LTMuMDc3aDAuNzYNCgkJCXY1LjI1SC0xMTcuMTIxeiIvPg0KCQk8cGF0aCBkPSJNLTExMy45MDYsNDMzLjE1NWMtMC4xMDMsMC4xMDQtMC4yMjUsMC4xNTUtMC4zNjUsMC4xNTVjLTAuMTUzLDAtMC4yODQtMC4wNTItMC4zOS0wLjE1NQ0KCQkJYy0wLjEwNi0wLjEwMy0wLjE2LTAuMjI4LTAuMTYtMC4zNzVjMC0wLjE1MywwLjA1My0wLjI4MSwwLjE2LTAuMzg1czAuMjM3LTAuMTU1LDAuMzktMC4xNTVjMC4xNCwwLDAuMjYyLDAuMDUxLDAuMzY1LDAuMTU1DQoJCQljMC4xMDQsMC4xMDQsMC4xNTUsMC4yMzIsMC4xNTUsMC4zODVDLTExMy43NTEsNDMyLjkyNy0xMTMuODAzLDQzMy4wNTItMTEzLjkwNiw0MzMuMTU1eiBNLTExNC42NjEsNDM5LjV2LTUuMjVoMC43NnY1LjI1DQoJCQlILTExNC42NjF6Ii8+DQoJCTxwYXRoIGQ9Ik0tMTEyLjE1MSw0MzkuNXYtNi44N2wwLjc2LTAuNDJ2Ny4yOUgtMTEyLjE1MXoiLz4NCgkJPHBhdGggZD0iTS0xMDguNzIxLDQzNC44OXYzLjQxMmMwLDAuMjMyLDAuMDM5LDAuMzk2LDAuMTE1LDAuNDg5YzAuMDc3LDAuMDkzLDAuMjE1LDAuMTQsMC40MTUsMC4xNA0KCQkJYzAuMTUzLDAsMC4yODUtMC4wMTIsMC4zOTUtMC4wMzVzMC4yMjUtMC4wNjIsMC4zNDUtMC4xMTVsLTAuMDUsMC42NWMtMC4xNDcsMC4wNi0wLjI5NSwwLjEwNS0wLjQ0NSwwLjEzNQ0KCQkJYy0wLjE1LDAuMDMtMC4zMjUsMC4wNDUtMC41MjUsMC4wNDVjLTAuMzI5LDAtMC41NzktMC4wODgtMC43NTEtMC4yNjRjLTAuMTcyLTAuMTc2LTAuMjU4LTAuNDg0LTAuMjU4LTAuOTIzdi0zLjUzMmgtMC42NXYtMC42NA0KCQkJaDAuNjV2LTEuNjJsMC43Ni0wLjQydjIuMDRoMS4zdjAuNjRILTEwOC43MjF6Ii8+DQoJCTxwYXRoIGQ9Ik0tOTkuMjcxLDQzOC4wMjVjLTAuMTIsMC4zNDQtMC4yODQsMC42MzMtMC40OSwwLjg3cy0wLjQ1LDAuNDE1LTAuNzMsMC41MzVjLTAuMjgsMC4xMi0wLjU4LDAuMTgtMC45LDAuMTgNCgkJCXMtMC42MTktMC4wNTgtMC44OTUtMC4xNzVjLTAuMjc3LTAuMTE3LTAuNTE1LTAuMjktMC43MTUtMC41MmMtMC4yLTAuMjMtMC4zNTgtMC41MTUtMC40NzUtMC44NTVzLTAuMTc1LTAuNzMzLTAuMTc1LTEuMTgNCgkJCWMwLTAuNDQ2LDAuMDYtMC44NCwwLjE4LTEuMThjMC4xMi0wLjM0LDAuMjgzLTAuNjI1LDAuNDktMC44NTVjMC4yMDctMC4yMywwLjQ1LTAuNDA1LDAuNzMtMC41MjVjMC4yOC0wLjEyLDAuNTgtMC4xOCwwLjktMC4xOA0KCQkJYzAuMzIsMCwwLjYxOCwwLjA1NywwLjg5NSwwLjE3YzAuMjc2LDAuMTEzLDAuNTE1LDAuMjgzLDAuNzE1LDAuNTFjMC4yLDAuMjI3LDAuMzU4LDAuNTA5LDAuNDc1LDAuODQ1DQoJCQljMC4xMTcsMC4zMzcsMC4xNzUsMC43MjksMC4xNzUsMS4xNzVDLTk5LjA5MSw0MzcuMjg3LTk5LjE1MSw0MzcuNjgyLTk5LjI3MSw0MzguMDI1eiBNLTEwMC4yNyw0MzUuMjk3DQoJCQljLTAuMjc5LTAuMzQ1LTAuNjQ4LTAuNTE4LTEuMTA2LTAuNTE4Yy0wLjQ1OCwwLTAuODI2LDAuMTczLTEuMTAyLDAuNTE4Yy0wLjI3NiwwLjM0NS0wLjQxNCwwLjg2Ni0wLjQxNCwxLjU2Mg0KCQkJYzAsMC42OTcsMC4xMzgsMS4yMjMsMC40MTQsMS41NzhzMC42NDMsMC41MzMsMS4xMDIsMC41MzNjMC40NTgsMCwwLjgyNy0wLjE3OCwxLjEwNi0wLjUzM2MwLjI3OS0wLjM1NSwwLjQxOC0wLjg4MSwwLjQxOC0xLjU3OA0KCQkJQy05OS44NTEsNDM2LjE2NC05OS45OTEsNDM1LjY0My0xMDAuMjcsNDM1LjI5N3oiLz4NCgkJPHBhdGggZD0iTS05NC40MjEsNDM5LjV2LTMuMDc3YzAtMC41NjgtMC4xMDItMC45ODMtMC4zMDQtMS4yNDhjLTAuMjAyLTAuMjY0LTAuNTEzLTAuMzk2LTAuOTMxLTAuMzk2DQoJCQljLTAuMzY1LDAtMC42NzIsMC4xMy0wLjkyMSwwLjM5MXMtMC4zNzQsMC42NzgtMC4zNzQsMS4yNTJ2My4wNzdoLTAuNzZ2LTUuMjVoMC43NnYwLjY0YzAuMTUzLTAuMjIsMC4zNS0wLjQsMC41OS0wLjU0DQoJCQljMC4yNC0wLjE0LDAuNTI2LTAuMjEsMC44Ni0wLjIxYzAuMjgsMCwwLjUzMywwLjA0MiwwLjc2LDAuMTI1czAuNDIsMC4yMTMsMC41OCwwLjM5YzAuMTYsMC4xNzcsMC4yODMsMC40LDAuMzcsMC42Nw0KCQkJYzAuMDg2LDAuMjcsMC4xMywwLjU5NSwwLjEzLDAuOTc1djMuMkgtOTQuNDIxeiIvPg0KCTwvZz4NCjwvZz4NCjxnIGlkPSJMYXllcl81Ij4NCgk8Zz4NCgkJPHBhdGggZmlsbD0iI0RCMjEyRiIgZD0iTS0xMTkuMDYzLDQ2NS42OThsLTQuNjA0LDEuNjc4YzAuMDU5LDAuNzM4LDAuMTg1LDEuNDY2LDAuMzY0LDIuMTgxbDQuMzc2LTEuNTkyDQoJCQlDLTExOS4wNjgsNDY3LjIyNC0xMTkuMTIsNDY2LjQ2Mi0xMTkuMDYzLDQ2NS42OTgiLz4NCgkJPGc+DQoJCQk8Zz4NCgkJCQk8cGF0aCBmaWxsPSIjREIyMTJGIiBkPSJNLTk4LjcxLDQ2MC42MDZjLTAuMzIxLTAuNjYzLTAuNjkzLTEuMzAzLTEuMTIyLTEuOTA1bC00LjYwNiwxLjY3NQ0KCQkJCQljMC41MzgsMC41NDcsMC45ODYsMS4xNjQsMS4zNTQsMS44MjNMLTk4LjcxLDQ2MC42MDZ6Ii8+DQoJCQk8L2c+DQoJCQk8Zz4NCgkJCQk8cGF0aCBmaWxsPSIjREIyMTJGIiBkPSJNLTEwOC44NDEsNDU5LjMwMWMwLjk1OSwwLjQ0OSwxLjc4NywxLjA1NywyLjQ4OCwxLjc3M2w0LjYwNC0xLjY3Nw0KCQkJCQljLTEuMjc2LTEuNzktMy4wMTItMy4yODYtNS4xNDEtNC4yNzdjLTYuNTgzLTMuMDcxLTE0LjQzNC0wLjIxMy0xNy41MDUsNi4zNjljLTAuOTkyLDIuMTI5LTEuMzYyLDQuMzkyLTEuMTg4LDYuNTgyDQoJCQkJCWw0LjYwNi0xLjY3NWMwLjA3NS0wLjk5OCwwLjMxOC0xLjk5OCwwLjc2Ni0yLjk1N0MtMTE4LjIxOCw0NTkuMTY0LTExMy4xMTYsNDU3LjMwOS0xMDguODQxLDQ1OS4zMDEiLz4NCgkJCTwvZz4NCgkJPC9nPg0KCQk8cGF0aCBmaWxsPSIjRUEyMjI3IiBkPSJNLTEyMy4wMTUsNDY5LjQ1MmwtNC4zNzYsMS41OTRjMC40MDEsMS41OTQsMS4xMDEsMy4xMSwyLjA1Nyw0LjQ1OGw0LjU5Ni0xLjY3DQoJCQlDLTEyMS45MTksNDcyLjYyMS0xMjIuNzAyLDQ3MS4wOS0xMjMuMDE1LDQ2OS40NTIiLz4NCgkJPHBhdGggZmlsbD0iI0RCMjEyRiIgZD0iTS0xMDMuOTMsNDY3LjcxNWMtMC4wNzMsMC45OTktMC4zMjUsMS45OTgtMC43NzQsMi45NTdjLTEuOTk0LDQuMjc3LTcuMDk0LDYuMTM0LTExLjM3MSw0LjE0DQoJCQljLTAuOTU4LTAuNDQ5LTEuNzk1LTEuMDUzLTIuNDkyLTEuNzdsLTQuNTk0LDEuNjczYzEuMjcxLDEuNzg5LDMuMDA3LDMuMjg1LDUuMTM3LDQuMjc5YzYuNTgyLDMuMDY5LDE0LjQzNCwwLjIxMSwxNy41MDItNi4zNzINCgkJCWMwLjk5NC0yLjEyOSwxLjM2Mi00LjM5MSwxLjE4NS02LjU3OEwtMTAzLjkzLDQ2Ny43MTV6Ii8+DQoJCTxwYXRoIGZpbGw9IiNFQTIyMjciIGQ9Ik0tMTAyLjc5OCw0NjIuMDk0bC00LjM3NCwxLjU5MmMwLjgxMSwxLjQ1NywxLjE5NSwzLjEzNCwxLjA3MSw0LjgxOWw0LjU5NC0xLjY3Mg0KCQkJQy0xMDEuNjM5LDQ2NS4xODUtMTAyLjA3OCw0NjMuNTc1LTEwMi43OTgsNDYyLjA5NCIvPg0KCQk8cGF0aCBmaWxsPSIjMjMxRjIwIiBkPSJNLTcyLjI3MSw0NjcuMDMxYzAtMS4zMzEtMC4xOC0yLjUxMi0wLjU0LTMuNTQzYy0wLjM0NC0xLjA0OS0wLjgzNy0xLjkzMS0xLjQ3OC0yLjY1MQ0KCQkJYy0wLjYyNC0wLjczNC0xLjM4NC0xLjI5LTIuMjc1LTEuNjY2Yy0wLjg3Ni0wLjM5Mi0xLjg0NS0wLjU4Ni0yLjkwOS0wLjU4NmMtMS4wNzksMC0yLjA2MywwLjE5NS0yLjk1NSwwLjU4Ng0KCQkJYy0wLjg5MiwwLjM5LTEuNjU5LDAuOTU1LTIuMjk5LDEuNjg5Yy0wLjY0MiwwLjcxOC0xLjE0MiwxLjYwMi0xLjUwMiwyLjY1MWMtMC4zNDUsMS4wNDctMC41MTYsMi4yMzYtMC41MTYsMy41NjUNCgkJCWMwLDEuMzMsMC4xNzEsMi41MiwwLjUxNiwzLjU2NmMwLjM2LDEuMDMxLDAuODUzLDEuOTE1LDEuNDc5LDIuNjUxYzAuNjQsMC43MTgsMS4zOTksMS4yNzMsMi4yNzUsMS42NjUNCgkJCWMwLjg5MiwwLjM3NiwxLjg3NSwwLjU2MywyLjk1NiwwLjU2M2MxLjA2MiwwLDIuMDM5LTAuMTk1LDIuOTMxLTAuNTg2YzAuODkyLTAuMzkxLDEuNjU5LTAuOTQ3LDIuMy0xLjY2NQ0KCQkJYzAuNjQyLTAuNzM2LDEuMTM0LTEuNjI2LDEuNDc4LTIuNjc1Qy03Mi40NTEsNDY5LjU0OC03Mi4yNzEsNDY4LjM1OS03Mi4yNzEsNDY3LjAzMUwtNzIuMjcxLDQ2Ny4wMzF6IE0tNzUuNjQ5LDQ2Ny4wNzYNCgkJCWMwLDEuNjc1LTAuMzUzLDIuOTU2LTEuMDU1LDMuODQ4Yy0wLjY4OSwwLjg5Mi0xLjYxMiwxLjMzNy0yLjc3LDEuMzM3Yy0xLjE1OCwwLTIuMDk1LTAuNDUzLTIuODE1LTEuMzYNCgkJCWMtMC43MTgtMC45MDctMS4wNzgtMi4xOTctMS4wNzgtMy44N2MwLTEuNjc1LDAuMzQ1LTIuOTU3LDEuMDMxLTMuODQ4YzAuNzA0LTAuODkyLDEuNjM2LTEuMzM2LDIuNzkzLTEuMzM2DQoJCQlzMi4wOTQsMC40NTMsMi44MTQsMS4zNkMtNzYuMDA5LDQ2NC4xMTQtNzUuNjQ5LDQ2NS40MDMtNzUuNjQ5LDQ2Ny4wNzZMLTc1LjY0OSw0NjcuMDc2eiIvPg0KCQk8cGF0aCBmaWxsPSIjMjMxRjIwIiBkPSJNLTU1LjA3NSw0NjQuMDUxYzAtMC44NzYtMC4xNDktMS42MzQtMC40NDYtMi4yNzVjLTAuMjk4LTAuNjU4LTAuNzAzLTEuMjA1LTEuMjE5LTEuNjQ0DQoJCQljLTAuNTE4LTAuNDM3LTEuMTItMC43NTgtMS44MDctMC45NmMtMC42ODktMC4yMTgtMS40MTUtMC4zMjktMi4xODMtMC4zMjloLTcuMTc5djE2LjQyMmgzLjI4NXYtNS44MThoMy42MTENCgkJCWMwLjg0NSwwLDEuNjI4LTAuMSwyLjM0Ny0wLjMwNWMwLjczNi0wLjIwMywxLjM2OC0wLjUyMywxLjkwMS0wLjk2YzAuNTMxLTAuNDM5LDAuOTQ0LTAuOTk0LDEuMjQyLTEuNjY3DQoJCQlDLTU1LjIyNCw0NjUuODI2LTU1LjA3NSw0NjUuMDA1LTU1LjA3NSw0NjQuMDUxTC01NS4wNzUsNDY0LjA1MXogTS01OC40NTQsNDY0LjEyMWMwLDEuNDI0LTAuNzgyLDIuMTM0LTIuMzQ1LDIuMTM0aC0zLjgyNA0KCQkJdi00LjIyMmgzLjc3N2MwLjczMywwLDEuMzEyLDAuMTcxLDEuNzM1LDAuNTE2Qy01OC42NzIsNDYyLjg3Ny01OC40NTQsNDYzLjQwMS01OC40NTQsNDY0LjEyMUwtNTguNDU0LDQ2NC4xMjF6Ii8+DQoJCTxwb2x5Z29uIGZpbGw9IiMyMzFGMjAiIHBvaW50cz0iLTM5LjE0Nyw0NzUuMjY0IC0zOS4xNDcsNDcyLjA1IC00Ny42MTUsNDcyLjA1IC00Ny42MTUsNDY4LjA4NiAtNDIuOSw0NjguMDg2IC00Mi45LDQ2NC44OTYgDQoJCQktNDcuNjE1LDQ2NC44OTYgLTQ3LjYxNSw0NjIuMDU3IC0zOS40OTcsNDYyLjA1NyAtMzkuNDk3LDQ1OC44NDIgLTUwLjksNDU4Ljg0MiAtNTAuOSw0NzUuMjY0IAkJIi8+DQoJCTxwYXRoIGZpbGw9IiMyMzFGMjAiIGQ9Ik0tMjEuMjkyLDQ3NS4yNjR2LTE2LjQyMmgtMy4yMzh2Ny44MTJjMC4wMTYsMC4zNDQsMC4wMjMsMC42OTUsMC4wMjMsMS4wNTV2MC45ODYNCgkJCWMwLjAxNiwwLjI5NywwLjAyMywwLjUyNCwwLjAyMywwLjY3OWMtMC4xMDktMC4yMTgtMC4yODEtMC41LTAuNTE3LTAuODQ1Yy0wLjIxOS0wLjM1OC0wLjQzLTAuNjk1LTAuNjMzLTEuMDA4bC01LjgxOC04LjY4DQoJCQloLTMuMTQ0djE2LjQyMmgzLjIzNnYtNy4yMjZjMC0wLjIzNC0wLjAwOC0wLjUyMy0wLjAyMS0wLjg2OHYtMS4wMzJjMC0wLjM2LTAuMDA4LTAuNjg4LTAuMDIzLTAuOTg2di0wLjcwMw0KCQkJYzAuMTA3LDAuMjE4LDAuMjczLDAuNTA4LDAuNDkyLDAuODY2YzAuMjMzLDAuMzQ1LDAuNDUyLDAuNjczLDAuNjU3LDAuOTg2bDYuMDI4LDguOTYySC0yMS4yOTJ6Ii8+DQoJCTxwYXRoIGZpbGw9IiMyMzFGMjAiIGQ9Ik0tNS44NzksNDcwLjk0N2MwLTAuNjEtMC4wNzktMS4xNDktMC4yMzQtMS42MThjLTAuMTU3LTAuNDctMC40MjQtMC44OTktMC43OTgtMS4yOTENCgkJCWMtMC4zNTktMC4zOTItMC44NDQtMC43NS0xLjQ1NC0xLjA3OWMtMC42MS0wLjMyOC0xLjM3LTAuNjU3LTIuMjc1LTAuOTg2Yy0wLjgzMS0wLjI5Ny0xLjUwMi0wLjU3MS0yLjAxOC0wLjgyMQ0KCQkJYy0wLjUwMi0wLjI1LTAuODkyLTAuNS0xLjE3My0wLjc1Yy0wLjI4Mi0wLjI2Ni0wLjQ3MS0wLjUzMi0wLjU2My0wLjc5OWMtMC4wOTUtMC4yODItMC4xNDItMC41OTMtMC4xNDItMC45MzcNCgkJCWMwLTAuMzI5LDAuMDU2LTAuNjM0LDAuMTYzLTAuOTE2YzAuMTI2LTAuMjk3LDAuMzEzLTAuNTU1LDAuNTY1LTAuNzczYzAuMjY2LTAuMjIsMC42MDEtMC4zOTIsMS4wMDgtMC41MTgNCgkJCWMwLjQwNy0wLjE0LDAuODkyLTAuMjEsMS40NTQtMC4yMWMwLjgyOSwwLDEuNTQxLDAuMTMzLDIuMTM2LDAuMzk5YzAuNjA4LDAuMjUsMS4yMTEsMC42MjYsMS44MDUsMS4xMjZsMS4xNzQtMS40MzENCgkJCWMtMC42ODgtMC41NDctMS40MjMtMC45NzgtMi4yMDUtMS4yOTFjLTAuNzY2LTAuMzEzLTEuNjk2LTAuNDY5LTIuNzkxLTAuNDY5Yy0wLjc2OCwwLTEuNDcsMC4wOTUtMi4xMTEsMC4yODINCgkJCWMtMC42MjYsMC4xODctMS4xNjYsMC40NjgtMS42MTgsMC44NDRjLTAuNDM5LDAuMzYtMC43ODMsMC43OTctMS4wMzMsMS4zMTNjLTAuMjUsMC41MTgtMC4zNzYsMS4xMDQtMC4zNzYsMS43Ng0KCQkJYzAsMC41OTQsMC4wNzgsMS4xMTgsMC4yMzUsMS41NzJjMC4xNzIsMC40NTMsMC40MzgsMC44NjgsMC43OTgsMS4yNDRjMC4zNzYsMC4zNTgsMC44NiwwLjcwMywxLjQ1NCwxLjAzMg0KCQkJYzAuNjEsMC4zMTMsMS4zNiwwLjYyNiwyLjI1MiwwLjkzOGMwLjc1LDAuMjY2LDEuMzc2LDAuNTMyLDEuODc3LDAuNzk3YzAuNTAyLDAuMjUsMC44OTksMC41MDgsMS4xOTYsMC43NzMNCgkJCWMwLjMxMywwLjI2NiwwLjUzMiwwLjU1NSwwLjY1OCwwLjg2OHMwLjE4NywwLjY1NywwLjE4NywxLjAzM2MwLDAuODc2LTAuMzIsMS41NjMtMC45NjEsMi4wNjMNCgkJCWMtMC42MjUsMC41MDItMS40ODUsMC43NTItMi41OCwwLjc1MmMtMC44NDUsMC0xLjYyOC0wLjE4MS0yLjM0Ni0wLjU0Yy0wLjcyMS0wLjM2LTEuMzkzLTAuODM2LTIuMDE4LTEuNDNsLTEuMjIxLDEuMzYNCgkJCWMwLjY1NywwLjY1NywxLjQ1NCwxLjIwNSwyLjM5NCwxLjY0MmMwLjk1MiwwLjQyMiwxLjk5NCwwLjYzNCwzLjEyLDAuNjM0YzAuODU5LDAsMS42MjUtMC4xMTgsMi4yOTktMC4zNTINCgkJCWMwLjY3Mi0wLjIzNCwxLjI0NC0wLjU1NSwxLjcxMS0wLjk2YzAuNDY5LTAuNDA4LDAuODIxLTAuODkyLDEuMDU2LTEuNDU1Qy02LjAwNSw0NzIuMTkyLTUuODc5LDQ3MS41ODktNS44NzksNDcwLjk0Nw0KCQkJTC01Ljg3OSw0NzAuOTQ3eiIvPg0KCQk8cG9seWdvbiBmaWxsPSIjMjMxRjIwIiBwb2ludHM9IjEwLjgwMSw0NzUuMjY0IDEwLjgwMSw0NTguODQyIDguOTcxLDQ1OC44NDIgOC45NzEsNDY1Ljg1NyAwLjgwNiw0NjUuODU3IDAuODA2LDQ1OC44NDIgDQoJCQktMS4wMjQsNDU4Ljg0MiAtMS4wMjQsNDc1LjI2NCAwLjgwNiw0NzUuMjY0IDAuODA2LDQ2Ny41MjIgOC45NzEsNDY3LjUyMiA4Ljk3MSw0NzUuMjY0IAkJIi8+DQoJCTxyZWN0IHg9IjE2LjI4OSIgeT0iNDU4Ljg0MiIgZmlsbD0iIzIzMUYyMCIgd2lkdGg9IjEuODMyIiBoZWlnaHQ9IjE2LjQyMiIvPg0KCQk8cG9seWdvbiBmaWxsPSIjMjMxRjIwIiBwb2ludHM9IjMzLjI1LDQ2MC41MDcgMzMuMjUsNDU4Ljg0MiAyMy42MDksNDU4Ljg0MiAyMy42MDksNDc1LjI2NCAyNS40MzgsNDc1LjI2NCAyNS40MzgsNDY3LjYxNyANCgkJCTI5Ljk0Myw0NjcuNjE3IDI5Ljk0Myw0NjUuOTUgMjUuNDM4LDQ2NS45NSAyNS40MzgsNDYwLjUwNyAJCSIvPg0KCQk8cG9seWdvbiBmaWxsPSIjMjMxRjIwIiBwb2ludHM9IjQ4LjAwOCw0NjAuNTA3IDQ4LjAwOCw0NTguODQyIDM2LjUxMiw0NTguODQyIDM2LjUxMiw0NjAuNTA3IDQxLjM0NCw0NjAuNTA3IDQxLjM0NCw0NzUuMjY0IA0KCQkJNDMuMTc2LDQ3NS4yNjQgNDMuMTc2LDQ2MC41MDcgCQkiLz4NCgkJPHBhdGggZmlsbD0iIzIzMUYyMCIgZD0iTS00MS41MjYsNDg4LjI2MWMtMC4yMjMsMC4xMjQtMC41MzQsMC4yMTItMC44OTYsMC4yMTJjLTAuNjQ5LDAtMS4wNDktMC4zOTktMS4wNDktMS4yMzR2LTIuNjkxaC0wLjY2NQ0KCQkJdi0wLjgzNmgwLjY2NXYtMS4zMzFsMC44OTYtMC40Nzl2MS44MDloMS4xNTV2MC44MzZoLTEuMTU1djIuNTMxYzAsMC40MzUsMC4xNDQsMC41NTksMC40OCwwLjU1OQ0KCQkJYzAuMjM4LDAsMC41MDYtMC4wODksMC42NzUtMC4xODdMLTQxLjUyNiw0ODguMjYxeiBNLTQ1Ljg0Myw0ODYuMzg3Yy0wLjI0OC0wLjEyNC0wLjU2Ni0wLjIwNS0xLjA2NC0wLjIwNQ0KCQkJYy0wLjU4NywwLTAuOTU5LDAuMjY4LTAuOTU5LDAuNjkzYzAsMC40NjIsMC4yOTQsMC43NzMsMC44OTYsMC43NzNjMC40OSwwLDAuOTE2LTAuMzAzLDEuMTI4LTAuNTk2VjQ4Ni4zODd6IE0tNDUuODQzLDQ4OC4zNzUNCgkJCXYtMC40NjFjLTAuMzE4LDAuMzE5LTAuNzczLDAuNTU4LTEuMjc5LDAuNTU4Yy0wLjc1NCwwLTEuNjE0LTAuNDI3LTEuNjE0LTEuNTczYzAtMS4wMzcsMC44LTEuNTA3LDEuODU2LTEuNTA3DQoJCQljMC40MzYsMCwwLjc3OSwwLjA2MSwxLjAzNywwLjE3N3YtMC4zNDZjMC0wLjUwNi0wLjMxMS0wLjc5Mi0wLjg3OC0wLjc5MmMtMC40NzksMC0wLjg1MiwwLjA5MS0xLjIxNiwwLjI5NWwtMC4zNTQtMC42OTMNCgkJCWMwLjQ0My0wLjI3NSwwLjk0LTAuNDE5LDEuNTk3LTAuNDE5YzEuMDM5LDAsMS43NDksMC41MDgsMS43NDksMS41NjV2My4xOTVILTQ1Ljg0M3ogTS01MC44MDcsNDg4LjM3NXYtMi43ODdoLTIuODU3djIuNzg3DQoJCQloLTAuOTMydi02LjIxNmgwLjkzMnYyLjUxNWgyLjg1N3YtMi41MTVoMC45MzR2Ni4yMTZILTUwLjgwN3ogTS01OS4xMjcsNDg1LjA3MmMtMC4yMDQtMC4yNzUtMC42My0wLjYxLTEuMDkyLTAuNjENCgkJCWMtMC42NTgsMC0xLjAxMiwwLjQ5Ni0xLjAxMiwxLjQ4YzAsMS4xNzMsMC4zNzIsMS42ODcsMS4wNDcsMS42ODdjMC40MzUsMCwwLjgxOC0wLjI5MSwxLjA1Ny0wLjU5NVY0ODUuMDcyTC01OS4xMjcsNDg1LjA3MnoNCgkJCSBNLTU5LjEzNyw0ODguMzc1di0wLjQ0M2MtMC4zMzYsMC4zMDktMC43MjcsMC41NC0xLjIxNCwwLjU0Yy0xLjAwNiwwLTEuNzk2LTAuNzI3LTEuNzk2LTIuNTAzYzAtMS41OTksMC44NzItMi4zNTQsMS44NDEtMi4zNTQNCgkJCWMwLjQ3MSwwLDAuOTEzLDAuMjUsMS4xNjksMC41MzN2LTEuNzc0bDAuOTA3LTAuNDcydjYuNDczSC01OS4xMzd6IE0tNjQuOTc5LDQ4NC40NDJjLTAuNjExLDAtMC45ODQsMC40MjgtMS4wNjQsMS4xNzFoMi4xNjUNCgkJCUMtNjMuOTIxLDQ4NC45NzYtNjQuMjIzLDQ4NC40NDItNjQuOTc5LDQ4NC40NDIgTS02Mi45ODEsNDg2LjM3aC0zLjA4YzAuMDk4LDAuODk2LDAuNjAyLDEuMjc5LDEuMTcxLDEuMjc5DQoJCQljMC4zOTIsMCwwLjcwMy0wLjE0MiwxLjAxMi0wLjM3NGwwLjU0MywwLjU4N2MtMC40MDksMC4zOS0wLjg5NywwLjYxMi0xLjYwNywwLjYxMmMtMS4wOTMsMC0yLjAxNi0wLjg4LTIuMDE2LTIuNDI1DQoJCQljMC0xLjU4MSwwLjgzNi0yLjQzMywyLjA0Mi0yLjQzM2MxLjMyMywwLDEuOTYxLDEuMDc1LDEuOTYxLDIuMzM2Qy02Mi45NTYsNDg2LjEyMi02Mi45NzEsNDg2LjI3MS02Mi45ODEsNDg2LjM3DQoJCQkgTS02OS42OTUsNDgzLjAzOWgtMS44MTJ2MS45OThoMS44MTJjMC42MjIsMCwxLjA1OC0wLjMxOSwxLjA1OC0wLjk5NEMtNjguNjM3LDQ4My4zOTYtNjkuMDYzLDQ4My4wMzktNjkuNjk1LDQ4My4wMzkNCgkJCSBNLTY5LjA2Myw0ODUuODM2bDEuMjcsMi41NDFoLTEuMDcybC0xLjIzNy0yLjQ2aC0xLjQwM3YyLjQ2aC0wLjkxM3YtNi4yMThoMi43MjVjMS4wODQsMCwxLjk5OCwwLjU3OCwxLjk5OCwxLjg1OA0KCQkJQy02Ny42OTcsNDg1LjAxMS02OC4yMiw0ODUuNjI0LTY5LjA2Myw0ODUuODM2IE0tNzguMDEzLDQ5MC4wMTloLTAuOTY5bDAuNjc2LTEuNzMybC0xLjcxNS00LjU3MmgxLjAwNGwwLjc2MiwyLjI4MQ0KCQkJYzAuMTQ2LDAuNDA5LDAuMzU2LDEuMTAyLDAuNDExLDEuMzZjMC4wNzktMC4yNzgsMC4yNzQtMC45NCwwLjQxOC0xLjM0M2wwLjc4OS0yLjI5OGgwLjk2OUwtNzguMDEzLDQ5MC4wMTl6IE0tODIuNDQ2LDQ4NC40Ng0KCQkJYy0wLjQzNSwwLTAuODE0LDAuMjkzLTEuMDU3LDAuNTk0djEuOTYzYzAuMjA0LDAuMjc2LDAuNjMyLDAuNjE0LDEuMDk1LDAuNjE0YzAuNjU0LDAsMS4wMTEtMC40OTgsMS4wMTEtMS40ODINCgkJCUMtODEuMzk3LDQ4NC45NzQtODEuNzcxLDQ4NC40Ni04Mi40NDYsNDg0LjQ2IE0tODIuMzIsNDg4LjQ3NGMtMC40NzMsMC0wLjkxNS0wLjI0OC0xLjE3My0wLjUzM3YwLjQzNWgtMC45MDZ2LTYuMDAxbDAuOTA2LTAuNDcyDQoJCQl2Mi4yNTVjMC4zMzgtMC4zMDksMC43MjgtMC41NCwxLjIxNi0wLjU0YzEuMDA0LDAsMS43OTYsMC43MjksMS43OTYsMi41MDRDLTgwLjQ4MSw0ODcuNzItODEuMzUxLDQ4OC40NzQtODIuMzIsNDg4LjQ3NCIvPg0KCQk8cGF0aCBmaWxsPSIjMjMxRjIwIiBkPSJNLTM5LjM0Nyw0ODIuNzM2Yy0wLjAyOS0wLjAyMy0wLjA2OS0wLjAzNS0wLjEyNC0wLjAzNWgtMC4yMjd2MC4yODdoMC4yMTMNCgkJCWMwLjEyLDAsMC4xNzktMC4wNDcsMC4xNzktMC4xNDRDLTM5LjMwNiw0ODIuNzk3LTM5LjMyLDQ4Mi43NjItMzkuMzQ3LDQ4Mi43MzYgTS0zOS4yNDcsNDgzLjAwNA0KCQkJYy0wLjAzNCwwLjA0MS0wLjA4MywwLjA2OS0wLjE0MywwLjA4M2wwLjE5MSwwLjM2NGgtMC4xMzRsLTAuMTg0LTAuMzU0aC0wLjE4M3YwLjM1NGgtMC4xMTJWNDgyLjZoMC4zNDUNCgkJCWMwLjA3NiwwLDAuMTQyLDAuMDIsMC4xOTQsMC4wNjFjMC4wNTQsMC4wMzgsMC4wNzksMC4xMDEsMC4wNzksMC4xODNDLTM5LjE5Miw0ODIuOTA5LTM5LjIwOSw0ODIuOTYyLTM5LjI0Nyw0ODMuMDA0DQoJCQkgTS0zOC45Miw0ODIuNzY4Yy0wLjAzMy0wLjA4My0wLjA4LTAuMTU0LTAuMTQtMC4yMTNjLTAuMDU5LTAuMDU4LTAuMTMtMC4xMDQtMC4yMTEtMC4xMzZjLTAuMDgtMC4wMzUtMC4xNjktMC4wNTEtMC4yNjQtMC4wNTENCgkJCWMtMC4wOTIsMC0wLjE3OSwwLjAxNi0wLjI2MiwwLjA1MWMtMC4wOCwwLjAzMS0wLjE0OSwwLjA3Ny0wLjIxLDAuMTM2Yy0wLjA2LDAuMDYtMC4xMDYsMC4xMzEtMC4xNDMsMC4yMTMNCgkJCWMtMC4wMzMsMC4wOC0wLjA0OSwwLjE3My0wLjA0OSwwLjI3M2MwLDAuMDk5LDAuMDE2LDAuMTg5LDAuMDQ5LDAuMjcyYzAuMDM2LDAuMDgzLDAuMDgzLDAuMTUzLDAuMTQzLDAuMjENCgkJCWMwLjA2MSwwLjA1OCwwLjEzLDAuMTA2LDAuMjEsMC4xMzljMC4wODMsMC4wMzIsMC4xNywwLjA0OCwwLjI2MiwwLjA0OGMwLjA5NSwwLDAuMTg0LTAuMDE2LDAuMjY0LTAuMDQ4DQoJCQljMC4wODEtMC4wMzMsMC4xNTItMC4wODEsMC4yMTEtMC4xMzljMC4wNi0wLjA1NywwLjEwNi0wLjEyOCwwLjE0LTAuMjFjMC4wMzUtMC4wODMsMC4wNTItMC4xNzMsMC4wNTItMC4yNzINCgkJCUMtMzguODY5LDQ4Mi45NDEtMzguODg1LDQ4Mi44NDgtMzguOTIsNDgyLjc2OCBNLTM4LjgyMiw0ODMuMzU0Yy0wLjA0MSwwLjA5My0wLjA5NSwwLjE3NS0wLjE2MywwLjI0NA0KCQkJYy0wLjA2OSwwLjA2NS0wLjE1LDAuMTE4LTAuMjQ0LDAuMTU2Yy0wLjA5NSwwLjAzNS0wLjE5NSwwLjA1NC0wLjMwNiwwLjA1NGMtMC4xMDgsMC0wLjIwOC0wLjAyLTAuMzAzLTAuMDU0DQoJCQljLTAuMDk1LTAuMDM4LTAuMTc3LTAuMDkxLTAuMjQ0LTAuMTU2Yy0wLjA2OS0wLjA2OS0wLjEyNC0wLjE1MS0wLjE2My0wLjI0NGMtMC4wMzgtMC4wOTUtMC4wNTgtMC4yMDEtMC4wNTgtMC4zMTMNCgkJCWMwLTAuMTE4LDAuMDItMC4yMjEsMC4wNTgtMC4zMTVjMC4wMzktMC4wOTYsMC4wOTQtMC4xNzgsMC4xNjMtMC4yNDRjMC4wNjctMC4wNjksMC4xNDktMC4xMiwwLjI0NC0wLjE1Nw0KCQkJYzAuMDk1LTAuMDM3LDAuMTk0LTAuMDU1LDAuMzAzLTAuMDU1YzAuMTEsMCwwLjIxMSwwLjAxOCwwLjMwNiwwLjA1NWMwLjA5NCwwLjAzOCwwLjE3NSwwLjA4OSwwLjI0NCwwLjE1Nw0KCQkJYzAuMDY4LDAuMDY3LDAuMTIyLDAuMTQ4LDAuMTYzLDAuMjQ0YzAuMDM3LDAuMDk1LDAuMDU3LDAuMTk3LDAuMDU3LDAuMzE1Qy0zOC43NjUsNDgzLjE1My0zOC43ODUsNDgzLjI2LTM4LjgyMiw0ODMuMzU0Ii8+DQoJCTxwYXRoIGZpbGw9IiMyMjFEMUQiIGQ9Ik01MS43MTcsNDU5LjI2MmMtMC4wNDMtMC4wMzgtMC4xMDQtMC4wNTctMC4xODYtMC4wNTdoLTAuMzQ2djAuNDQxaDAuMzI2DQoJCQljMC4xODIsMCwwLjI3MS0wLjA3NSwwLjI3MS0wLjIyMUM1MS43ODMsNDU5LjM1Myw1MS43NjQsNDU5LjI5Nyw1MS43MTcsNDU5LjI2MiBNNTEuODc1LDQ1OS42NjcNCgkJCWMtMC4wNTUsMC4wNjEtMC4xMjksMC4xMDQtMC4yMTksMC4xMjdsMC4yODksMC41NTNoLTAuMjAxbC0wLjI3OS0wLjU0MWgtMC4yNzl2MC41NDFoLTAuMTd2LTEuMjk1aDAuNTIzDQoJCQljMC4xMTcsMCwwLjIxNywwLjAyOSwwLjI5NSwwLjA5YzAuMDgyLDAuMDYyLDAuMTIxLDAuMTU2LDAuMTIxLDAuMjgyQzUxLjk1NSw0NTkuNTIzLDUxLjkyNiw0NTkuNjA0LDUxLjg3NSw0NTkuNjY3DQoJCQkgTTUyLjM3MSw0NTkuMzA3Yy0wLjA1MS0wLjEyNi0wLjEyMy0wLjIzNC0wLjIxNS0wLjMyM2MtMC4wODgtMC4wOTEtMC4xOTctMC4xNjItMC4zMjItMC4yMTFjLTAuMTIzLTAuMDUxLTAuMjU2LTAuMDc1LTAuNC0wLjA3NQ0KCQkJYy0wLjE0MSwwLTAuMjczLDAuMDI0LTAuMzk2LDAuMDc1Yy0wLjEyNSwwLjA0OS0wLjIzLDAuMTItMC4zMjIsMC4yMTFjLTAuMDkyLDAuMDg4LTAuMTYyLDAuMTk3LTAuMjEzLDAuMzIzDQoJCQljLTAuMDU1LDAuMTI0LTAuMDgsMC4yNjQtMC4wOCwwLjQxNWMwLDAuMTUyLDAuMDI1LDAuMjksMC4wOCwwLjQxNmMwLjA1MSwwLjEyNiwwLjEyMSwwLjIzNCwwLjIxMywwLjMyMw0KCQkJYzAuMDkyLDAuMDksMC4xOTcsMC4xNTksMC4zMjIsMC4yMDhjMC4xMjMsMC4wNTEsMC4yNTYsMC4wNzUsMC4zOTYsMC4wNzVjMC4xNDUsMCwwLjI3Ny0wLjAyMywwLjQtMC4wNzUNCgkJCWMwLjEyNS0wLjA0OSwwLjIzNC0wLjExOCwwLjMyMi0wLjIwOGMwLjA5Mi0wLjA4OCwwLjE2NC0wLjE5NywwLjIxNS0wLjMyM3MwLjA3OC0wLjI2NCwwLjA3OC0wLjQxNg0KCQkJQzUyLjQ0OSw0NTkuNTcxLDUyLjQyMiw0NTkuNDMxLDUyLjM3MSw0NTkuMzA3IE01Mi41Miw0NjAuMjAzYy0wLjA2MSwwLjE0Mi0wLjE0MywwLjI2Ni0wLjI0NiwwLjM2OA0KCQkJYy0wLjEwNywwLjEwNS0wLjIyOSwwLjE4NC0wLjM3MywwLjIzOGMtMC4xNDEsMC4wNTctMC4yOTcsMC4wODUtMC40NjcsMC4wODVjLTAuMTY2LDAtMC4zMi0wLjAyOC0wLjQ2NS0wLjA4NQ0KCQkJYy0wLjE0MS0wLjA1NS0wLjI2Mi0wLjEzMy0wLjM3MS0wLjIzOGMtMC4xMDItMC4xMDItMC4xODYtMC4yMjYtMC4yNDQtMC4zNjhjLTAuMDYxLTAuMTQ2LTAuMDkyLTAuMzA1LTAuMDkyLTAuNDgNCgkJCWMwLTAuMTc1LDAuMDMxLTAuMzM0LDAuMDkyLTAuNDhjMC4wNTktMC4xNDQsMC4xNDMtMC4yNjYsMC4yNDQtMC4zNjljMC4xMDktMC4xMDQsMC4yMy0wLjE4MywwLjM3MS0wLjI0DQoJCQljMC4xNDUtMC4wNTUsMC4yOTktMC4wODQsMC40NjUtMC4wODRjMC4xNywwLDAuMzI2LDAuMDI5LDAuNDY3LDAuMDg0YzAuMTQ1LDAuMDU3LDAuMjY2LDAuMTM2LDAuMzczLDAuMjQNCgkJCWMwLjEwNCwwLjEwMywwLjE4NiwwLjIyNSwwLjI0NiwwLjM2OWMwLjA1OSwwLjE0NiwwLjA5LDAuMzA1LDAuMDksMC40OEM1Mi42MDksNDU5Ljg5OCw1Mi41NzgsNDYwLjA1Nyw1Mi41Miw0NjAuMjAzIi8+DQoJPC9nPg0KPC9nPg0KPGcgaWQ9IkxheWVyXzIiPg0KPC9nPg0KPGcgaWQ9IkxheWVyXzQiIGRpc3BsYXk9Im5vbmUiPg0KCTxnIGRpc3BsYXk9ImlubGluZSI+DQoJCTxwYXRoIGQ9Ik0tODUuMTkzLDUxMy4zNTNjLTMuMjk1LDAtNS40ODMsMi42NTUtNS40ODMsNy40MjVjMCw0Ljc3MSwyLjI4OCw3LjQ5Miw1LjU4OCw3LjQ5MmMzLjI5NSwwLDUuNDc4LTIuNjU0LDUuNDc4LTcuNDI2DQoJCQlDLTc5LjYxLDUxNi4wNzUtODEuODk5LDUxMy4zNTMtODUuMTkzLDUxMy4zNTMgTS04NS4xNiw1MzIuOTM4Yy02LjE1NCwwLTEwLjM1OS00LjUtMTAuMzU5LTEyLjA5NA0KCQkJYzAtNy41ODcsNC4yNzItMTIuMTYsMTAuNDMyLTEyLjE2YzYuMTE2LDAsMTAuMzI0LDQuNTAxLDEwLjMyNCwxMi4wOTNTLTc5LjAzOSw1MzIuOTM4LTg1LjE2LDUzMi45MzgiLz4NCgkJPHBhdGggZD0iTS02MC4xNCw1MTMuNjIxaC01LjQxNXY2LjA0OWg1LjQ4NWMyLjE4NCwwLDMuMzYyLTEuMDA5LDMuMzYyLTMuMDYxQy01Ni43MDksNTE0LjU2MS01OC4wNTYsNTEzLjYyMS02MC4xNCw1MTMuNjIxDQoJCQkgTS02MC4zNzQsNTI0LjI0MWgtNS4xODJ2OC4zMjhoLTQuNzA4di0yMy41MTZoMTAuMjkxYzQuNDM5LDAsOC4xMDcsMi40NTQsOC4xMDcsNy40NTkNCgkJCUMtNTEuODY3LDUyMS45NTgtNTUuNDk4LDUyNC4yNDEtNjAuMzc0LDUyNC4yNDEiLz4NCgkJPHBvbHlnb24gcG9pbnRzPSItNDYuOTk0LDUzMi41NjcgLTQ2Ljk5NCw1MDkuMDUzIC0zMC42NSw1MDkuMDUzIC0zMC42NSw1MTMuNjU3IC00Mi4yODksNTEzLjY1NyAtNDIuMjg5LDUxNy43MjEgDQoJCQktMzUuNTI5LDUxNy43MjEgLTM1LjUyOSw1MjIuMjg4IC00Mi4yODksNTIyLjI4OCAtNDIuMjg5LDUyNy45NjMgLTMwLjE0NSw1MjcuOTYzIC0zMC4xNDUsNTMyLjU2NyAJCSIvPg0KCQk8cGF0aCBkPSJNLTkuODcxLDUzMi41NjdsLTguNjQ3LTEyLjgzYy0wLjU3My0wLjg3MS0xLjM0My0yLjA0OS0xLjY0Ni0yLjY1M2MwLDAuODczLDAuMDY0LDMuODI5LDAuMDY0LDUuMTQydjEwLjM0MWgtNC42MzcNCgkJCXYtMjMuNTE0aDQuNTAybDguMzQzLDEyLjQzMmMwLjU3MywwLjg3MSwxLjM0NSwyLjA1MSwxLjY0NywyLjY1M2MwLTAuODc5LTAuMDY1LTMuODI5LTAuMDY1LTUuMTR2LTkuOTQ3aDQuNjM4djIzLjUxNGgtNC4xOTkNCgkJCVY1MzIuNTY3eiIvPg0KCQk8cGF0aCBkPSJNOC4wMjEsNTMyLjkzOGMtMy4xOTMsMC02LjA1My0xLjM4MS03LjktMy4yNThsMS43NDYtMS45NDljMS43ODMsMS43MTMsMy44MzYsMi44MjMsNi4yNTgsMi44MjMNCgkJCWMzLjEyOSwwLDUuMDgtMS41NDQsNS4wOC00LjAzMWMwLTIuMTg3LTEuMzEyLTMuNDI2LTUuNjE3LTQuOTcxYy01LjA3Ny0xLjgxNS02Ljc5OC0zLjQ2MS02Ljc5OC02Ljg1NA0KCQkJYzAtMy43NjcsMi45Ni02LjAxNCw3LjM2Ny02LjAxNGMzLjE2NiwwLDUuMTg0LDAuOTM4LDcuMTY4LDIuNTIybC0xLjY4MiwyLjA0OWMtMS43MTUtMS40MTMtMy4yOTktMi4xODctNS42NTQtMi4xODcNCgkJCWMtMy4yMjYsMC00LjU3NCwxLjYxMi00LjU3NCwzLjQ2YzAsMS45NTMsMC44NzgsMy4wNTcsNS41ODUsNC43MzhjNS4yMTUsMS44ODEsNi44MjksMy42MjksNi44MjksNy4xMjENCgkJCUMxNS44MjgsNTMwLjA4NSwxMi45MzQsNTMyLjkzOCw4LjAyMSw1MzIuOTM4Ii8+DQoJCTxwb2x5Z29uIHBvaW50cz0iMzUuOTk5LDUzMi41NjcgMzUuOTk5LDUyMS40ODUgMjQuMjk1LDUyMS40ODUgMjQuMjk1LDUzMi41NjcgMjEuNjcyLDUzMi41NjcgMjEuNjcyLDUwOS4wNTMgMjQuMjk1LDUwOS4wNTMgDQoJCQkyNC4yOTUsNTE5LjA5OCAzNS45OTksNTE5LjA5OCAzNS45OTksNTA5LjA1MyAzOC42MjMsNTA5LjA1MyAzOC42MjMsNTMyLjU2NyAJCSIvPg0KCQk8cmVjdCB4PSI0NS4zNzEiIHk9IjUwOS4wNTUiIHdpZHRoPSIyLjYyMyIgaGVpZ2h0PSIyMy41MTQiLz4NCgkJPHBvbHlnb24gcG9pbnRzPSI1Ny4zNzUsNTExLjQzOCA1Ny4zNzUsNTE5LjIzMyA2My44Myw1MTkuMjMzIDYzLjgzLDUyMS42MiA1Ny4zNzUsNTIxLjYyIDU3LjM3NSw1MzIuNTY3IDU0Ljc1LDUzMi41NjcgDQoJCQk1NC43NSw1MDkuMDUzIDY4LjU3Niw1MDkuMDUzIDY4LjU3Niw1MTEuNDM4IAkJIi8+DQoJCTxwb2x5Z29uIHBvaW50cz0iODIuODM0LDUxMS40MzggODIuODM0LDUzMi41NjcgODAuMjExLDUzMi41NjcgODAuMjExLDUxMS40MzggNzMuMjg1LDUxMS40MzggNzMuMjg1LDUwOS4wNTMgODkuNzY0LDUwOS4wNTMgDQoJCQk4OS43NjQsNTExLjQzOCAJCSIvPg0KCQk8cGF0aCBmaWxsPSIjQkMxQzI5IiBkPSJNLTE0Mi4zNDEsNTE4LjQ5OGwtNy44NzIsMi44NjFjMC4xMDMsMS4yNiwwLjMxOCwyLjUwNCwwLjYyMywzLjcyNWw3LjQ3My0yLjcyMw0KCQkJQy0xNDIuMzU3LDUyMS4xMDMtMTQyLjQ0Miw1MTkuODAzLTE0Mi4zNDEsNTE4LjQ5OCIvPg0KCQk8cGF0aCBmaWxsPSIjQkMxQzI5IiBkPSJNLTEwNy41NzEsNTA5LjgxYy0wLjU0OC0xLjEyOS0xLjE4MS0yLjIyNC0xLjkxOS0zLjI1NmwtNy44NjgsMi44NjFjMC45MTYsMC45MzgsMS42ODUsMS45ODcsMi4zMTIsMy4xMTMNCgkJCUwtMTA3LjU3MSw1MDkuODF6Ii8+DQoJCTxwYXRoIGZpbGw9IiNFMjI0MzQiIGQ9Ik0tMTI0Ljg4Miw1MDcuNTg2YzEuNjM2LDAuNzYzLDMuMDU3LDEuODAxLDQuMjUsMy4wMjNsNy44NjktMi44NjRjLTIuMTgyLTMuMDUyLTUuMTQ4LTUuNjA0LTguNzgyLTcuMjk3DQoJCQljLTExLjI0Ni01LjI0LTI0LjY2Ny0wLjM2NC0yOS45MDUsMTAuODdjLTEuNzAxLDMuNjMxLTIuMzMyLDcuNDk0LTIuMDM4LDExLjIzMWw3Ljg3MS0yLjg2YzAuMTI4LTEuNywwLjU0Ny0zLjQwNywxLjMxMS01LjA0NA0KCQkJQy0xNDAuOTAzLDUwNy4zNS0xMzIuMTg0LDUwNC4xODEtMTI0Ljg4Miw1MDcuNTg2Ii8+DQoJCTxwYXRoIGZpbGw9IiNFMjI0MzQiIGQ9Ik0tMTQ5LjA5OSw1MjQuOTA5bC03LjQ3NSwyLjcxN2MwLjY4OCwyLjcxOSwxLjg4LDUuMzA5LDMuNTE2LDcuNjA3bDcuODUzLTIuODUxDQoJCQlDLTE0Ny4yMjEsNTMwLjMxMS0xNDguNTY0LDUyNy43LTE0OS4wOTksNTI0LjkwOSIvPg0KCQk8cGF0aCBmaWxsPSIjRTIyNDM0IiBkPSJNLTExNi40OTEsNTIxLjk0NGMtMC4xMjYsMS42OTgtMC41NTEsMy40MDgtMS4zMTksNS4wNDVjLTMuNDA2LDcuMjk5LTEyLjEyMywxMC40NjctMTkuNDMxLDcuMDYyDQoJCQljLTEuNjM2LTAuNzY2LTMuMDY3LTEuNzk5LTQuMjU4LTMuMDJsLTcuODQ5LDIuODU0YzIuMTc1LDMuMDUzLDUuMTQxLDUuNjA0LDguNzc2LDcuMzAyYzExLjI0Niw1LjIzNywyNC42NjQsMC4zNiwyOS45MS0xMC44NzMNCgkJCWMxLjY5Ni0zLjYzMiwyLjMyMi03LjQ5MiwyLjAyNC0xMS4yMjhMLTExNi40OTEsNTIxLjk0NHoiLz4NCgkJPHBhdGggZmlsbD0iI0UyMjQzNCIgZD0iTS0xMTQuNTU1LDUxMi4zNDZsLTcuNDc1LDIuNzI0YzEuMzksMi40ODEsMi4wNDMsNS4zNDQsMS44MzMsOC4yMjFsNy44NS0yLjg1NA0KCQkJQy0xMTIuNTc0LDUxNy42MjItMTEzLjMyNSw1MTQuODc2LTExNC41NTUsNTEyLjM0NiIvPg0KCQk8cGF0aCBmaWxsPSIjOTcxMDFCIiBkPSJNLTE0Mi4zNzMsNTIwLjA3OGMtMC4wMTktMC41MjQtMC4wMTItMS4wNTEsMC4wMzItMS41OGwtNy44NzIsMi44NjFjMC4wMzgsMC41MDQsMC4xMDMsMS4wMDIsMC4xNzgsMS41DQoJCQlMLTE0Mi4zNzMsNTIwLjA3OHoiLz4NCgkJPHBhdGggZmlsbD0iIzk3MTAxQiIgZD0iTS0xMDguNzA3LDUwNy43NDFjLTAuMjUtMC40LTAuNTA3LTAuOC0wLjc4MS0xLjE4N2wtNy44NjYsMi44NjFjMC4zNDUsMC4zNTQsMC42NjYsMC43MzIsMC45NjksMS4xMTQNCgkJCUwtMTA4LjcwNyw1MDcuNzQxeiIvPg0KCQk8cGF0aCBmaWxsPSIjQkMxQzI5IiBkPSJNLTE0OS4zNDcsNTMzLjg4NmMwLjYwNCwwLjg0OSwxLjI3NCwxLjY2MywyLDIuNDI2bDguNTQ1LTMuMTEyYy0xLTAuNjI3LTEuOTAyLTEuMzUzLTIuNjk5LTIuMTY2DQoJCQlMLTE0OS4zNDcsNTMzLjg4NnogTS0xMDguNjM3LDUxOS4wODlsLTcuODU0LDIuODU2Yy0wLjA4MywxLjEyOS0wLjMwMywyLjI2LTAuNjY0LDMuMzcxbDguNTQyLTMuMTEzDQoJCQlDLTEwOC41NDcsNTIxLjE1OS0xMDguNTU5LDUyMC4xMTktMTA4LjYzNyw1MTkuMDg5Ii8+DQoJCTxwYXRoIGQ9Ik05Ni4xMjQsNTExLjAxYy0wLjA4MiwwLjE5OC0wLjE5NCwwLjM2OC0wLjMzOSwwLjUxMWMtMC4xNDcsMC4xMzktMC4zMTYsMC4yNS0wLjUxMiwwLjMyOA0KCQkJYy0wLjE5NywwLjA3OC0wLjQxLDAuMTE1LTAuNjQ2LDAuMTE1Yy0wLjIyNywwLTAuNDM5LTAuMDM4LTAuNjM3LTAuMTE1Yy0wLjE5Ni0wLjA3OS0wLjM2Ni0wLjE4OC0wLjUxNi0wLjMyOA0KCQkJYy0wLjE0MS0wLjE0My0wLjI1Ni0wLjMxMy0wLjMzNC0wLjUxMWMtMC4wODctMC4xOTctMC4xMjgtMC40MTctMC4xMjgtMC42NTljMC0wLjI0MSwwLjA0MS0wLjQ2MSwwLjEyOC0wLjY1Nw0KCQkJYzAuMDc4LTAuMiwwLjE5My0wLjM3LDAuMzM0LTAuNTExYzAuMTQ4LTAuMTQ0LDAuMzE4LTAuMjUsMC41MTYtMC4zMjljMC4xOTctMC4wNzcsMC40MTItMC4xMTYsMC42MzctMC4xMTYNCgkJCWMwLjIzNiwwLDAuNDQ5LDAuMDM5LDAuNjQ2LDAuMTE2YzAuMTk0LDAuMDc5LDAuMzYzLDAuMTg2LDAuNTEyLDAuMzI5YzAuMTQ1LDAuMTQxLDAuMjU3LDAuMzExLDAuMzM5LDAuNTExDQoJCQljMC4wODEsMC4xOTYsMC4xMjIsMC40MTcsMC4xMjIsMC42NTdDOTYuMjQ2LDUxMC41OTMsOTYuMjA1LDUxMC44MTMsOTYuMTI0LDUxMS4wMSBNOTUuOTIsNTA5Ljc4DQoJCQljLTAuMDczLTAuMTc1LTAuMTctMC4zMjMtMC4yOTYtMC40NDRjLTAuMTIyLTAuMTI2LTAuMjcxLTAuMjIyLTAuNDQyLTAuMjkyYy0wLjE2OS0wLjA2Ny0wLjM1NC0wLjEwNC0wLjU1NC0wLjEwNA0KCQkJYy0wLjE5MiwwLTAuMzc1LDAuMDM3LTAuNTQ4LDAuMTA0Yy0wLjE2OCwwLjA3LTAuMzE1LDAuMTY2LTAuNDM4LDAuMjkyYy0wLjEyNywwLjEyMS0wLjIyOCwwLjI2OS0wLjI5OCwwLjQ0NA0KCQkJYy0wLjA3MiwwLjE3My0wLjEwOSwwLjM2MS0wLjEwOSwwLjU3MWMwLDAuMjA3LDAuMDM3LDAuNCwwLjEwOSwwLjU3M2MwLjA3LDAuMTczLDAuMTcxLDAuMzIxLDAuMjk4LDAuNDQ1DQoJCQljMC4xMjQsMC4xMjMsMC4yNzIsMC4yMTcsMC40MzgsMC4yODZjMC4xNzQsMC4wNzIsMC4zNTQsMC4xMDQsMC41NDgsMC4xMDRjMC4xOTgsMCwwLjM4NS0wLjAzMywwLjU1NC0wLjEwNA0KCQkJYzAuMTcyLTAuMDY5LDAuMzIxLTAuMTY0LDAuNDQyLTAuMjg2YzAuMTI2LTAuMTI0LDAuMjI0LTAuMjcyLDAuMjk2LTAuNDQ1YzAuMDc0LTAuMTczLDAuMTA3LTAuMzY0LDAuMTA3LTAuNTczDQoJCQlDOTYuMDI5LDUxMC4xNDEsOTUuOTk0LDUwOS45NSw5NS45Miw1MDkuNzggTTk1LjIzNCw1MTAuMjc1Yy0wLjA3MiwwLjA4Ni0wLjE3MiwwLjE0My0wLjI5NywwLjE3NGwwLjM5OSwwLjc2M2gtMC4yNzgNCgkJCWwtMC4zODQtMC43NDZoLTAuMzg2djAuNzQ2aC0wLjIzNXYtMS43ODNoMC43MjRjMC4xNjQsMCwwLjI5NywwLjA0MywwLjQwNiwwLjEyNWMwLjExMiwwLjA4NSwwLjE2OCwwLjIxNCwwLjE2OCwwLjM4OA0KCQkJQzk1LjM0OCw1MTAuMDc2LDk1LjMwOSw1MTAuMTg4LDk1LjIzNCw1MTAuMjc1IE05NS4wMiw1MDkuNzE3Yy0wLjA1OC0wLjA1MS0wLjE0NS0wLjA3Ny0wLjI1OC0wLjA3N2gtMC40Nzd2MC42MDRoMC40NDcNCgkJCWMwLjI1MiwwLDAuMzc3LTAuMTAxLDAuMzc3LTAuMzAxQzk1LjExMSw1MDkuODQyLDk1LjA3OCw1MDkuNzY0LDk1LjAyLDUwOS43MTciLz4NCgk8L2c+DQo8L2c+DQo8ZyBpZD0iTGF5ZXJfMyIgZGlzcGxheT0ibm9uZSI+DQoJDQoJCTxpbWFnZSBkaXNwbGF5PSJpbmxpbmUiIG92ZXJmbG93PSJ2aXNpYmxlIiB3aWR0aD0iMjE3IiBoZWlnaHQ9Ijk2IiB4bGluazpocmVmPSIuLi9EZXNrdG9wL1NjcmVlbiBTaG90IDIwMTMtMTEtMTkgYXQgNC41MS4zNyBQTS5wbmciICB0cmFuc2Zvcm09Im1hdHJpeCgxIDAgMCAxIC0xNDUuMjI3NSA0MDUuMjkpIj4NCgk8L2ltYWdlPg0KPC9nPg0KPC9zdmc+DQo=);</span></td>
+      </tr>
+      <tr>
+        <td id="L27" class="blob-num js-line-number" data-line-number="27"></td>
+        <td id="LC27" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  }</span></td>
+      </tr>
+      <tr>
+        <td id="L28" class="blob-num js-line-number" data-line-number="28"></td>
+        <td id="LC28" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-e">.logo</span> <span class="pl-ent">a</span> {</span></td>
+      </tr>
+      <tr>
+        <td id="L29" class="blob-num js-line-number" data-line-number="29"></td>
+        <td id="LC29" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">display</span></span>: <span class="pl-c1">block</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L30" class="blob-num js-line-number" data-line-number="30"></td>
+        <td id="LC30" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">width</span></span>: <span class="pl-c1">100<span class="pl-k">%</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L31" class="blob-num js-line-number" data-line-number="31"></td>
+        <td id="LC31" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">height</span></span>: <span class="pl-c1">100<span class="pl-k">%</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L32" class="blob-num js-line-number" data-line-number="32"></td>
+        <td id="LC32" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">}</span></td>
+      </tr>
+      <tr>
+        <td id="L33" class="blob-num js-line-number" data-line-number="33"></td>
+        <td id="LC33" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-ent">*</span>, <span class="pl-ent">*</span><span class="pl-e">:before</span>, <span class="pl-ent">*</span><span class="pl-e">:after</span> {</span></td>
+      </tr>
+      <tr>
+        <td id="L34" class="blob-num js-line-number" data-line-number="34"></td>
+        <td id="LC34" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">    <span class="pl-c1"><span class="pl-c1">-moz-box-sizing</span></span>: <span class="pl-c1">border-box</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L35" class="blob-num js-line-number" data-line-number="35"></td>
+        <td id="LC35" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">    <span class="pl-c1"><span class="pl-c1">box-sizing</span></span>: <span class="pl-c1">border-box</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L36" class="blob-num js-line-number" data-line-number="36"></td>
+        <td id="LC36" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">}</span></td>
+      </tr>
+      <tr>
+        <td id="L37" class="blob-num js-line-number" data-line-number="37"></td>
+        <td id="LC37" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-ent">aside</span>,</span></td>
+      </tr>
+      <tr>
+        <td id="L38" class="blob-num js-line-number" data-line-number="38"></td>
+        <td id="LC38" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-ent">footer</span>,</span></td>
+      </tr>
+      <tr>
+        <td id="L39" class="blob-num js-line-number" data-line-number="39"></td>
+        <td id="LC39" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-ent">header</span>,</span></td>
+      </tr>
+      <tr>
+        <td id="L40" class="blob-num js-line-number" data-line-number="40"></td>
+        <td id="LC40" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-ent">hgroup</span>,</span></td>
+      </tr>
+      <tr>
+        <td id="L41" class="blob-num js-line-number" data-line-number="41"></td>
+        <td id="LC41" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-ent">section</span>{</span></td>
+      </tr>
+      <tr>
+        <td id="L42" class="blob-num js-line-number" data-line-number="42"></td>
+        <td id="LC42" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">display</span></span>: <span class="pl-c1">block</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L43" class="blob-num js-line-number" data-line-number="43"></td>
+        <td id="LC43" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">}</span></td>
+      </tr>
+      <tr>
+        <td id="L44" class="blob-num js-line-number" data-line-number="44"></td>
+        <td id="LC44" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-ent">body</span> {</span></td>
+      </tr>
+      <tr>
+        <td id="L45" class="blob-num js-line-number" data-line-number="45"></td>
+        <td id="LC45" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">color</span></span>: <span class="pl-c1">#404040</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L46" class="blob-num js-line-number" data-line-number="46"></td>
+        <td id="LC46" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">font-family</span></span>: <span class="pl-s"><span class="pl-pds">&quot;</span>Helvetica Neue<span class="pl-pds">&quot;</span></span>,<span class="pl-c1">Helvetica</span>,<span class="pl-s"><span class="pl-pds">&quot;</span>Liberation Sans<span class="pl-pds">&quot;</span></span>,<span class="pl-c1">Arial</span>,<span class="pl-c1">sans-serif</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L47" class="blob-num js-line-number" data-line-number="47"></td>
+        <td id="LC47" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">font-size</span></span>: <span class="pl-c1">14<span class="pl-k">px</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L48" class="blob-num js-line-number" data-line-number="48"></td>
+        <td id="LC48" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">line-height</span></span>: <span class="pl-c1">1.4</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L49" class="blob-num js-line-number" data-line-number="49"></td>
+        <td id="LC49" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">}</span></td>
+      </tr>
+      <tr>
+        <td id="L50" class="blob-num js-line-number" data-line-number="50"></td>
+        <td id="LC50" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"></span></td>
+      </tr>
+      <tr>
+        <td id="L51" class="blob-num js-line-number" data-line-number="51"></td>
+        <td id="LC51" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-ent">html</span> {</span></td>
+      </tr>
+      <tr>
+        <td id="L52" class="blob-num js-line-number" data-line-number="52"></td>
+        <td id="LC52" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">font-family</span></span>: <span class="pl-c1">sans-serif</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L53" class="blob-num js-line-number" data-line-number="53"></td>
+        <td id="LC53" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">-ms-text-size-adjust</span></span>: <span class="pl-c1">100<span class="pl-k">%</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L54" class="blob-num js-line-number" data-line-number="54"></td>
+        <td id="LC54" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">-webkit-text-size-adjust</span></span>: <span class="pl-c1">100<span class="pl-k">%</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L55" class="blob-num js-line-number" data-line-number="55"></td>
+        <td id="LC55" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">}</span></td>
+      </tr>
+      <tr>
+        <td id="L56" class="blob-num js-line-number" data-line-number="56"></td>
+        <td id="LC56" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-ent">ul</span> {</span></td>
+      </tr>
+      <tr>
+        <td id="L57" class="blob-num js-line-number" data-line-number="57"></td>
+        <td id="LC57" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">    <span class="pl-c1"><span class="pl-c1">margin-top</span></span>: <span class="pl-c1">0</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L58" class="blob-num js-line-number" data-line-number="58"></td>
+        <td id="LC58" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">}</span></td>
+      </tr>
+      <tr>
+        <td id="L59" class="blob-num js-line-number" data-line-number="59"></td>
+        <td id="LC59" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-e">.container</span> {</span></td>
+      </tr>
+      <tr>
+        <td id="L60" class="blob-num js-line-number" data-line-number="60"></td>
+        <td id="LC60" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">margin-right</span></span>: <span class="pl-c1">auto</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L61" class="blob-num js-line-number" data-line-number="61"></td>
+        <td id="LC61" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">margin-left</span></span>: <span class="pl-c1">auto</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L62" class="blob-num js-line-number" data-line-number="62"></td>
+        <td id="LC62" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">padding-left</span></span>: <span class="pl-c1">15<span class="pl-k">px</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L63" class="blob-num js-line-number" data-line-number="63"></td>
+        <td id="LC63" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">padding-right</span></span>: <span class="pl-c1">15<span class="pl-k">px</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L64" class="blob-num js-line-number" data-line-number="64"></td>
+        <td id="LC64" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">}</span></td>
+      </tr>
+      <tr>
+        <td id="L65" class="blob-num js-line-number" data-line-number="65"></td>
+        <td id="LC65" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-e">.container</span><span class="pl-e">:before</span>,</span></td>
+      </tr>
+      <tr>
+        <td id="L66" class="blob-num js-line-number" data-line-number="66"></td>
+        <td id="LC66" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-e">.container</span><span class="pl-e">:after</span> {</span></td>
+      </tr>
+      <tr>
+        <td id="L67" class="blob-num js-line-number" data-line-number="67"></td>
+        <td id="LC67" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">content</span></span>: <span class="pl-s"><span class="pl-pds">&quot;</span> <span class="pl-pds">&quot;</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L68" class="blob-num js-line-number" data-line-number="68"></td>
+        <td id="LC68" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c"><span class="pl-c">/*</span> 1 <span class="pl-c">*/</span></span></span></td>
+      </tr>
+      <tr>
+        <td id="L69" class="blob-num js-line-number" data-line-number="69"></td>
+        <td id="LC69" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"></span></td>
+      </tr>
+      <tr>
+        <td id="L70" class="blob-num js-line-number" data-line-number="70"></td>
+        <td id="LC70" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">display</span></span>: <span class="pl-c1">table</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L71" class="blob-num js-line-number" data-line-number="71"></td>
+        <td id="LC71" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c"><span class="pl-c">/*</span> 2 <span class="pl-c">*/</span></span></span></td>
+      </tr>
+      <tr>
+        <td id="L72" class="blob-num js-line-number" data-line-number="72"></td>
+        <td id="LC72" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"></span></td>
+      </tr>
+      <tr>
+        <td id="L73" class="blob-num js-line-number" data-line-number="73"></td>
+        <td id="LC73" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">}</span></td>
+      </tr>
+      <tr>
+        <td id="L74" class="blob-num js-line-number" data-line-number="74"></td>
+        <td id="LC74" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-e">.container</span><span class="pl-e">:after</span> {</span></td>
+      </tr>
+      <tr>
+        <td id="L75" class="blob-num js-line-number" data-line-number="75"></td>
+        <td id="LC75" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">clear</span></span>: <span class="pl-c1">both</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L76" class="blob-num js-line-number" data-line-number="76"></td>
+        <td id="LC76" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">}</span></td>
+      </tr>
+      <tr>
+        <td id="L77" class="blob-num js-line-number" data-line-number="77"></td>
+        <td id="LC77" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-e">.row</span> {</span></td>
+      </tr>
+      <tr>
+        <td id="L78" class="blob-num js-line-number" data-line-number="78"></td>
+        <td id="LC78" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">margin-left</span></span>: <span class="pl-c1">-15<span class="pl-k">px</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L79" class="blob-num js-line-number" data-line-number="79"></td>
+        <td id="LC79" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">margin-right</span></span>: <span class="pl-c1">-15<span class="pl-k">px</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L80" class="blob-num js-line-number" data-line-number="80"></td>
+        <td id="LC80" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">}</span></td>
+      </tr>
+      <tr>
+        <td id="L81" class="blob-num js-line-number" data-line-number="81"></td>
+        <td id="LC81" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-e">.row</span><span class="pl-e">:before</span>,</span></td>
+      </tr>
+      <tr>
+        <td id="L82" class="blob-num js-line-number" data-line-number="82"></td>
+        <td id="LC82" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-e">.row</span><span class="pl-e">:after</span> {</span></td>
+      </tr>
+      <tr>
+        <td id="L83" class="blob-num js-line-number" data-line-number="83"></td>
+        <td id="LC83" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">content</span></span>: <span class="pl-s"><span class="pl-pds">&quot;</span> <span class="pl-pds">&quot;</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L84" class="blob-num js-line-number" data-line-number="84"></td>
+        <td id="LC84" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c"><span class="pl-c">/*</span> 1 <span class="pl-c">*/</span></span></span></td>
+      </tr>
+      <tr>
+        <td id="L85" class="blob-num js-line-number" data-line-number="85"></td>
+        <td id="LC85" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"></span></td>
+      </tr>
+      <tr>
+        <td id="L86" class="blob-num js-line-number" data-line-number="86"></td>
+        <td id="LC86" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">display</span></span>: <span class="pl-c1">table</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L87" class="blob-num js-line-number" data-line-number="87"></td>
+        <td id="LC87" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c"><span class="pl-c">/*</span> 2 <span class="pl-c">*/</span></span></span></td>
+      </tr>
+      <tr>
+        <td id="L88" class="blob-num js-line-number" data-line-number="88"></td>
+        <td id="LC88" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"></span></td>
+      </tr>
+      <tr>
+        <td id="L89" class="blob-num js-line-number" data-line-number="89"></td>
+        <td id="LC89" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">}</span></td>
+      </tr>
+      <tr>
+        <td id="L90" class="blob-num js-line-number" data-line-number="90"></td>
+        <td id="LC90" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-e">.row</span><span class="pl-e">:after</span> {</span></td>
+      </tr>
+      <tr>
+        <td id="L91" class="blob-num js-line-number" data-line-number="91"></td>
+        <td id="LC91" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">clear</span></span>: <span class="pl-c1">both</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L92" class="blob-num js-line-number" data-line-number="92"></td>
+        <td id="LC92" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">}</span></td>
+      </tr>
+      <tr>
+        <td id="L93" class="blob-num js-line-number" data-line-number="93"></td>
+        <td id="LC93" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-e">.col-sm-6</span>, <span class="pl-e">.col-md-6</span>, <span class="pl-e">.col-xs-12</span> {</span></td>
+      </tr>
+      <tr>
+        <td id="L94" class="blob-num js-line-number" data-line-number="94"></td>
+        <td id="LC94" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">position</span></span>: <span class="pl-c1">relative</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L95" class="blob-num js-line-number" data-line-number="95"></td>
+        <td id="LC95" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">min-height</span></span>: <span class="pl-c1">1<span class="pl-k">px</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L96" class="blob-num js-line-number" data-line-number="96"></td>
+        <td id="LC96" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">padding-left</span></span>: <span class="pl-c1">15<span class="pl-k">px</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L97" class="blob-num js-line-number" data-line-number="97"></td>
+        <td id="LC97" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">padding-right</span></span>: <span class="pl-c1">15<span class="pl-k">px</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L98" class="blob-num js-line-number" data-line-number="98"></td>
+        <td id="LC98" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">}</span></td>
+      </tr>
+      <tr>
+        <td id="L99" class="blob-num js-line-number" data-line-number="99"></td>
+        <td id="LC99" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-e">.col-xs-12</span> {</span></td>
+      </tr>
+      <tr>
+        <td id="L100" class="blob-num js-line-number" data-line-number="100"></td>
+        <td id="LC100" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">width</span></span>: <span class="pl-c1">100<span class="pl-k">%</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L101" class="blob-num js-line-number" data-line-number="101"></td>
+        <td id="LC101" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">}</span></td>
+      </tr>
+      <tr>
+        <td id="L102" class="blob-num js-line-number" data-line-number="102"></td>
+        <td id="LC102" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"></span></td>
+      </tr>
+      <tr>
+        <td id="L103" class="blob-num js-line-number" data-line-number="103"></td>
+        <td id="LC103" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-k">@media</span> (<span class="pl-c1">min-width</span>: <span class="pl-c1">768<span class="pl-k">px</span></span>) {</span></td>
+      </tr>
+      <tr>
+        <td id="L104" class="blob-num js-line-number" data-line-number="104"></td>
+        <td id="LC104" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-e">.container</span> {</span></td>
+      </tr>
+      <tr>
+        <td id="L105" class="blob-num js-line-number" data-line-number="105"></td>
+        <td id="LC105" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">    <span class="pl-c1"><span class="pl-c1">width</span></span>: <span class="pl-c1">750<span class="pl-k">px</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L106" class="blob-num js-line-number" data-line-number="106"></td>
+        <td id="LC106" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  }</span></td>
+      </tr>
+      <tr>
+        <td id="L107" class="blob-num js-line-number" data-line-number="107"></td>
+        <td id="LC107" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-e">.col-sm-6</span> {</span></td>
+      </tr>
+      <tr>
+        <td id="L108" class="blob-num js-line-number" data-line-number="108"></td>
+        <td id="LC108" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">    <span class="pl-c1"><span class="pl-c1">float</span></span>: <span class="pl-c1">left</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L109" class="blob-num js-line-number" data-line-number="109"></td>
+        <td id="LC109" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  }</span></td>
+      </tr>
+      <tr>
+        <td id="L110" class="blob-num js-line-number" data-line-number="110"></td>
+        <td id="LC110" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-e">.col-sm-6</span> {</span></td>
+      </tr>
+      <tr>
+        <td id="L111" class="blob-num js-line-number" data-line-number="111"></td>
+        <td id="LC111" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">    <span class="pl-c1"><span class="pl-c1">width</span></span>: <span class="pl-c1">50<span class="pl-k">%</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L112" class="blob-num js-line-number" data-line-number="112"></td>
+        <td id="LC112" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  }</span></td>
+      </tr>
+      <tr>
+        <td id="L113" class="blob-num js-line-number" data-line-number="113"></td>
+        <td id="LC113" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">}</span></td>
+      </tr>
+      <tr>
+        <td id="L114" class="blob-num js-line-number" data-line-number="114"></td>
+        <td id="LC114" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"></span></td>
+      </tr>
+      <tr>
+        <td id="L115" class="blob-num js-line-number" data-line-number="115"></td>
+        <td id="LC115" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-k">@media</span> (<span class="pl-c1">min-width</span>: <span class="pl-c1">992<span class="pl-k">px</span></span>) {</span></td>
+      </tr>
+      <tr>
+        <td id="L116" class="blob-num js-line-number" data-line-number="116"></td>
+        <td id="LC116" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-e">.container</span> {</span></td>
+      </tr>
+      <tr>
+        <td id="L117" class="blob-num js-line-number" data-line-number="117"></td>
+        <td id="LC117" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">    <span class="pl-c1"><span class="pl-c1">width</span></span>: <span class="pl-c1">970<span class="pl-k">px</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L118" class="blob-num js-line-number" data-line-number="118"></td>
+        <td id="LC118" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  }</span></td>
+      </tr>
+      <tr>
+        <td id="L119" class="blob-num js-line-number" data-line-number="119"></td>
+        <td id="LC119" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-e">.col-md-6</span> {</span></td>
+      </tr>
+      <tr>
+        <td id="L120" class="blob-num js-line-number" data-line-number="120"></td>
+        <td id="LC120" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">    <span class="pl-c1"><span class="pl-c1">float</span></span>: <span class="pl-c1">left</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L121" class="blob-num js-line-number" data-line-number="121"></td>
+        <td id="LC121" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  }</span></td>
+      </tr>
+      <tr>
+        <td id="L122" class="blob-num js-line-number" data-line-number="122"></td>
+        <td id="LC122" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-e">.col-md-6</span> {</span></td>
+      </tr>
+      <tr>
+        <td id="L123" class="blob-num js-line-number" data-line-number="123"></td>
+        <td id="LC123" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">    <span class="pl-c1"><span class="pl-c1">width</span></span>: <span class="pl-c1">50<span class="pl-k">%</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L124" class="blob-num js-line-number" data-line-number="124"></td>
+        <td id="LC124" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  }</span></td>
+      </tr>
+      <tr>
+        <td id="L125" class="blob-num js-line-number" data-line-number="125"></td>
+        <td id="LC125" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">}</span></td>
+      </tr>
+      <tr>
+        <td id="L126" class="blob-num js-line-number" data-line-number="126"></td>
+        <td id="LC126" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-k">@media</span> (<span class="pl-c1">min-width</span>: <span class="pl-c1">1200<span class="pl-k">px</span></span>) {</span></td>
+      </tr>
+      <tr>
+        <td id="L127" class="blob-num js-line-number" data-line-number="127"></td>
+        <td id="LC127" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-e">.container</span> {</span></td>
+      </tr>
+      <tr>
+        <td id="L128" class="blob-num js-line-number" data-line-number="128"></td>
+        <td id="LC128" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">    <span class="pl-c1"><span class="pl-c1">width</span></span>: <span class="pl-c1">1170<span class="pl-k">px</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L129" class="blob-num js-line-number" data-line-number="129"></td>
+        <td id="LC129" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  }</span></td>
+      </tr>
+      <tr>
+        <td id="L130" class="blob-num js-line-number" data-line-number="130"></td>
+        <td id="LC130" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">}</span></td>
+      </tr>
+      <tr>
+        <td id="L131" class="blob-num js-line-number" data-line-number="131"></td>
+        <td id="LC131" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"></span></td>
+      </tr>
+      <tr>
+        <td id="L132" class="blob-num js-line-number" data-line-number="132"></td>
+        <td id="LC132" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-ent">a</span> {</span></td>
+      </tr>
+      <tr>
+        <td id="L133" class="blob-num js-line-number" data-line-number="133"></td>
+        <td id="LC133" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">color</span></span>: <span class="pl-c1">#069</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L134" class="blob-num js-line-number" data-line-number="134"></td>
+        <td id="LC134" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">text-decoration</span></span>: <span class="pl-c1">none</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L135" class="blob-num js-line-number" data-line-number="135"></td>
+        <td id="LC135" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">}</span></td>
+      </tr>
+      <tr>
+        <td id="L136" class="blob-num js-line-number" data-line-number="136"></td>
+        <td id="LC136" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-ent">a</span><span class="pl-e">:hover</span> {</span></td>
+      </tr>
+      <tr>
+        <td id="L137" class="blob-num js-line-number" data-line-number="137"></td>
+        <td id="LC137" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">color</span></span>: <span class="pl-c1">#EA0011</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L138" class="blob-num js-line-number" data-line-number="138"></td>
+        <td id="LC138" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">text-decoration</span></span>: <span class="pl-c1">underline</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L139" class="blob-num js-line-number" data-line-number="139"></td>
+        <td id="LC139" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">}</span></td>
+      </tr>
+      <tr>
+        <td id="L140" class="blob-num js-line-number" data-line-number="140"></td>
+        <td id="LC140" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-ent">hgroup</span> {</span></td>
+      </tr>
+      <tr>
+        <td id="L141" class="blob-num js-line-number" data-line-number="141"></td>
+        <td id="LC141" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">margin-top</span></span>: <span class="pl-c1">50<span class="pl-k">px</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L142" class="blob-num js-line-number" data-line-number="142"></td>
+        <td id="LC142" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">}</span></td>
+      </tr>
+      <tr>
+        <td id="L143" class="blob-num js-line-number" data-line-number="143"></td>
+        <td id="LC143" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-ent">footer</span> {</span></td>
+      </tr>
+      <tr>
+        <td id="L144" class="blob-num js-line-number" data-line-number="144"></td>
+        <td id="LC144" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">    <span class="pl-c1"><span class="pl-c1">margin</span></span>: <span class="pl-c1">50<span class="pl-k">px</span></span> <span class="pl-c1">0</span> <span class="pl-c1">25<span class="pl-k">px</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L145" class="blob-num js-line-number" data-line-number="145"></td>
+        <td id="LC145" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">}</span></td>
+      </tr>
+      <tr>
+        <td id="L146" class="blob-num js-line-number" data-line-number="146"></td>
+        <td id="LC146" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-ent">h1</span>, <span class="pl-ent">h2</span>, <span class="pl-ent">h3</span> {</span></td>
+      </tr>
+      <tr>
+        <td id="L147" class="blob-num js-line-number" data-line-number="147"></td>
+        <td id="LC147" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">color</span></span>: <span class="pl-c1">#000</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L148" class="blob-num js-line-number" data-line-number="148"></td>
+        <td id="LC148" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">line-height</span></span>: <span class="pl-c1">1.38<span class="pl-k">em</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L149" class="blob-num js-line-number" data-line-number="149"></td>
+        <td id="LC149" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">margin</span></span>: <span class="pl-c1">1.5<span class="pl-k">em</span></span> <span class="pl-c1">0</span> <span class="pl-c1">.3<span class="pl-k">em</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L150" class="blob-num js-line-number" data-line-number="150"></td>
+        <td id="LC150" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">}</span></td>
+      </tr>
+      <tr>
+        <td id="L151" class="blob-num js-line-number" data-line-number="151"></td>
+        <td id="LC151" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-ent">h1</span> {</span></td>
+      </tr>
+      <tr>
+        <td id="L152" class="blob-num js-line-number" data-line-number="152"></td>
+        <td id="LC152" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">font-size</span></span>: <span class="pl-c1">25<span class="pl-k">px</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L153" class="blob-num js-line-number" data-line-number="153"></td>
+        <td id="LC153" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">font-weight</span></span>: <span class="pl-c1">300</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L154" class="blob-num js-line-number" data-line-number="154"></td>
+        <td id="LC154" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">border-bottom</span></span>: <span class="pl-c1">1<span class="pl-k">px</span></span> <span class="pl-c1">solid</span> <span class="pl-c1">#fff</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L155" class="blob-num js-line-number" data-line-number="155"></td>
+        <td id="LC155" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">margin-bottom</span></span>: <span class="pl-c1">.5<span class="pl-k">em</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L156" class="blob-num js-line-number" data-line-number="156"></td>
+        <td id="LC156" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">}</span></td>
+      </tr>
+      <tr>
+        <td id="L157" class="blob-num js-line-number" data-line-number="157"></td>
+        <td id="LC157" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-ent">h1</span><span class="pl-e">:after</span> {</span></td>
+      </tr>
+      <tr>
+        <td id="L158" class="blob-num js-line-number" data-line-number="158"></td>
+        <td id="LC158" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">content</span></span>: <span class="pl-s"><span class="pl-pds">&quot;</span><span class="pl-pds">&quot;</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L159" class="blob-num js-line-number" data-line-number="159"></td>
+        <td id="LC159" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">display</span></span>: <span class="pl-c1">block</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L160" class="blob-num js-line-number" data-line-number="160"></td>
+        <td id="LC160" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">width</span></span>: <span class="pl-c1">100<span class="pl-k">%</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L161" class="blob-num js-line-number" data-line-number="161"></td>
+        <td id="LC161" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">height</span></span>: <span class="pl-c1">1<span class="pl-k">px</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L162" class="blob-num js-line-number" data-line-number="162"></td>
+        <td id="LC162" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">background-color</span></span>: <span class="pl-c1">#ddd</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L163" class="blob-num js-line-number" data-line-number="163"></td>
+        <td id="LC163" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">}</span></td>
+      </tr>
+      <tr>
+        <td id="L164" class="blob-num js-line-number" data-line-number="164"></td>
+        <td id="LC164" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-ent">h2</span> {</span></td>
+      </tr>
+      <tr>
+        <td id="L165" class="blob-num js-line-number" data-line-number="165"></td>
+        <td id="LC165" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">font-size</span></span>: <span class="pl-c1">19<span class="pl-k">px</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L166" class="blob-num js-line-number" data-line-number="166"></td>
+        <td id="LC166" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">font-weight</span></span>: <span class="pl-c1">400</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L167" class="blob-num js-line-number" data-line-number="167"></td>
+        <td id="LC167" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">}</span></td>
+      </tr>
+      <tr>
+        <td id="L168" class="blob-num js-line-number" data-line-number="168"></td>
+        <td id="LC168" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-ent">h3</span> {</span></td>
+      </tr>
+      <tr>
+        <td id="L169" class="blob-num js-line-number" data-line-number="169"></td>
+        <td id="LC169" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">font-size</span></span>: <span class="pl-c1">15<span class="pl-k">px</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L170" class="blob-num js-line-number" data-line-number="170"></td>
+        <td id="LC170" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">font-weight</span></span>: <span class="pl-c1">400</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L171" class="blob-num js-line-number" data-line-number="171"></td>
+        <td id="LC171" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">margin</span></span>: <span class="pl-c1">0</span> <span class="pl-c1">0</span> <span class="pl-c1">.3<span class="pl-k">em</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L172" class="blob-num js-line-number" data-line-number="172"></td>
+        <td id="LC172" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">}</span></td>
+      </tr>
+      <tr>
+        <td id="L173" class="blob-num js-line-number" data-line-number="173"></td>
+        <td id="LC173" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-ent">p</span> {</span></td>
+      </tr>
+      <tr>
+        <td id="L174" class="blob-num js-line-number" data-line-number="174"></td>
+        <td id="LC174" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">margin</span></span>: <span class="pl-c1">0</span> <span class="pl-c1">0</span> <span class="pl-c1">2<span class="pl-k">em</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L175" class="blob-num js-line-number" data-line-number="175"></td>
+        <td id="LC175" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">text-align</span></span>: <span class="pl-c1">justify</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L176" class="blob-num js-line-number" data-line-number="176"></td>
+        <td id="LC176" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">}</span></td>
+      </tr>
+      <tr>
+        <td id="L177" class="blob-num js-line-number" data-line-number="177"></td>
+        <td id="LC177" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-ent">p</span> <span class="pl-k">+</span> <span class="pl-ent">h2</span> {</span></td>
+      </tr>
+      <tr>
+        <td id="L178" class="blob-num js-line-number" data-line-number="178"></td>
+        <td id="LC178" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">margin-top</span></span>: <span class="pl-c1">2<span class="pl-k">em</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L179" class="blob-num js-line-number" data-line-number="179"></td>
+        <td id="LC179" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">}</span></td>
+      </tr>
+      <tr>
+        <td id="L180" class="blob-num js-line-number" data-line-number="180"></td>
+        <td id="LC180" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-ent">html</span> {</span></td>
+      </tr>
+      <tr>
+        <td id="L181" class="blob-num js-line-number" data-line-number="181"></td>
+        <td id="LC181" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">background</span></span>: <span class="pl-c1">#f5f5f5</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L182" class="blob-num js-line-number" data-line-number="182"></td>
+        <td id="LC182" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">height</span></span>: <span class="pl-c1">100<span class="pl-k">%</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L183" class="blob-num js-line-number" data-line-number="183"></td>
+        <td id="LC183" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">}</span></td>
+      </tr>
+      <tr>
+        <td id="L184" class="blob-num js-line-number" data-line-number="184"></td>
+        <td id="LC184" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-ent">code</span>{</span></td>
+      </tr>
+      <tr>
+        <td id="L185" class="blob-num js-line-number" data-line-number="185"></td>
+        <td id="LC185" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">background-color</span></span>: <span class="pl-c1">white</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L186" class="blob-num js-line-number" data-line-number="186"></td>
+        <td id="LC186" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">border</span></span>: <span class="pl-c1">1<span class="pl-k">px</span></span> <span class="pl-c1">solid</span> <span class="pl-c1">#ccc</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L187" class="blob-num js-line-number" data-line-number="187"></td>
+        <td id="LC187" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">padding</span></span>: <span class="pl-c1">1<span class="pl-k">px</span></span> <span class="pl-c1">5<span class="pl-k">px</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L188" class="blob-num js-line-number" data-line-number="188"></td>
+        <td id="LC188" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">color</span></span>: <span class="pl-c1">#888</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L189" class="blob-num js-line-number" data-line-number="189"></td>
+        <td id="LC189" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">}</span></td>
+      </tr>
+      <tr>
+        <td id="L190" class="blob-num js-line-number" data-line-number="190"></td>
+        <td id="LC190" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-e">.code</span>{</span></td>
+      </tr>
+      <tr>
+        <td id="L191" class="blob-num js-line-number" data-line-number="191"></td>
+        <td id="LC191" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">background-color</span></span>: <span class="pl-c1">white</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L192" class="blob-num js-line-number" data-line-number="192"></td>
+        <td id="LC192" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">border</span></span>: <span class="pl-c1">1<span class="pl-k">px</span></span> <span class="pl-c1">solid</span> <span class="pl-c1">#ccc</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L193" class="blob-num js-line-number" data-line-number="193"></td>
+        <td id="LC193" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">padding</span></span>: <span class="pl-c1">1<span class="pl-k">px</span></span> <span class="pl-c1">5<span class="pl-k">px</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L194" class="blob-num js-line-number" data-line-number="194"></td>
+        <td id="LC194" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">color</span></span>: <span class="pl-c1">#888</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L195" class="blob-num js-line-number" data-line-number="195"></td>
+        <td id="LC195" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">}</span></td>
+      </tr>
+      <tr>
+        <td id="L196" class="blob-num js-line-number" data-line-number="196"></td>
+        <td id="LC196" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"><span class="pl-ent">pre</span> {</span></td>
+      </tr>
+      <tr>
+        <td id="L197" class="blob-num js-line-number" data-line-number="197"></td>
+        <td id="LC197" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">display</span></span>: <span class="pl-c1">block</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L198" class="blob-num js-line-number" data-line-number="198"></td>
+        <td id="LC198" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">padding</span></span>: <span class="pl-c1">13.333<span class="pl-k">px</span></span> <span class="pl-c1">20<span class="pl-k">px</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L199" class="blob-num js-line-number" data-line-number="199"></td>
+        <td id="LC199" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">margin</span></span>: <span class="pl-c1">0</span> <span class="pl-c1">0</span> <span class="pl-c1">20<span class="pl-k">px</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L200" class="blob-num js-line-number" data-line-number="200"></td>
+        <td id="LC200" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">font-size</span></span>: <span class="pl-c1">13<span class="pl-k">px</span></span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L201" class="blob-num js-line-number" data-line-number="201"></td>
+        <td id="LC201" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">line-height</span></span>: <span class="pl-c1">1.4</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L202" class="blob-num js-line-number" data-line-number="202"></td>
+        <td id="LC202" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">background-color</span></span>: <span class="pl-c1">#fff</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L203" class="blob-num js-line-number" data-line-number="203"></td>
+        <td id="LC203" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">border-left</span></span>: <span class="pl-c1">2<span class="pl-k">px</span></span> <span class="pl-c1">solid</span> <span class="pl-c1">rgba</span>(<span class="pl-c1">120</span>,<span class="pl-c1">120</span>,<span class="pl-c1">120</span>,<span class="pl-c1">0.35</span>);</span></td>
+      </tr>
+      <tr>
+        <td id="L204" class="blob-num js-line-number" data-line-number="204"></td>
+        <td id="LC204" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">white-space</span></span>: <span class="pl-c1">pre</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L205" class="blob-num js-line-number" data-line-number="205"></td>
+        <td id="LC205" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">white-space</span></span>: <span class="pl-c1">pre-wrap</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L206" class="blob-num js-line-number" data-line-number="206"></td>
+        <td id="LC206" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">word-break</span></span>: <span class="pl-c1">normal</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L207" class="blob-num js-line-number" data-line-number="207"></td>
+        <td id="LC207" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">word-wrap</span></span>: <span class="pl-c1">break-word</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L208" class="blob-num js-line-number" data-line-number="208"></td>
+        <td id="LC208" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">overflow</span></span>: <span class="pl-c1">auto</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L209" class="blob-num js-line-number" data-line-number="209"></td>
+        <td id="LC209" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">  <span class="pl-c1"><span class="pl-c1">font-family</span></span>: Menlo,Monaco,<span class="pl-s"><span class="pl-pds">&quot;</span>Liberation Mono<span class="pl-pds">&quot;</span></span>,Consolas,<span class="pl-c1">monospace</span> <span class="pl-k">!important</span>;</span></td>
+      </tr>
+      <tr>
+        <td id="L210" class="blob-num js-line-number" data-line-number="210"></td>
+        <td id="LC210" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">}</span></td>
+      </tr>
+      <tr>
+        <td id="L211" class="blob-num js-line-number" data-line-number="211"></td>
+        <td id="LC211" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"></span></td>
+      </tr>
+      <tr>
+        <td id="L212" class="blob-num js-line-number" data-line-number="212"></td>
+        <td id="LC212" class="blob-code blob-code-inner js-file-line"><span class="pl-s1"></span><span class="pl-s1">&lt;</span>/<span class="pl-ent">style</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L213" class="blob-num js-line-number" data-line-number="213"></td>
+        <td id="LC213" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L214" class="blob-num js-line-number" data-line-number="214"></td>
+        <td id="LC214" class="blob-code blob-code-inner js-file-line">&lt;/<span class="pl-ent">head</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L215" class="blob-num js-line-number" data-line-number="215"></td>
+        <td id="LC215" class="blob-code blob-code-inner js-file-line">&lt;<span class="pl-ent">body</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L216" class="blob-num js-line-number" data-line-number="216"></td>
+        <td id="LC216" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L217" class="blob-num js-line-number" data-line-number="217"></td>
+        <td id="LC217" class="blob-code blob-code-inner js-file-line">&lt;<span class="pl-ent">section</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">&#39;</span>container<span class="pl-pds">&#39;</span></span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L218" class="blob-num js-line-number" data-line-number="218"></td>
+        <td id="LC218" class="blob-code blob-code-inner js-file-line">          &lt;<span class="pl-ent">hgroup</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L219" class="blob-num js-line-number" data-line-number="219"></td>
+        <td id="LC219" class="blob-code blob-code-inner js-file-line">            &lt;<span class="pl-ent">h1</span>&gt;Welcome to your Node.js application on OpenShift&lt;/<span class="pl-ent">h1</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L220" class="blob-num js-line-number" data-line-number="220"></td>
+        <td id="LC220" class="blob-code blob-code-inner js-file-line">          &lt;/<span class="pl-ent">hgroup</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L221" class="blob-num js-line-number" data-line-number="221"></td>
+        <td id="LC221" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L222" class="blob-num js-line-number" data-line-number="222"></td>
+        <td id="LC222" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L223" class="blob-num js-line-number" data-line-number="223"></td>
+        <td id="LC223" class="blob-code blob-code-inner js-file-line">        &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">&quot;</span>row<span class="pl-pds">&quot;</span></span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L224" class="blob-num js-line-number" data-line-number="224"></td>
+        <td id="LC224" class="blob-code blob-code-inner js-file-line">          &lt;<span class="pl-ent">section</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">&#39;</span>col-xs-12 col-sm-6 col-md-6<span class="pl-pds">&#39;</span></span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L225" class="blob-num js-line-number" data-line-number="225"></td>
+        <td id="LC225" class="blob-code blob-code-inner js-file-line">            &lt;<span class="pl-ent">section</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L226" class="blob-num js-line-number" data-line-number="226"></td>
+        <td id="LC226" class="blob-code blob-code-inner js-file-line">              &lt;<span class="pl-ent">h2</span>&gt;How to use this example application&lt;/<span class="pl-ent">h2</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L227" class="blob-num js-line-number" data-line-number="227"></td>
+        <td id="LC227" class="blob-code blob-code-inner js-file-line">                &lt;<span class="pl-ent">p</span>&gt;For instructions on how to use this application with OpenShift, start by reading the &lt;<span class="pl-ent">a</span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">&quot;</span>http://docs.openshift.org/latest/dev_guide/templates.html#using-the-quickstart-templates<span class="pl-pds">&quot;</span></span>&gt;Developer Guide&lt;/<span class="pl-ent">a</span>&gt;.&lt;/<span class="pl-ent">p</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L228" class="blob-num js-line-number" data-line-number="228"></td>
+        <td id="LC228" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L229" class="blob-num js-line-number" data-line-number="229"></td>
+        <td id="LC229" class="blob-code blob-code-inner js-file-line">              &lt;<span class="pl-ent">h2</span>&gt;Deploying code changes&lt;/<span class="pl-ent">h2</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L230" class="blob-num js-line-number" data-line-number="230"></td>
+        <td id="LC230" class="blob-code blob-code-inner js-file-line">                &lt;<span class="pl-ent">p</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L231" class="blob-num js-line-number" data-line-number="231"></td>
+        <td id="LC231" class="blob-code blob-code-inner js-file-line">                  The source code for this application is available to be forked from the &lt;<span class="pl-ent">a</span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">&quot;</span>https://www.github.com/openshift/nodejs-ex<span class="pl-pds">&quot;</span></span>&gt;OpenShift GitHub repository&lt;/<span class="pl-ent">a</span>&gt;.</td>
+      </tr>
+      <tr>
+        <td id="L232" class="blob-num js-line-number" data-line-number="232"></td>
+        <td id="LC232" class="blob-code blob-code-inner js-file-line">                  You can configure a webhook in your repository to make OpenShift automatically start a build whenever you push your code:</td>
+      </tr>
+      <tr>
+        <td id="L233" class="blob-num js-line-number" data-line-number="233"></td>
+        <td id="LC233" class="blob-code blob-code-inner js-file-line">                &lt;/<span class="pl-ent">p</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L234" class="blob-num js-line-number" data-line-number="234"></td>
+        <td id="LC234" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L235" class="blob-num js-line-number" data-line-number="235"></td>
+        <td id="LC235" class="blob-code blob-code-inner js-file-line">&lt;<span class="pl-ent">ol</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L236" class="blob-num js-line-number" data-line-number="236"></td>
+        <td id="LC236" class="blob-code blob-code-inner js-file-line">  &lt;<span class="pl-ent">li</span>&gt;From the Web Console homepage, navigate to your project&lt;/<span class="pl-ent">li</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L237" class="blob-num js-line-number" data-line-number="237"></td>
+        <td id="LC237" class="blob-code blob-code-inner js-file-line">  &lt;<span class="pl-ent">li</span>&gt;Click on Browse <span class="pl-c1">&amp;gt;</span> Builds&lt;/<span class="pl-ent">li</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L238" class="blob-num js-line-number" data-line-number="238"></td>
+        <td id="LC238" class="blob-code blob-code-inner js-file-line">  &lt;<span class="pl-ent">li</span>&gt;Click the link with your BuildConfig name&lt;/<span class="pl-ent">li</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L239" class="blob-num js-line-number" data-line-number="239"></td>
+        <td id="LC239" class="blob-code blob-code-inner js-file-line">  &lt;<span class="pl-ent">li</span>&gt;Click the Configuration tab&lt;/<span class="pl-ent">li</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L240" class="blob-num js-line-number" data-line-number="240"></td>
+        <td id="LC240" class="blob-code blob-code-inner js-file-line">  &lt;<span class="pl-ent">li</span>&gt;Click the &quot;Copy to clipboard&quot; icon to the right of the &quot;GitHub webhook URL&quot; field&lt;/<span class="pl-ent">li</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L241" class="blob-num js-line-number" data-line-number="241"></td>
+        <td id="LC241" class="blob-code blob-code-inner js-file-line">  &lt;<span class="pl-ent">li</span>&gt;Navigate to your repository on GitHub and click on repository settings <span class="pl-c1">&amp;gt;</span> webhooks <span class="pl-c1">&amp;gt;</span> Add webhook&lt;/<span class="pl-ent">li</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L242" class="blob-num js-line-number" data-line-number="242"></td>
+        <td id="LC242" class="blob-code blob-code-inner js-file-line">  &lt;<span class="pl-ent">li</span>&gt;Paste your webhook URL provided by OpenShift&lt;/<span class="pl-ent">li</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L243" class="blob-num js-line-number" data-line-number="243"></td>
+        <td id="LC243" class="blob-code blob-code-inner js-file-line">  &lt;<span class="pl-ent">li</span>&gt;Leave the defaults for the remaining fields <span class="pl-c1">&amp;mdash;</span> that&#39;s it!&lt;/<span class="pl-ent">li</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L244" class="blob-num js-line-number" data-line-number="244"></td>
+        <td id="LC244" class="blob-code blob-code-inner js-file-line">&lt;/<span class="pl-ent">ol</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L245" class="blob-num js-line-number" data-line-number="245"></td>
+        <td id="LC245" class="blob-code blob-code-inner js-file-line">&lt;<span class="pl-ent">p</span>&gt;After you save your webhook, if you refresh your settings page you can see the status of the ping that Github sent to OpenShift to verify it can reach the server.&lt;/<span class="pl-ent">p</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L246" class="blob-num js-line-number" data-line-number="246"></td>
+        <td id="LC246" class="blob-code blob-code-inner js-file-line">&lt;<span class="pl-ent">p</span>&gt;Note: adding a webhook requires your OpenShift server to be reachable from GitHub.&lt;/<span class="pl-ent">p</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L247" class="blob-num js-line-number" data-line-number="247"></td>
+        <td id="LC247" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L248" class="blob-num js-line-number" data-line-number="248"></td>
+        <td id="LC248" class="blob-code blob-code-inner js-file-line">                &lt;<span class="pl-ent">h3</span>&gt;Working in your local Git repository&lt;/<span class="pl-ent">h3</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L249" class="blob-num js-line-number" data-line-number="249"></td>
+        <td id="LC249" class="blob-code blob-code-inner js-file-line">                &lt;<span class="pl-ent">p</span>&gt;If you forked the application from the OpenShift GitHub example, you&#39;ll need to manually clone the repository to your local system. Copy the application&#39;s source code Git URL and then run:&lt;/<span class="pl-ent">p</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L250" class="blob-num js-line-number" data-line-number="250"></td>
+        <td id="LC250" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L251" class="blob-num js-line-number" data-line-number="251"></td>
+        <td id="LC251" class="blob-code blob-code-inner js-file-line">&lt;<span class="pl-ent">pre</span>&gt;$ git clone <span class="pl-c1">&amp;lt;</span>git_url<span class="pl-c1">&amp;gt;</span> <span class="pl-c1">&amp;lt;</span>directory_to_create<span class="pl-c1">&amp;gt;</span></td>
+      </tr>
+      <tr>
+        <td id="L252" class="blob-num js-line-number" data-line-number="252"></td>
+        <td id="LC252" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L253" class="blob-num js-line-number" data-line-number="253"></td>
+        <td id="LC253" class="blob-code blob-code-inner js-file-line"># Within your project directory</td>
+      </tr>
+      <tr>
+        <td id="L254" class="blob-num js-line-number" data-line-number="254"></td>
+        <td id="LC254" class="blob-code blob-code-inner js-file-line"># Commit your changes and push to OpenShift</td>
+      </tr>
+      <tr>
+        <td id="L255" class="blob-num js-line-number" data-line-number="255"></td>
+        <td id="LC255" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L256" class="blob-num js-line-number" data-line-number="256"></td>
+        <td id="LC256" class="blob-code blob-code-inner js-file-line">$ git commit -a -m &#39;Some commit message&#39;</td>
+      </tr>
+      <tr>
+        <td id="L257" class="blob-num js-line-number" data-line-number="257"></td>
+        <td id="LC257" class="blob-code blob-code-inner js-file-line">$ git push&lt;/<span class="pl-ent">pre</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L258" class="blob-num js-line-number" data-line-number="258"></td>
+        <td id="LC258" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L259" class="blob-num js-line-number" data-line-number="259"></td>
+        <td id="LC259" class="blob-code blob-code-inner js-file-line">&lt;<span class="pl-ent">p</span>&gt;After pushing changes, you&#39;ll need to manually trigger a build if you did not setup a webhook as described above.&lt;/<span class="pl-ent">p</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L260" class="blob-num js-line-number" data-line-number="260"></td>
+        <td id="LC260" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L261" class="blob-num js-line-number" data-line-number="261"></td>
+        <td id="LC261" class="blob-code blob-code-inner js-file-line">            &lt;/<span class="pl-ent">section</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L262" class="blob-num js-line-number" data-line-number="262"></td>
+        <td id="LC262" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L263" class="blob-num js-line-number" data-line-number="263"></td>
+        <td id="LC263" class="blob-code blob-code-inner js-file-line">          &lt;/<span class="pl-ent">section</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L264" class="blob-num js-line-number" data-line-number="264"></td>
+        <td id="LC264" class="blob-code blob-code-inner js-file-line">          &lt;<span class="pl-ent">section</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">&quot;</span>col-xs-12 col-sm-6 col-md-6<span class="pl-pds">&quot;</span></span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L265" class="blob-num js-line-number" data-line-number="265"></td>
+        <td id="LC265" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L266" class="blob-num js-line-number" data-line-number="266"></td>
+        <td id="LC266" class="blob-code blob-code-inner js-file-line">                &lt;<span class="pl-ent">h2</span>&gt;Managing your application&lt;/<span class="pl-ent">h2</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L267" class="blob-num js-line-number" data-line-number="267"></td>
+        <td id="LC267" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L268" class="blob-num js-line-number" data-line-number="268"></td>
+        <td id="LC268" class="blob-code blob-code-inner js-file-line">                &lt;<span class="pl-ent">p</span>&gt;Documentation on how to manage your application from the Web Console or Command Line is available at the &lt;<span class="pl-ent">a</span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">&quot;</span>http://docs.openshift.org/latest/dev_guide/overview.html<span class="pl-pds">&quot;</span></span>&gt;Developer Guide&lt;/<span class="pl-ent">a</span>&gt;.&lt;/<span class="pl-ent">p</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L269" class="blob-num js-line-number" data-line-number="269"></td>
+        <td id="LC269" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L270" class="blob-num js-line-number" data-line-number="270"></td>
+        <td id="LC270" class="blob-code blob-code-inner js-file-line">                &lt;<span class="pl-ent">h3</span>&gt;Web Console&lt;/<span class="pl-ent">h3</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L271" class="blob-num js-line-number" data-line-number="271"></td>
+        <td id="LC271" class="blob-code blob-code-inner js-file-line">                &lt;<span class="pl-ent">p</span>&gt;You can use the Web Console to view the state of your application components and launch new builds.&lt;/<span class="pl-ent">p</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L272" class="blob-num js-line-number" data-line-number="272"></td>
+        <td id="LC272" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L273" class="blob-num js-line-number" data-line-number="273"></td>
+        <td id="LC273" class="blob-code blob-code-inner js-file-line">                &lt;<span class="pl-ent">h3</span>&gt;Command Line&lt;/<span class="pl-ent">h3</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L274" class="blob-num js-line-number" data-line-number="274"></td>
+        <td id="LC274" class="blob-code blob-code-inner js-file-line">                &lt;<span class="pl-ent">p</span>&gt;With the &lt;<span class="pl-ent">a</span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">&quot;</span>http://docs.openshift.org/latest/cli_reference/overview.html<span class="pl-pds">&quot;</span></span>&gt;OpenShift command line interface&lt;/<span class="pl-ent">a</span>&gt; (CLI), you can create applications and manage projects from a terminal.&lt;/<span class="pl-ent">p</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L275" class="blob-num js-line-number" data-line-number="275"></td>
+        <td id="LC275" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L276" class="blob-num js-line-number" data-line-number="276"></td>
+        <td id="LC276" class="blob-code blob-code-inner js-file-line">                &lt;<span class="pl-ent">h2</span>&gt;Development Resources&lt;/<span class="pl-ent">h2</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L277" class="blob-num js-line-number" data-line-number="277"></td>
+        <td id="LC277" class="blob-code blob-code-inner js-file-line">                  &lt;<span class="pl-ent">ul</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L278" class="blob-num js-line-number" data-line-number="278"></td>
+        <td id="LC278" class="blob-code blob-code-inner js-file-line">                    &lt;<span class="pl-ent">li</span>&gt;&lt;<span class="pl-ent">a</span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">&quot;</span>http://docs.openshift.org/latest/welcome/index.html<span class="pl-pds">&quot;</span></span>&gt;OpenShift Documentation&lt;/<span class="pl-ent">a</span>&gt;&lt;/<span class="pl-ent">li</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L279" class="blob-num js-line-number" data-line-number="279"></td>
+        <td id="LC279" class="blob-code blob-code-inner js-file-line">                    &lt;<span class="pl-ent">li</span>&gt;&lt;<span class="pl-ent">a</span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">&quot;</span>https://github.com/openshift/origin<span class="pl-pds">&quot;</span></span>&gt;Openshift Origin GitHub&lt;/<span class="pl-ent">a</span>&gt;&lt;/<span class="pl-ent">li</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L280" class="blob-num js-line-number" data-line-number="280"></td>
+        <td id="LC280" class="blob-code blob-code-inner js-file-line">                    &lt;<span class="pl-ent">li</span>&gt;&lt;<span class="pl-ent">a</span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">&quot;</span>https://github.com/openshift/source-to-image<span class="pl-pds">&quot;</span></span>&gt;Source To Image GitHub&lt;/<span class="pl-ent">a</span>&gt;&lt;/<span class="pl-ent">li</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L281" class="blob-num js-line-number" data-line-number="281"></td>
+        <td id="LC281" class="blob-code blob-code-inner js-file-line">                    &lt;<span class="pl-ent">li</span>&gt;&lt;<span class="pl-ent">a</span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">&quot;</span>http://docs.openshift.org/latest/using_images/s2i_images/nodejs.html<span class="pl-pds">&quot;</span></span>&gt;Getting Started with Node.js on OpenShift&lt;/<span class="pl-ent">a</span>&gt;&lt;/<span class="pl-ent">li</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L282" class="blob-num js-line-number" data-line-number="282"></td>
+        <td id="LC282" class="blob-code blob-code-inner js-file-line">                    &lt;<span class="pl-ent">li</span>&gt;&lt;<span class="pl-ent">a</span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">&quot;</span>http://stackoverflow.com/questions/tagged/openshift<span class="pl-pds">&quot;</span></span>&gt;Stack Overflow questions for OpenShift&lt;/<span class="pl-ent">a</span>&gt;&lt;/<span class="pl-ent">li</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L283" class="blob-num js-line-number" data-line-number="283"></td>
+        <td id="LC283" class="blob-code blob-code-inner js-file-line">                    &lt;<span class="pl-ent">li</span>&gt;&lt;<span class="pl-ent">a</span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">&quot;</span>http://git-scm.com/documentation<span class="pl-pds">&quot;</span></span>&gt;Git documentation&lt;/<span class="pl-ent">a</span>&gt;&lt;/<span class="pl-ent">li</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L284" class="blob-num js-line-number" data-line-number="284"></td>
+        <td id="LC284" class="blob-code blob-code-inner js-file-line">                  &lt;/<span class="pl-ent">ul</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L285" class="blob-num js-line-number" data-line-number="285"></td>
+        <td id="LC285" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L286" class="blob-num js-line-number" data-line-number="286"></td>
+        <td id="LC286" class="blob-code blob-code-inner js-file-line">                &lt;<span class="pl-ent">h2</span>&gt;Request information&lt;/<span class="pl-ent">h2</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L287" class="blob-num js-line-number" data-line-number="287"></td>
+        <td id="LC287" class="blob-code blob-code-inner js-file-line">                &lt;<span class="pl-ent">p</span>&gt;Page view count:</td>
+      </tr>
+      <tr>
+        <td id="L288" class="blob-num js-line-number" data-line-number="288"></td>
+        <td id="LC288" class="blob-code blob-code-inner js-file-line">                &lt;% if (pageCountMessage) { %&gt;</td>
+      </tr>
+      <tr>
+        <td id="L289" class="blob-num js-line-number" data-line-number="289"></td>
+        <td id="LC289" class="blob-code blob-code-inner js-file-line">                   &lt;<span class="pl-ent">span</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">&quot;</span>code<span class="pl-pds">&quot;</span></span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">&quot;</span>count-value<span class="pl-pds">&quot;</span></span>&gt;&lt;%=pageCountMessage%&gt;&lt;/<span class="pl-ent">span</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L290" class="blob-num js-line-number" data-line-number="290"></td>
+        <td id="LC290" class="blob-code blob-code-inner js-file-line">                   &lt;/<span class="pl-ent">p</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L291" class="blob-num js-line-number" data-line-number="291"></td>
+        <td id="LC291" class="blob-code blob-code-inner js-file-line">                    &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">&quot;</span>code<span class="pl-pds">&quot;</span></span>&gt;&lt;<span class="pl-ent">h3</span>&gt;DB Connection Info:&lt;/<span class="pl-ent">h3</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L292" class="blob-num js-line-number" data-line-number="292"></td>
+        <td id="LC292" class="blob-code blob-code-inner js-file-line">                      &lt;<span class="pl-ent">table</span> <span class="pl-e">style</span>=<span class="pl-s"><span class="pl-pds">&#39;</span>margin-left: 20px<span class="pl-pds">&#39;</span></span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L293" class="blob-num js-line-number" data-line-number="293"></td>
+        <td id="LC293" class="blob-code blob-code-inner js-file-line">                          &lt;<span class="pl-ent">tr</span>&gt;&lt;<span class="pl-ent">td</span>&gt;Type:&lt;/<span class="pl-ent">td</span>&gt;&lt;<span class="pl-ent">td</span>&gt;&lt;%= dbInfo.type %&gt;&lt;/<span class="pl-ent">td</span>&gt;&lt;/<span class="pl-ent">tr</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L294" class="blob-num js-line-number" data-line-number="294"></td>
+        <td id="LC294" class="blob-code blob-code-inner js-file-line">                          &lt;<span class="pl-ent">tr</span>&gt;&lt;<span class="pl-ent">td</span>&gt;URL:&lt;/<span class="pl-ent">td</span>&gt;&lt;<span class="pl-ent">td</span>&gt;&lt;%= dbInfo.url %&gt;&lt;/<span class="pl-ent">td</span>&gt;&lt;/<span class="pl-ent">tr</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L295" class="blob-num js-line-number" data-line-number="295"></td>
+        <td id="LC295" class="blob-code blob-code-inner js-file-line">                      &lt;/<span class="pl-ent">table</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L296" class="blob-num js-line-number" data-line-number="296"></td>
+        <td id="LC296" class="blob-code blob-code-inner js-file-line">                    &lt;/<span class="pl-ent">div</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L297" class="blob-num js-line-number" data-line-number="297"></td>
+        <td id="LC297" class="blob-code blob-code-inner js-file-line">                &lt;% } else { %&gt;</td>
+      </tr>
+      <tr>
+        <td id="L298" class="blob-num js-line-number" data-line-number="298"></td>
+        <td id="LC298" class="blob-code blob-code-inner js-file-line">                   &lt;<span class="pl-ent">span</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">&quot;</span>code<span class="pl-pds">&quot;</span></span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">&quot;</span>count-value<span class="pl-pds">&quot;</span></span>&gt;No database configured&lt;/<span class="pl-ent">span</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L299" class="blob-num js-line-number" data-line-number="299"></td>
+        <td id="LC299" class="blob-code blob-code-inner js-file-line">                   &lt;/<span class="pl-ent">p</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L300" class="blob-num js-line-number" data-line-number="300"></td>
+        <td id="LC300" class="blob-code blob-code-inner js-file-line">                &lt;%} %&gt;</td>
+      </tr>
+      <tr>
+        <td id="L301" class="blob-num js-line-number" data-line-number="301"></td>
+        <td id="LC301" class="blob-code blob-code-inner js-file-line">          &lt;/<span class="pl-ent">section</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L302" class="blob-num js-line-number" data-line-number="302"></td>
+        <td id="LC302" class="blob-code blob-code-inner js-file-line">        &lt;/<span class="pl-ent">div</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L303" class="blob-num js-line-number" data-line-number="303"></td>
+        <td id="LC303" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="L304" class="blob-num js-line-number" data-line-number="304"></td>
+        <td id="LC304" class="blob-code blob-code-inner js-file-line">        &lt;<span class="pl-ent">footer</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L305" class="blob-num js-line-number" data-line-number="305"></td>
+        <td id="LC305" class="blob-code blob-code-inner js-file-line">          &lt;<span class="pl-ent">div</span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">&quot;</span>logo<span class="pl-pds">&quot;</span></span>&gt;&lt;<span class="pl-ent">a</span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">&quot;</span>https://www.openshift.com/<span class="pl-pds">&quot;</span></span>&gt;&lt;/<span class="pl-ent">a</span>&gt;&lt;/<span class="pl-ent">div</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L306" class="blob-num js-line-number" data-line-number="306"></td>
+        <td id="LC306" class="blob-code blob-code-inner js-file-line">        &lt;/<span class="pl-ent">footer</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L307" class="blob-num js-line-number" data-line-number="307"></td>
+        <td id="LC307" class="blob-code blob-code-inner js-file-line">&lt;/<span class="pl-ent">section</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L308" class="blob-num js-line-number" data-line-number="308"></td>
+        <td id="LC308" class="blob-code blob-code-inner js-file-line">&lt;/<span class="pl-ent">body</span>&gt;</td>
+      </tr>
+      <tr>
+        <td id="L309" class="blob-num js-line-number" data-line-number="309"></td>
+        <td id="LC309" class="blob-code blob-code-inner js-file-line">&lt;/<span class="pl-ent">html</span>&gt;</td>
+      </tr>
+</table>
+
+  <div class="BlobToolbar position-absolute js-file-line-actions dropdown js-menu-container js-select-menu d-none" aria-hidden="true">
+    <button class="btn-octicon ml-0 px-2 p-0 bg-white border border-gray-dark rounded-1 dropdown-toggle js-menu-target" id="js-file-line-action-button" type="button" aria-expanded="false" aria-haspopup="true" aria-label="Inline file action toolbar" aria-controls="inline-file-actions">
+      <svg aria-hidden="true" class="octicon octicon-kebab-horizontal" height="16" version="1.1" viewBox="0 0 13 16" width="13"><path fill-rule="evenodd" d="M1.5 9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/></svg>
+    </button>
+    <div class="dropdown-menu-content js-menu-content" id="inline-file-actions">
+      <ul class="BlobToolbar-dropdown dropdown-menu dropdown-menu-se mt-2">
+        <li><a class="js-zeroclipboard dropdown-item" style="cursor:pointer;" id="js-copy-lines" data-original-text="Copy lines">Copy lines</a></li>
+        <li><a class="js-zeroclipboard dropdown-item" id= "js-copy-permalink" style="cursor:pointer;" data-original-text="Copy permalink">Copy permalink</a></li>
+        <li><a href="/openshift/nodejs-ex/blame/ef1b71a300b58a35f37acfa69f871fc18075669d/views/index.html" class="dropdown-item js-update-url-with-hash" id="js-view-git-blame">View git blame</a></li>
+          <li><a href="/openshift/nodejs-ex/issues/new" class="dropdown-item" id="js-new-issue">Open new issue</a></li>
+      </ul>
+    </div>
+  </div>
+
+  </div>
+
+  </div>
+
+  <button type="button" data-facebox="#jump-to-line" data-facebox-class="linejump" data-hotkey="l" class="d-none">Jump to Line</button>
+  <div id="jump-to-line" style="display:none">
+    <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="" class="js-jump-to-line-form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+      <input class="form-control linejump-input js-jump-to-line-field" type="text" placeholder="Jump to line&hellip;" aria-label="Jump to line" autofocus>
+      <button type="submit" class="btn">Go</button>
+</form>  </div>
+
+
+  </div>
+  <div class="modal-backdrop js-touch-events"></div>
+</div>
+
+    </div>
+  </div>
+
+  </div>
+
+      
+<div class="footer container-lg px-3" role="contentinfo">
+  <div class="position-relative d-flex flex-justify-between py-6 mt-6 f6 text-gray border-top border-gray-light ">
+    <ul class="list-style-none d-flex flex-wrap ">
+      <li class="mr-3">&copy; 2018 <span title="0.25155s from unicorn-3476331571-hkt3t">GitHub</span>, Inc.</li>
+        <li class="mr-3"><a href="https://help.github.com/articles/github-terms-of-service/" data-ga-click="Footer, go to terms, text:terms">Terms</a></li>
+        <li class="mr-3"><a href="https://github.com/site/privacy" data-ga-click="Footer, go to privacy, text:privacy">Privacy</a></li>
+        <li class="mr-3"><a href="https://help.github.com/articles/github-security/" data-ga-click="Footer, go to security, text:security">Security</a></li>
+        <li class="mr-3"><a href="https://status.github.com/" data-ga-click="Footer, go to status, text:status">Status</a></li>
+        <li><a href="https://help.github.com" data-ga-click="Footer, go to help, text:help">Help</a></li>
+    </ul>
+
+    <a href="https://github.com" aria-label="Homepage" class="footer-octicon" title="GitHub">
+      <svg aria-hidden="true" class="octicon octicon-mark-github" height="24" version="1.1" viewBox="0 0 16 16" width="24"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+</a>
+    <ul class="list-style-none d-flex flex-wrap ">
+        <li class="mr-3"><a href="https://github.com/contact" data-ga-click="Footer, go to contact, text:contact">Contact GitHub</a></li>
+      <li class="mr-3"><a href="https://developer.github.com" data-ga-click="Footer, go to api, text:api">API</a></li>
+      <li class="mr-3"><a href="https://training.github.com" data-ga-click="Footer, go to training, text:training">Training</a></li>
+      <li class="mr-3"><a href="https://shop.github.com" data-ga-click="Footer, go to shop, text:shop">Shop</a></li>
+        <li class="mr-3"><a href="https://github.com/blog" data-ga-click="Footer, go to blog, text:blog">Blog</a></li>
+        <li><a href="https://github.com/about" data-ga-click="Footer, go to about, text:about">About</a></li>
+
+    </ul>
+  </div>
+</div>
+
+
+
+  <div id="ajax-error-message" class="ajax-error-message flash flash-error">
+    <svg aria-hidden="true" class="octicon octicon-alert" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M8.865 1.52c-.18-.31-.51-.5-.87-.5s-.69.19-.87.5L.275 13.5c-.18.31-.18.69 0 1 .19.31.52.5.87.5h13.7c.36 0 .69-.19.86-.5.17-.31.18-.69.01-1L8.865 1.52zM8.995 13h-2v-2h2v2zm0-3h-2V6h2v4z"/></svg>
+    <button type="button" class="flash-close js-ajax-error-dismiss" aria-label="Dismiss error">
+      <svg aria-hidden="true" class="octicon octicon-x" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"/></svg>
+    </button>
+    You can't perform that action at this time.
+  </div>
+
+
+    
+    <script crossorigin="anonymous" integrity="sha512-MO2ZtIEZrtDlHQRpl/db39VEpjw/+MfQjkgZhl52kxNrXqYwEKwe0oEa/IRuvPRN5v9UUrznRAoA2AgP8s/OIw==" src="https://assets-cdn.github.com/assets/frameworks-30ed99b48119.js" type="application/javascript"></script>
+    
+    <script async="async" crossorigin="anonymous" integrity="sha512-MJ1cJA/+TxAPo6uxf/bsi406QgJY9mb1k/MIDgOMzJTVxm9Vc0kyeWkdT9wq+DVa1Y2jb/zH7r0cq48+7zP15w==" src="https://assets-cdn.github.com/assets/github-309d5c240ffe.js" type="application/javascript"></script>
+    
+    
+    
+    
+  <div class="js-stale-session-flash stale-session-flash flash flash-warn flash-banner d-none">
+    <svg aria-hidden="true" class="octicon octicon-alert" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M8.865 1.52c-.18-.31-.51-.5-.87-.5s-.69.19-.87.5L.275 13.5c-.18.31-.18.69 0 1 .19.31.52.5.87.5h13.7c.36 0 .69-.19.86-.5.17-.31.18-.69.01-1L8.865 1.52zM8.995 13h-2v-2h2v2zm0-3h-2V6h2v4z"/></svg>
+    <span class="signed-in-tab-flash">You signed in with another tab or window. <a href="">Reload</a> to refresh your session.</span>
+    <span class="signed-out-tab-flash">You signed out in another tab or window. <a href="">Reload</a> to refresh your session.</span>
+  </div>
+  <div class="facebox" id="facebox" style="display:none;">
+  <div class="facebox-popup">
+    <div class="facebox-content" role="dialog" aria-labelledby="facebox-header" aria-describedby="facebox-description">
+    </div>
+    <button type="button" class="facebox-close js-facebox-close" aria-label="Close modal">
+      <svg aria-hidden="true" class="octicon octicon-x" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"/></svg>
+    </button>
+  </div>
+</div>
+
+  
+
+  </body>
 </html>
+
