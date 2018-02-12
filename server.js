@@ -9,7 +9,7 @@ app.engine('html', require('ejs').renderFile);
 app.use(morgan('combined'))
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
-    ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
+    ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1',
     mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
     mongoURLLabel = "";
 
@@ -60,6 +60,7 @@ app.get('/', function (req, res) {
   // try to initialize the db on every request if it's not already
   // initialized.
   if (!db) {
+    console.log("Initialize MongoDB!");
     initDb(function(err){});
   }
   if (db) {
@@ -70,9 +71,10 @@ app.get('/', function (req, res) {
       if (err) {
         console.log('Error running count. Message:\n'+err);
       }
-      res.render('index.html', { pageCountMessage : count, dbInfo: dbDetails });
+    res.render('index.html', { pageCountMessage : count, dbInfo : dbDetails, arrIdx : arrayIndex, ioArrays : ioArray });
     });
   } else {
+    console.log("DB not exists!");
     res.render('index.html', { pageCountMessage : null});
   }
 });
@@ -124,7 +126,7 @@ var arrayIndex;
 const maxArrayIndex = 80000;
 const startTime= Date.now();
 var txs;
-//console.log('Declaration End.')
+console.log('Declaration End.')
 client.connect('wss://ws.blockchain.info/inv');
 setInterval(caculateData,15000);
 
