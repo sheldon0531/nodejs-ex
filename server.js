@@ -96,7 +96,7 @@ app.get('/pagecount', function (req, res) {
 
 app.get('/graph', function(req, res) {
   var iodata = JSON.stringify(ioArray);
-  res.render('graph.htm', { ioArrays : ioArray });
+  res.render('graph.html', { ioArrays : ioArray });
 });
 
 // error handling
