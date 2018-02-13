@@ -254,6 +254,16 @@ function caculateData(){
     */
 };
 
+class dbCol{
+  constructor() {
+    this.date = Date.now();
+    this.tag1W = [(ioArray[1][0]/ioArray[0][0]),(ioArray[2][0]/60)];
+    this.tag2W = [(ioArray[1][1]/ioArray[0][1]),(ioArray[2][1]/60)];
+    this.tag4W = [(ioArray[1][2]/ioArray[0][2]),(ioArray[2][2]/60)];
+    this.tag8W = [(ioArray[1][3]/ioArray[0][3]),(ioArray[2][3]/60)];
+  }
+}
+
 Date.prototype.addDays = function(days) {
   var dat = new Date(this.valueOf());
   dat.setDate(dat.getDate() + days);
@@ -269,7 +279,8 @@ function insertData(){
     var col = db.collection('ledger');
     console.log("insert data into ledger DB")
     // Create a document with request IP and current time of request
-    col.insert({date: Date.now(), tag1W:[ioArray[1][0]/ioArray[0][0],ioArray[2][0]],tag2W:[ioArray[1][1]/ioArray[0][1],ioArray[2][1]],tag4W:[ioArray[1][2]/ioArray[0][2],ioArray[2][2]],tag8W:[ioArray[1][3]/ioArray[0][3],ioArray[2][3]],});
+    var itm = new dbCol();
+    col.insert(itm);
   } 
 }
 
