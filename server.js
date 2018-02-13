@@ -277,9 +277,10 @@ function insertData(){
   }
   if (db) {
     var col = db.collection('ledger');
-    console.log("insert data into ledger DB "+col);
+    console.log("insert data into ledger DB "+col.toString());
     // Create a document with request IP and current time of request
     var itm = new dbCol();
+    console.log("itm "+itm.toString());
     col.insert(itm);
   } 
 }
