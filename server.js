@@ -74,7 +74,7 @@ app.get('/', function (req, res) {
     res.render('index.html', { pageCountMessage : count, dbInfo : dbDetails});
     });
   } else {
-    console.log("DB not exists!");
+    //console.log("DB not exists!");
     res.render('index.html', { pageCountMessage : null});
   }
 });
@@ -96,18 +96,53 @@ app.get('/pagecount', function (req, res) {
 
 app.get('/graph', function(req, res) {
   res.render('graph.html');
-
 });
 
 app.get('/tabledata', function(req, res) {
-  //var iodata = JSON.stringify(ioArray);
   res.json(ioArray);
-  //res.send(iodata);
 });
 app.get('/arrayIdx', function(req, res) {
-  //var iodata = JSON.stringify(ioArray);
   res.json(arrayIndex);
-  //res.send(iodata);
+});
+app.get('/chart', function(req, res) {
+  if (!db) {
+    initDb(function(err){});
+  }
+  if (db) {
+    var chartData;
+    chartData = new Array(2);
+    chartData[0] = new Array(4);  //OI Ration
+    chartData[1] = new Array(4);  //Time Period
+    for (var i=0;i<2;i++){
+      for (var j=0;j<4;j++){
+        chartData[i][j]= new Array();
+      }
+    }
+    var col = db.collection('ledger');
+    var cursor = col.find().sort({"date": -1}).limit(240);
+    cursor.each(function(err, item) {
+      // If the item is null then the cursor is exhausted/empty and closed
+      if(item == null) {
+        // Show that the cursor is closed
+        cursor.toArray(function(err, items) {
+          assert.ok(err != null);
+          // Let's close the db
+          db.close();
+        });
+      } else{
+        chartData[0][0].unshift(cursor.tag1W[0]);
+        chartData[1][0].unshift(cursor.tag1W[1]);
+        chartData[0][1].unshift(cursor.tag2W[0]);
+        chartData[1][1].unshift(cursor.tag2W[1]);
+        chartData[0][2].unshift(cursor.tag4W[0]);
+        chartData[1][2].unshift(cursor.tag4W[1]);
+        chartData[0][3].unshift(cursor.tag8W[0]);
+        chartData[1][3].unshift(cursor.tag8W[1]);        
+      }
+
+    });
+    res.json(chartData);
+  }
 });
 // error handling
 app.use(function(err, req, res, next){
@@ -138,10 +173,13 @@ ioArray[0] = new Array(4);
 ioArray[1] = new Array(4);
 ioArray[2] = new Array(4);
 var arrayIndex;
+var currMin,currHour;
 const maxArrayIndex = 80000;
 const startTime= Date.now();
 var txs;
-console.log('Declaration End.')
+//console.log('Declaration End.')
+currMin=new Date().getMinutes()-1;
+currHour=new Date().getHours()-1;
 client.connect('wss://ws.blockchain.info/inv');
 setInterval(caculateData,15000);
 
@@ -194,6 +232,16 @@ function caculateData(){
     ioArray[0][3] = insum;
     ioArray[1][3] = outsum;
     ioArray[2][3] = lastTimestamp - firstTimestamp;
+    var mins = new Date().getMinutes();
+    var hrs = new Date().getHours();
+    if (currMin!=mins && ioArray[0][0]) {
+      insertData();
+      currMin=mins;
+    };
+    if (currHour!=hrs && ioArray[0][0]) {
+      deleteData();
+      currHour=hrs;
+    };
     /*
     console.log("***********************************");    
     console.log(Date.now()+" Total txs:"+txs);
@@ -205,6 +253,35 @@ function caculateData(){
     //console.log("16W Index In:"+ioArray[0][4]+" Out:"+ioArray[1][4]+" out-in:"+(ioArray[1][4]-ioArray[0][4])+" out/in:"+(ioArray[1][4]/ioArray[0][4]).toFixed(5)+" in "+(ioArray[2][4]).toFixed(1)+" mins");
     */
 };
+
+Date.prototype.addDays = function(days) {
+  var dat = new Date(this.valueOf());
+  dat.setDate(dat.getDate() + days);
+  return dat;
+}
+
+function insertData(){
+  if (!db) {
+    initDb(function(err){});
+  }
+  if (db) {
+    var col = db.collection('ledger');
+    // Create a document with request IP and current time of request
+    col.insert({date: Date.now(), tag1W:[ioArray[1][0]/ioArray[0][0],ioArray[2][0]],tag2W:[ioArray[1][1]/ioArray[0][1],ioArray[2][1]],tag4W:[ioArray[1][2]/ioArray[0][2],ioArray[2][2]],tag8W:[ioArray[1][3]/ioArray[0][3],ioArray[2][3]],});
+  } 
+}
+
+function deleteData(){
+  if (!db) {
+    initDb(function(err){});
+  }
+  if (db) {
+    var col = db.collection('ledger');
+    var dat = new Date();
+    dat.addDays(-2);
+    col.remove({date:{$lte:dat}});
+  } 
+}
 
   client.on('connectFailed', function(error) {
     console.log('Connect Error: ' + error.toString());
