@@ -281,9 +281,9 @@ function insertData(){
     // Create a document with request IP and current time of request
     var itm = new dbCol();
     console.log("itm "+itm.toString());
-    col.insert(itm, function(){
+    col.insert(itm, function(err,res){
     if (err) {
-      console.log(err);
+      console.log(err+" "+res);
       throw err;
     }
     db.close();
