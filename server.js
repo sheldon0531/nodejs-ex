@@ -277,7 +277,7 @@ function insertData(){
   }
   if (db) {
     var col = db.collection('ledger');
-    console.log("insert data into ledger DB")
+    console.log("insert data into ledger DB "+col);
     // Create a document with request IP and current time of request
     var itm = new dbCol();
     col.insert(itm);
