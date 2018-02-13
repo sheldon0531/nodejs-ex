@@ -280,14 +280,10 @@ function insertData(){
     console.log("insert data into ledger DB "+col.toString());
     // Create a document with request IP and current time of request
     var itm = new dbCol();
-    console.log("itm "+itm.toString());
-    col.insert(itm, function(err,res){
-    if (err) {
-      console.log(err+" "+res);
-      throw err;
+    col.insert(itm);
+    col.count(function(err, count){
+      console.log(count);
     }
-    db.close();
-    });
   } 
 }
 
