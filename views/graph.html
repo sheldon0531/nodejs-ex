@@ -2,24 +2,51 @@
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
-	$('document').ready(setInterval(updateData(),15000));
+	$('document').ready(setInterval(updateData,15000));
 	function updateData(){
+		updateTableData();
+		updateIndex();
+
+	};
+	function updateTableData(){
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
     		if (this.readyState == 4 && this.status == 200) {
     			var data = JSON.parse(xhttp.responseText);
-    			console.log(data);
-    		$('#ins').each(function(i,obj){
-    			console.log('i: '+i+' obj: '+obj);
-    			alert('i:'+i+' '+$(this).text());
-    			$(this).next();
-    		});
+    			if (data[0][0]){
+    				$('td#ins').each(function(i,obj){
+    					$(this).text(data[0][i]);
+    				});
+     				$('td#outs').each(function(i,obj){
+    					$(this).text(data[1][i]);
+    				});
+      				$('td#diff').each(function(i,obj){
+    					$(this).text(data[1][i]-data[0][i]);
+    				});
+       				$('td#ratio').each(function(i,obj){
+    					$(this).text((data[1][i]/data[0][i]).toFixed(5));
+    				});	
+     				$('td#period').each(function(i,obj){
+    					$(this).text((data[2][i]/60).toFixed(1));
+    				});
+    				$('document').attr("title","1W "+(data[1][0]/data[0][0]).toFixed(3)+" in "+(data[2][0]/60).toFixed(1)+" min");
+				};
 
-   			}
+    		};
 		};
 		xhttp.open("GET", "/tabledata", true);
 		xhttp.send();
-
+	}
+	function updateIndex(){
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+    		if (this.readyState == 4 && this.status == 200) {
+    			var data = JSON.parse(xhttp.responseText);
+    			if (data) $('td#index').text(data);
+    		};
+		};
+		xhttp.open("GET", "/arrayIdx", true);
+		xhttp.send();
 	}
 </script>
 <style type="text/css">
@@ -68,7 +95,7 @@ table,th,td {
 	</tr>
 	<tr>
 		<td>1W</td>
-		<td id='ins'>1</td>
+		<td id='ins'></td>
 		<td id='outs'></td>
 		<td id='diff'></td>
 		<td id='ratio'></td>
@@ -76,7 +103,7 @@ table,th,td {
 	</tr>
 	<tr>
 		<td>2W</td>
-		<td id='ins'>2</td>
+		<td id='ins'></td>
 		<td id='outs'></td>
 		<td id='diff'></td>
 		<td id='ratio'></td>
@@ -84,7 +111,7 @@ table,th,td {
 	</tr>
 	<tr>
 		<td>4W</td>
-		<td id='ins'>3</td>
+		<td id='ins'></td>
 		<td id='outs'></td>
 		<td id='diff'></td>
 		<td id='ratio'></td>
@@ -92,7 +119,7 @@ table,th,td {
 	</tr>
 	<tr>
 		<td>8W</td>
-		<td id='ins'>4</td>
+		<td id='ins'></td>
 		<td id='outs'></td>
 		<td id='diff'></td>
 		<td id='ratio'></td>
