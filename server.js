@@ -281,7 +281,13 @@ function insertData(){
     // Create a document with request IP and current time of request
     var itm = new dbCol();
     console.log("itm "+itm.toString());
-    col.insert(itm);
+    col.insert(itm, function(){
+    if (err) {
+      console.log(err);
+      throw err;
+    }
+    db.close();
+    });
   } 
 }
 
