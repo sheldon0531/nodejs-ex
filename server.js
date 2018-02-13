@@ -95,10 +95,13 @@ app.get('/pagecount', function (req, res) {
 });
 
 app.get('/graph', function(req, res) {
-  var iodata = JSON.stringify(ioArray);
-  res.render('graph.html', { ioArrays : ioArray });
+  res.render('graph.html');
 });
 
+app.get('/tabledata', function(req, res) {
+  var iodata = JSON.stringify(ioArray);
+  res.send('{ arrIndex : '+arrayIndex+', ioArrays : '+iodata });
+});
 // error handling
 app.use(function(err, req, res, next){
   console.error(err.stack);

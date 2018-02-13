@@ -1,11 +1,95 @@
 <!-- views/template.ejs -->
 <html>
 <head>
-<meta http-equiv="refresh" content="15">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+	<% $(document).ready(setInterval(updateData(),15000)); %>
+	<% function updateData(){ %>
+		<% var client = new HttpClient(); %>
+		<% client.get('/tabledata', function(response) { %>
+    		<% var data = JSON.parse(response); %>
+    		<% $(#ins).each(function(i,d){ %>
+    			<% $(this).text(data.ioArrays[0][i]); %>
+    		<% }); %>
+		<% }); %>
+	<% } %>
+</script>
+<style type="text/css">
+table,th,td {
+	border:1px solid blue;
+}
+#ins {
+  background-color:whitesmoke;
+  color:yellow;
+}
+#outs {
+  background-color:whitesmoke;
+  color:lime;
+}
+#diff {
+  background-color:whitesmoke;
+  color:violet;
+}
+#ratio {
+  background-color:whitesmoke;
+  color:red;
+}
+#period {
+  background-color:whitesmoke;
+  color:navy;
+}
+</style>
+
 </head>
 
-<% for(var i=0; i<4; i++) {%>
-   <p><%= Math.pow(2,i) %>W Index Input:<%= ioArrays[0][i] %> Output:<%= ioArrays[1][i] %> Out-in:<%= ioArrays[1][i]-ioArrays[0][i] %> out/in:<span style="color:red"><%= (ioArrays[1][i]/ioArrays[0][i]).toFixed(5) %></span> in <span style="color:green"><%= (ioArrays[2][i]/60).toFixed(1) %></span> mins</p>
-<% } %>
+<body onload="setInterval(updateData(),15000)">
+<h3>Ledger IO Data</h3>
+<table>
+	<tr>
+		<th>Index</th>
+		<th>IN</th>
+		<th>Out</th>
+		<th>Out-In</th>
+		<th>Out/In</th>
+		<th>Period</th>
+	</tr>
+	<tr>
+		<td>1W</td>
+		<td id='ins'></td>
+		<td id='outs'></td>
+		<td id='diff'></td>
+		<td id='ratio'></td>
+		<td id='period'></td>
+	</tr>
+	<tr>
+		<td>2W</td>
+		<td id='ins'></td>
+		<td id='outs'></td>
+		<td id='diff'></td>
+		<td id='ratio'></td>
+		<td id='period'></td>
+	</tr>
+	<tr>
+		<td>4W</td>
+		<td id='ins'></td>
+		<td id='outs'></td>
+		<td id='diff'></td>
+		<td id='ratio'></td>
+		<td id='period'></td>
+	</tr>
+	<tr>
+		<td>8W</td>
+		<td id='ins'></td>
+		<td id='outs'></td>
+		<td id='diff'></td>
+		<td id='ratio'></td>
+		<td id='period'></td>
+	</tr>
+	<tr>
+		<td>ArrayIndex:</td>
+		<td colspan="5" id='index'></td>
+	</tr>
+</table>
 
+</body>
 </html>
