@@ -96,11 +96,18 @@ app.get('/pagecount', function (req, res) {
 
 app.get('/graph', function(req, res) {
   res.render('graph.html');
+
 });
 
 app.get('/tabledata', function(req, res) {
   //var iodata = JSON.stringify(ioArray);
-  res.send('{ arrIndex : '+arrayIndex+', ioArrays : '+ioArray+ '}');
+  res.json(ioArray);
+  //res.send(iodata);
+});
+app.get('/arrayIdx', function(req, res) {
+  //var iodata = JSON.stringify(ioArray);
+  res.json(arrayIndex);
+  //res.send(iodata);
 });
 // error handling
 app.use(function(err, req, res, next){

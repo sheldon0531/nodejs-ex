@@ -1,18 +1,26 @@
-<!-- views/template.ejs -->
 <html>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
-	<% $(document).ready(setInterval(updateData(),15000)); %>
-	<% function updateData(){ %>
-		<% var client = new HttpClient(); %>
-		<% client.get('/tabledata', function(response) { %>
-    		<% var data = JSON.parse(response); %>
-    		<% $(#ins).each(function(i,d){ %>
-    			<% $(this).text(data.ioArrays[0][i]); %>
-    		<% }); %>
-		<% }); %>
-	<% } %>
+	$('document').ready(setInterval(updateData(),15000));
+	function updateData(){
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+    		if (this.readyState == 4 && this.status == 200) {
+    			var data = JSON.parse(xhttp.responseText);
+    			console.log(data);
+    		$('#ins').each(function(i,obj){
+    			console.log('i: '+i+' obj: '+obj);
+    			alert('i:'+i+' '+$(this).text());
+    			$(this).next();
+    		});
+
+   			}
+		};
+		xhttp.open("GET", "/tabledata", true);
+		xhttp.send();
+
+	}
 </script>
 <style type="text/css">
 table,th,td {
@@ -20,29 +28,34 @@ table,th,td {
 }
 #ins {
   background-color:whitesmoke;
-  color:yellow;
+  color:orange;
+  width: 15%;
 }
 #outs {
   background-color:whitesmoke;
   color:lime;
+  width: 15%;
 }
 #diff {
   background-color:whitesmoke;
   color:violet;
+  width: 15%;
 }
 #ratio {
   background-color:whitesmoke;
   color:red;
+  width: 15%;
 }
 #period {
   background-color:whitesmoke;
   color:navy;
+  width: 15%;
 }
 </style>
 
 </head>
 
-<body onload="setInterval(updateData(),15000)">
+<body>
 <h3>Ledger IO Data</h3>
 <table>
 	<tr>
@@ -55,7 +68,7 @@ table,th,td {
 	</tr>
 	<tr>
 		<td>1W</td>
-		<td id='ins'></td>
+		<td id='ins'>1</td>
 		<td id='outs'></td>
 		<td id='diff'></td>
 		<td id='ratio'></td>
@@ -63,7 +76,7 @@ table,th,td {
 	</tr>
 	<tr>
 		<td>2W</td>
-		<td id='ins'></td>
+		<td id='ins'>2</td>
 		<td id='outs'></td>
 		<td id='diff'></td>
 		<td id='ratio'></td>
@@ -71,7 +84,7 @@ table,th,td {
 	</tr>
 	<tr>
 		<td>4W</td>
-		<td id='ins'></td>
+		<td id='ins'>3</td>
 		<td id='outs'></td>
 		<td id='diff'></td>
 		<td id='ratio'></td>
@@ -79,15 +92,15 @@ table,th,td {
 	</tr>
 	<tr>
 		<td>8W</td>
-		<td id='ins'></td>
+		<td id='ins'>4</td>
 		<td id='outs'></td>
 		<td id='diff'></td>
 		<td id='ratio'></td>
 		<td id='period'></td>
 	</tr>
 	<tr>
-		<td>ArrayIndex:</td>
-		<td colspan="5" id='index'></td>
+		<td colspan="2">ArrayIndex:</td>
+		<td colspan="4" id='index'></td>
 	</tr>
 </table>
 
