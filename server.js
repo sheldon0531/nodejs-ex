@@ -232,6 +232,7 @@ function caculateData(){
     ioArray[0][3] = insum;
     ioArray[1][3] = outsum;
     ioArray[2][3] = lastTimestamp - firstTimestamp;
+    /*
     var mins = new Date().getMinutes();
     var hrs = new Date().getHours();
     if (currMin!=mins && ioArray[0][0]) {
@@ -241,7 +242,7 @@ function caculateData(){
     if (currHour!=hrs && ioArray[0][0]) {
       deleteData();
       currHour=hrs;
-    };
+    };*/
     /*
     console.log("***********************************");    
     console.log(Date.now()+" Total txs:"+txs);
