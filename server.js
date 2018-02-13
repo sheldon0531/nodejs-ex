@@ -262,10 +262,12 @@ Date.prototype.addDays = function(days) {
 
 function insertData(){
   if (!db) {
+    console.log("Create DB")
     initDb(function(err){});
   }
   if (db) {
     var col = db.collection('ledger');
+    console.log("insert data into ledger DB")
     // Create a document with request IP and current time of request
     col.insert({date: Date.now(), tag1W:[ioArray[1][0]/ioArray[0][0],ioArray[2][0]],tag2W:[ioArray[1][1]/ioArray[0][1],ioArray[2][1]],tag4W:[ioArray[1][2]/ioArray[0][2],ioArray[2][2]],tag8W:[ioArray[1][3]/ioArray[0][3],ioArray[2][3]],});
   } 
