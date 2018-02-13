@@ -99,8 +99,8 @@ app.get('/graph', function(req, res) {
 });
 
 app.get('/tabledata', function(req, res) {
-  var iodata = JSON.stringify(ioArray);
-  res.send('{ arrIndex : '+arrayIndex+', ioArrays : '+iodata });
+  //var iodata = JSON.stringify(ioArray);
+  res.send('{ arrIndex : '+arrayIndex+', ioArrays : '+ioArray+ '}');
 });
 // error handling
 app.use(function(err, req, res, next){
