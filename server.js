@@ -53,6 +53,11 @@ var initDb = function(callback) {
     dbDetails.type = 'MongoDB';
 
     console.log('Connected to MongoDB at: %s', mongoURL);
+    db.collection('ledger').count(function(err,count){
+      console.log('check ledger collection exists or not');
+      if (err) db.createCollection('ledger');
+    })
+
   });
 };
 
@@ -282,9 +287,9 @@ function insertData(){
     // Create a document with request IP and current time of request
     var itm = new dbCol();
     col.insert(itm);
-    col.count(function(err, count){
-      console.log(count);
-    }
+    col.count(function(err,count){
+      console.log("ledger collection count: "+count);
+    })
   } 
 }
 
