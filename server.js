@@ -53,11 +53,6 @@ var initDb = function(callback) {
     dbDetails.type = 'MongoDB';
 
     console.log('Connected to MongoDB at: %s', mongoURL);
-    db.collection('ledger').count(function(err,count){
-      console.log('check ledger collection exists or not');
-      if (err) db.createCollection('ledger');
-    })
-
   });
 };
 
