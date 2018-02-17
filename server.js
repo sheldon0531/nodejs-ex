@@ -177,6 +177,8 @@ var currMin,currHour;
 const maxArrayIndex = 80000;
 const startTime= Date.now();
 var txs;
+arrayIndex=0;
+txs=0;
 //console.log('Declaration End.')
 currMin=new Date().getMinutes()-1;
 currHour=new Date().getHours()-1;
@@ -302,22 +304,27 @@ function deleteData(){
 
   client.on('connectFailed', function(error) {
     console.log('Connect Error: ' + error.toString());
+    sleep(5000);
+    client = new WebSocketClient();
+    client.connect('wss://ws.blockchain.info/inv');
   });
  
   client.on('connect', function(connection) {
     console.log('WebSocket Client Connected');
-    arrayIndex=0;
-    txs=0;
     connection.send( JSON.stringify( {"op":"unconfirmed_sub"} ) );
     console.log("WebSocket Opened!");
 
   connection.on('error', function(error) {
         console.log("Connection Error: " + error.toString());
+        sleep(5000);
+        client = new WebSocketClient();
+        client.connect('wss://ws.blockchain.info/inv');        
     });
 
   connection.on('close', function() {
         console.log('echo-protocol Connection Closed');
         sleep(5000);
+        client = new WebSocketClient();
         client.connect('wss://ws.blockchain.info/inv');
     });
     connection.on('message', function(message) {
