@@ -172,13 +172,13 @@ avg[2] = new Array(80000);
 ioArray[0] = new Array(4);
 ioArray[1] = new Array(4);
 ioArray[2] = new Array(4);
-var arrayIndex;
+var arrayIndex = 0;
 var currMin,currHour;
 const maxArrayIndex = 80000;
 const startTime= Date.now();
-var txs;
-arrayIndex=0;
-txs=0;
+var txs = 0;
+var idleCount = 0;
+var preCount;
 //console.log('Declaration End.')
 currMin=new Date().getMinutes()-1;
 currHour=new Date().getHours()-1;
@@ -195,6 +195,17 @@ function caculateData(){
     arrayEnd2w = (arrayIndex - 20000) > 0 ? (arrayIndex-20000) : (arrayIndex+60000);
     arrayEnd4w = (arrayIndex - 40000) > 0 ? (arrayIndex-40000) : (arrayIndex+40000);   
     //arrayEnd8w = (arrayIndex - 80000) > 0 ? (arrayIndex-80000) : (arrayIndex+80000);
+    if (preCount == arrayIndex) {
+      idleCount++
+      console.log("WebSocket Connection Broken, idleCount = "+idleCount);
+    } else {
+      idleCount=0
+    };
+    if (idleCount > 20) {
+      idleCount = 0;
+      client = new WebSocketClient();
+      client.connect('wss://ws.blockchain.info/inv');
+    } else {
     var i = arrayIndex;
     var endPoint = arrayIndex;
     var insum,outsum;
@@ -234,6 +245,7 @@ function caculateData(){
     ioArray[0][3] = insum;
     ioArray[1][3] = outsum;
     ioArray[2][3] = lastTimestamp - firstTimestamp;
+    }
     /*
     var mins = new Date().getMinutes();
     var hrs = new Date().getHours();
