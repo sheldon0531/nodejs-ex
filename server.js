@@ -202,6 +202,8 @@ function caculateData(){
       idleCount=0
     };
     if (idleCount > 20) {
+      client = null;
+      sleep(5000);
       idleCount = 0;
       client = new WebSocketClient();
       client.connect('wss://ws.blockchain.info/inv');
@@ -316,6 +318,7 @@ function deleteData(){
 
   client.on('connectFailed', function(error) {
     console.log('Connect Error: ' + error.toString());
+    client = null;
     sleep(5000);
     client = new WebSocketClient();
     client.connect('wss://ws.blockchain.info/inv');
@@ -328,6 +331,7 @@ function deleteData(){
 
   connection.on('error', function(error) {
         console.log("Connection Error: " + error.toString());
+        client = null;
         sleep(5000);
         client = new WebSocketClient();
         client.connect('wss://ws.blockchain.info/inv');        
@@ -335,6 +339,7 @@ function deleteData(){
 
   connection.on('close', function() {
         console.log('echo-protocol Connection Closed');
+        client = null;
         sleep(5000);
         client = new WebSocketClient();
         client.connect('wss://ws.blockchain.info/inv');
