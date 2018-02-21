@@ -183,7 +183,7 @@ function sleep (time) {
 }
 
 function caculateData(){
-  var arrayEnd1w,arrayEnd2w,arrayEnd4w//,arrayEnd8w;
+  var arrayEnd5k,arrayEnd1w,arrayEnd2w;//,arrayEnd8w;
     arrayEnd5k = (arrayIndex - 5000) > 0 ? (arrayIndex-5000) : (arrayIndex+35000);
     arrayEnd1w = (arrayIndex - 10000) > 0 ? (arrayIndex-10000) : (arrayIndex+30000);
     arrayEnd2w = (arrayIndex - 20000) > 0 ? (arrayIndex-20000) : (arrayIndex+20000);   
@@ -216,17 +216,17 @@ function caculateData(){
         outsum+= avg[1][i];
         firstTimestamp = avg[2][i];
       }
-      if (i==arrayEnd1w){
+      if (i==arrayEnd5k){
         ioArray[0][0] = insum;
         ioArray[1][0] = outsum;
         ioArray[2][0] = lastTimestamp - firstTimestamp;
       }
-      if (i==arrayEnd2w){
+      if (i==arrayEnd1w){
         ioArray[0][1] = insum;
         ioArray[1][1] = outsum;
         ioArray[2][1] = lastTimestamp - firstTimestamp;
       }
-      if (i==arrayEnd4w){
+      if (i==arrayEnd2w){
         ioArray[0][2] = insum;
         ioArray[1][2] = outsum;
         ioArray[2][2] = lastTimestamp - firstTimestamp;
