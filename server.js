@@ -110,7 +110,7 @@ app.get('/chart', function(req, res) {
     chartData[0] = new Array();  //OI Ration
     chartData[1] = new Array();  //Time Period
 
-  MongoClient.connect(url, function(err, db) {
+  mongodb.connect(mongoURL, function(err, db) {
     if (err) throw err;
     var dbo = db.db("sampledb");
       var cr = dbo.collection("ledger").find().sort({"date": -1}).limit(360);
@@ -280,7 +280,7 @@ Date.prototype.addDays = function(days) {
 }
 
 function insertData(){
-  MongoClient.connect(url, function(err, db) {
+  mongodb.connect(mongoURL, function(err, db) {
     if (err) throw err;
       var dbo = db.db("sampledb");
       var itm = new dbCol();
@@ -293,7 +293,7 @@ function insertData(){
 }
 
 function deleteData(){
-  MongoClient.connect(url, function(err, db) {
+  mongodb.connect(mongoURL, function(err, db) {
     if (err) throw err;
     var dbo = db.db("sampledb");
     var dat = new Date();
