@@ -6,9 +6,9 @@
 
 <script type="text/javascript">
 	$('document').ready(function() {
-		rnd = 0;
-		google.charts.load('current', {'packages':['line']});
-		google.charts.setOnLoadCallback(updateChart);
+		//rnd = 0;
+		//google.charts.load('current', {'packages':['line']});
+		//google.charts.setOnLoadCallback(updateChart);
 		updateData();
 		setInterval(updateData,15000);
 	});
@@ -16,9 +16,9 @@
 	function updateData(){
 		updateTableData();
 		updateIndex();
-		rnd++;
-		if (rnd%8 == 0) updateChart();
-		if (rnd >= Number.MAX_VALUE) rnd = 0;
+		//rnd++;
+		//if (rnd%8 == 0) updateChart();
+		//if (rnd >= Number.MAX_VALUE) rnd = 0;
 	};
 	function updateTableData(){
 		var xhttp = new XMLHttpRequest();
