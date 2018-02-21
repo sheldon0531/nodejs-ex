@@ -114,6 +114,7 @@ app.get('/chart', function(req, res) {
     var dbo = db.db("sampledb");
       var cr = dbo.collection("ledger").find().sort({"date": -1}).limit(360);
       var i = 0;
+      dbo.collection("ledger").drop();
       cr.each(function(err,doc) {
           // If the item is null then the cursor is exhausted/empty and closed
         if(doc == null) {
