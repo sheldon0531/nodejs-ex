@@ -1,9 +1,14 @@
+<!DOCTYPE html>
 <html>
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 <script type="text/javascript">
 	$('document').ready(function() {
 		rnd = 0;
+		google.charts.load('current', {'packages':['line']});
+		google.charts.setOnLoadCallback(updateChart);
 		updateData();
 		setInterval(updateData,15000);
 	});
@@ -12,8 +17,8 @@
 		updateTableData();
 		updateIndex();
 		rnd++;
-		//if (rnd%4==0) updateChart();
-		if (rnd>=Number.MAX_VALUE) rnd = 0;
+		if (rnd%8 == 0) updateChart();
+		if (rnd >= Number.MAX_VALUE) rnd = 0;
 	};
 	function updateTableData(){
 		var xhttp = new XMLHttpRequest();
@@ -54,20 +59,58 @@
 		};
 		xhttp.open("GET", "/arrayIdx", true);
 		xhttp.send();
-	}/*
+	}
 	function updateChart(){
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
     		if (this.readyState == 4 && this.status == 200) {
-    			var data = JSON.parse(xhttp.responseText);
-    			if (data[0][0]) {
-    				console.log(data);
-    			}
+    			var dataArray = JSON.parse(xhttp.responseText);
+    			var tmpData = dataArray[0];
+				var data = new google.visualization.DataTable();
+				data.addColumn('number', 'Time');
+				data.addColumn('number', '5K');
+				data.addColumn('number', '1W');
+				data.addColumn('number', '2W');
+				data.addColumn('number', '4W');
+				data.addRows(tmpData);
+				
+				var options = {
+        				chart: {
+          					title: 'Out/In Ratio Trends',
+          					subtitle: '5K/1W/2W/4W'
+        				},
+        				width: 900,
+        				height: 500
+      			};
+				var chart = new google.charts.Line(document.getElementById('chart_ratio_div'));
+      			chart.draw(data, google.charts.Line.convertOptions(options));
+
+      			tmpData = dataArray[1];
+      			data = new google.visualization.DataTable();
+				data.addColumn('number', 'Time');
+				data.addColumn('number', '5K');
+				data.addColumn('number', '1W');
+				data.addColumn('number', '2W');
+				data.addColumn('number', '4W');
+				data.addRows(tmpData);
+				
+				var options = {
+        				chart: {
+          					title: 'Time Period Trends',
+          					subtitle: '5K/1W/2W/4W'
+        				},
+        				width: 900,
+        				height: 500
+      			};
+				chart = new google.charts.Line(document.getElementById('chart_time_div'));
+      			chart.draw(data, google.charts.Line.convertOptions(options));
     		};
 		};
+
 		xhttp.open("GET", "/chart", true);
 		xhttp.send();
-	}*/
+};
+
 </script>
 <style type="text/css">
 table,th,td {
@@ -103,6 +146,7 @@ table,th,td {
 </head>
 
 <body>
+<div id='tables'>
 <h3>Ledger IO Data</h3>
 <table>
 	<tr>
@@ -112,6 +156,14 @@ table,th,td {
 		<th>Out-In</th>
 		<th>Out/In</th>
 		<th>Period</th>
+	</tr>
+	<tr>
+		<td>5K</td>
+		<td id='ins'></td>
+		<td id='outs'></td>
+		<td id='diff'></td>
+		<td id='ratio'></td>
+		<td id='period'></td>
 	</tr>
 	<tr>
 		<td>1W</td>
@@ -138,18 +190,19 @@ table,th,td {
 		<td id='period'></td>
 	</tr>
 	<tr>
-		<td>8W</td>
-		<td id='ins'></td>
-		<td id='outs'></td>
-		<td id='diff'></td>
-		<td id='ratio'></td>
-		<td id='period'></td>
-	</tr>
-	<tr>
 		<td colspan="2">ArrayIndex:</td>
 		<td colspan="4" id='index'></td>
 	</tr>
 </table>
+</div>
+
+<div id='chart_ratio_div'>
+<h3>O/I Ratio Chart in Last 6HR</h3>
+</div>
+
+<div id='chart_time_div'>
+<h3>Time Period Chart in Last 6HR</h3>
+</div>
 
 </body>
 </html>

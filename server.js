@@ -105,53 +105,46 @@ app.get('/arrayIdx', function(req, res) {
   res.json(arrayIndex);
 });
 app.get('/chart', function(req, res) {
-  if (!db) {
-    initDb(function(err){});
-  }
-  if (db) {
-    var chartData;
-    chartData = new Array(2);
-    chartData[0] = new Array(4);  //OI Ration
-    chartData[1] = new Array(4);  //Time Period
-    for (var i=0;i<2;i++){
-      for (var j=0;j<4;j++){
-        chartData[i][j]= new Array();
-      }
-    }
-    var col = db.collection('ledger');
-    var cursor = col.find().sort({"date": -1}).limit(240);
-    cursor.each(function(err, item) {
-      // If the item is null then the cursor is exhausted/empty and closed
-      if(item == null) {
-        // Show that the cursor is closed
-        cursor.toArray(function(err, items) {
-          assert.ok(err != null);
-          // Let's close the db
-          db.close();
-        });
-      } else{
-        chartData[0][0].unshift(cursor.tag1W[0]);
-        chartData[1][0].unshift(cursor.tag1W[1]);
-        chartData[0][1].unshift(cursor.tag2W[0]);
-        chartData[1][1].unshift(cursor.tag2W[1]);
-        chartData[0][2].unshift(cursor.tag4W[0]);
-        chartData[1][2].unshift(cursor.tag4W[1]);
-        chartData[0][3].unshift(cursor.tag8W[0]);
-        chartData[1][3].unshift(cursor.tag8W[1]);        
-      }
+  var chartData = new Array(2);
+  var tmp;
+    chartData[0] = new Array();  //OI Ration
+    chartData[1] = new Array();  //Time Period
 
-    });
-    res.json(chartData);
-  }
+  MongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    var dbo = db.db("sampledb");
+      var cr = dbo.collection("ledger").find().sort({"date": -1}).limit(360);
+      var i = 0;
+      cr.each(function(err,doc) {
+          // If the item is null then the cursor is exhausted/empty and closed
+        if(doc == null) {
+          db.close();
+          res.json(chartData);
+          } else{
+            tmp = new Array(5);
+            tmp[0] = i++;
+            tmp[1] = doc.tag5K[0];
+            tmp[2] = doc.tag1W[0];
+            tmp[3] = doc.tag2W[0];
+            tmp[4] = doc.tag4W[0];
+            chartData[0].push(tmp);
+            tmp = new Array(5);
+            tmp[0] = i;
+            tmp[1] = doc.tag5K[1];
+            tmp[2] = doc.tag1W[1];
+            tmp[3] = doc.tag2W[1];
+            tmp[4] = doc.tag4W[1];
+            chartData[1].push(tmp);
+          }
+      });
+  }); 
+  //res.json(chartData);
 });
+
 // error handling
 app.use(function(err, req, res, next){
   console.error(err.stack);
   res.status(500).send('Something bad happened!');
-});
-
-initDb(function(err){
-  console.log('Error connecting to Mongo. Message:\n'+err);
 });
 
 app.listen(port, ip);
@@ -166,15 +159,15 @@ var client = new WebSocketClient();
 var timeforread;
 var avg = new Array(3);
 var ioArray = new Array(3);
-avg[0] = new Array(80000);
-avg[1] = new Array(80000);
-avg[2] = new Array(80000);
+avg[0] = new Array(40000);
+avg[1] = new Array(40000);
+avg[2] = new Array(40000);
 ioArray[0] = new Array(4);
 ioArray[1] = new Array(4);
 ioArray[2] = new Array(4);
 var arrayIndex = 0;
 var currMin,currHour;
-const maxArrayIndex = 80000;
+const maxArrayIndex = 40000;
 const startTime= Date.now();
 var txs = 0;
 var idleCount = 0;
@@ -191,9 +184,9 @@ function sleep (time) {
 
 function caculateData(){
   var arrayEnd1w,arrayEnd2w,arrayEnd4w//,arrayEnd8w;
-    arrayEnd1w = (arrayIndex - 10000) > 0 ? (arrayIndex-10000) : (arrayIndex+70000);
-    arrayEnd2w = (arrayIndex - 20000) > 0 ? (arrayIndex-20000) : (arrayIndex+60000);
-    arrayEnd4w = (arrayIndex - 40000) > 0 ? (arrayIndex-40000) : (arrayIndex+40000);   
+    arrayEnd5k = (arrayIndex - 5000) > 0 ? (arrayIndex-5000) : (arrayIndex+35000);
+    arrayEnd1w = (arrayIndex - 10000) > 0 ? (arrayIndex-10000) : (arrayIndex+30000);
+    arrayEnd2w = (arrayIndex - 20000) > 0 ? (arrayIndex-20000) : (arrayIndex+20000);   
     //arrayEnd8w = (arrayIndex - 80000) > 0 ? (arrayIndex-80000) : (arrayIndex+80000);
     if (preCount == arrayIndex) {
       idleCount++
@@ -202,8 +195,8 @@ function caculateData(){
       idleCount=0
     };
     if (idleCount > 20) {
-      client = null;
-      sleep(5000);
+        client = null;
+        sleep(5000);
       idleCount = 0;
       client = new WebSocketClient();
       client.connect('wss://ws.blockchain.info/inv');
@@ -248,17 +241,16 @@ function caculateData(){
     ioArray[1][3] = outsum;
     ioArray[2][3] = lastTimestamp - firstTimestamp;
     }
-    /*
     var mins = new Date().getMinutes();
     var hrs = new Date().getHours();
+    if (currHour!=hrs && ioArray[0][0]) {
+      deleteData();
+      currHour=hrs;
+    };
     if (currMin!=mins && ioArray[0][0]) {
       insertData();
       currMin=mins;
     };
-    if (currHour!=hrs && ioArray[0][0]) {
-      deleteData();
-      currHour=hrs;
-    };*/
     /*
     console.log("***********************************");    
     console.log(Date.now()+" Total txs:"+txs);
@@ -274,10 +266,10 @@ function caculateData(){
 class dbCol{
   constructor() {
     this.date = Date.now();
-    this.tag1W = [(ioArray[1][0]/ioArray[0][0]),(ioArray[2][0]/60)];
-    this.tag2W = [(ioArray[1][1]/ioArray[0][1]),(ioArray[2][1]/60)];
-    this.tag4W = [(ioArray[1][2]/ioArray[0][2]),(ioArray[2][2]/60)];
-    this.tag8W = [(ioArray[1][3]/ioArray[0][3]),(ioArray[2][3]/60)];
+    this.tag5K = [(ioArray[1][0]/ioArray[0][0]),(ioArray[2][0]/60)];
+    this.tag1W = [(ioArray[1][1]/ioArray[0][1]),(ioArray[2][1]/60)];
+    this.tag2W = [(ioArray[1][2]/ioArray[0][2]),(ioArray[2][2]/60)];
+    this.tag4W = [(ioArray[1][3]/ioArray[0][3]),(ioArray[2][3]/60)];
   }
 }
 
@@ -288,32 +280,31 @@ Date.prototype.addDays = function(days) {
 }
 
 function insertData(){
-  if (!db) {
-    console.log("Create DB")
-    initDb(function(err){});
-  }
-  if (db) {
-    var col = db.collection('ledger');
-    console.log("insert data into ledger DB "+col.toString());
-    // Create a document with request IP and current time of request
-    var itm = new dbCol();
-    col.insert(itm);
-    col.count(function(err,count){
-      console.log("ledger collection count: "+count);
-    })
-  } 
+  MongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+      var dbo = db.db("sampledb");
+      var itm = new dbCol();
+    dbo.collection("ledger").insertOne(itm, function(err, res) {
+        if (err) throw err;
+        console.log("document inserted "+JSON.stringify(itm));
+      db.close();
+      });
+  });
 }
 
 function deleteData(){
-  if (!db) {
-    initDb(function(err){});
-  }
-  if (db) {
-    var col = db.collection('ledger');
+  MongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    var dbo = db.db("sampledb");
     var dat = new Date();
-    dat.addDays(-2);
-    col.remove({date:{$lte:dat}});
-  } 
+      dat.addDays(-2);
+    var myquery = {date:{$lte:dat}};
+    dbo.collection("ledger").remove(myquery, function(err, obj) {
+        if (err) throw err;
+        console.log("documents deleted");
+      db.close();
+      });
+  });
 }
 
   client.on('connectFailed', function(error) {
@@ -321,7 +312,7 @@ function deleteData(){
     client = null;
     sleep(5000);
     client = new WebSocketClient();
-    client.connect('wss://ws.blockchain.info/inv');
+    client.connect('wss://ws.blockchain.info/inv');    
   });
  
   client.on('connect', function(connection) {
@@ -334,7 +325,7 @@ function deleteData(){
         client = null;
         sleep(5000);
         client = new WebSocketClient();
-        client.connect('wss://ws.blockchain.info/inv');        
+        client.connect('wss://ws.blockchain.info/inv');
     });
 
   connection.on('close', function() {
