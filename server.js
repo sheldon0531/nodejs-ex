@@ -5,6 +5,7 @@ var express = require('express'),
     
 Object.assign=require('object-assign')
 
+
 app.engine('html', require('ejs').renderFile);
 app.use(morgan('combined'))
 
@@ -34,12 +35,10 @@ if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
 }
 var db = null,
     dbDetails = new Object();
+var mongodb = require('mongodb');
 
 var initDb = function(callback) {
   if (mongoURL == null) return;
-
-  var mongodb = require('mongodb');
-  if (mongodb == null) return;
 
   mongodb.connect(mongoURL, function(err, conn) {
     if (err) {
