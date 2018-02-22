@@ -193,6 +193,7 @@ function caculateData(){
       console.log("WebSocket Connection Broken, idleCount = "+idleCount);
     } else {
       idleCount=0
+      preCount = arrayIndex;
     };
     if (idleCount > 12) {
         if (client.readyState != client.CLOSED) client.close();
@@ -252,7 +253,7 @@ function caculateData(){
       insertData();
       currMin=mins;
     };
-    preCount = endPoint;
+
     /*
     console.log("***********************************");    
     console.log(Date.now()+" Total txs:"+txs);
