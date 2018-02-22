@@ -194,7 +194,8 @@ function caculateData(){
     } else {
       idleCount=0
     };
-    if (idleCount > 20) {
+    if (idleCount > 12) {
+        if (client.readyState != client.CLOSED) client.close();
         client = null;
         sleep(5000);
       idleCount = 0;
