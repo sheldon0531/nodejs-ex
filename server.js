@@ -252,7 +252,7 @@ function caculateData(){
       insertData();
       currMin=mins;
     };
-    preCount = arrayIndex;
+    preCount = endPoint;
     /*
     console.log("***********************************");    
     console.log(Date.now()+" Total txs:"+txs);
